@@ -1,2 +1,2 @@
-# 42_cpp_00
+# 42_cpp
 First foray into cpp as a language.
