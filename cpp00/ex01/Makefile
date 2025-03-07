@@ -13,8 +13,8 @@
 # ================================= Files ======================================
 
 NAME	= phonebook
-SOURCE	= src/phonebook.cpp src/main.cpp
-OBJS	= objs/phonebook.o objs/main.o
+SOURCE	= src/PhoneBook.cpp src/main.cpp Contact.cpp
+OBJS	= objs/PhoneBook.o objs/main.o objs/Contact.o
 
 # ============================ Folder Structures ===============================
 
