@@ -12,21 +12,28 @@
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
-# include <iostream>
 # include <string>
 
 class Contact{
 	private:
-		std::string first_name;
-		std::string last_name;
-		std::string nickname;
-		std::string number;
-		std::string dark_secret;
+		std::string fn;
+		std::string ln;
+		std::string nn;
+		std::string pn;
+		std::string ds;
 
 	public:
+		//constructors
 		Contact();
 		~Contact();
+		Contact(std::string fn, std::string ln, std::string nn,
+				std::string pn, std::string ds);
 
+		//getters
+		std::string getFirstName() const;
+		std::string getLastName() const;
+		std::string getNickName() const;
+		std::string getPhoneNumber() const;
+		std::string getDarkestSecret() const;
 };
-
 #endif
