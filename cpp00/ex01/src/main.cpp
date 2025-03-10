@@ -23,10 +23,6 @@
 //Display prompt for adicional info (needs number index, must be in range, if out of range we choose behaviour), if correct display info one line per field.
 
 //if input is exit call destructors and exit program;
-void	DisplaySearchPrompt(PhoneBook *bookake)
-{
-
-}
 
 std::string InputGetter(std::string prompt)
 {
@@ -39,7 +35,26 @@ std::string InputGetter(std::string prompt)
 	return (input);
 }
 
-void	AddContact(PhoneBook *bookake)
+void	DisplayContactInfo(PhoneBook *bookake, std::string index)
+{
+	int indexer;
+	indexer = std::atoi(index.c_str());
+
+}
+
+void	DisplaySearchPrompt(PhoneBook *bookake)
+{
+	std::string index;
+	bookake->getInfo();
+	index = InputGetter("Choose contact index: ");
+	if (//contact exists)
+		DisplayContactInfo(bookake, index);
+	else {
+		std::cout << "Specified contact index does not exist" << std::endl;
+	}
+}
+
+void	AddContact(PhoneBook &bookake)
 {
 	std::string fn;
 	std::string ln;
@@ -51,7 +66,7 @@ void	AddContact(PhoneBook *bookake)
 	nn = InputGetter("Enter Nickname: ");
 	pn = InputGetter("Enter Phone Number: ");
 	ds = InputGetter("Enter Darkest Secret: ");
-	bookake->addContact(fn,ln,nn,pn,ds);
+	bookake.addContact(fn,ln,nn,pn,ds);
 }
 
 int main(void)
@@ -70,7 +85,7 @@ int main(void)
 		if (!(std::getline(std::cin, cmd_in)))
 			return (1);
 		if (cmd_in == "ADD")
-			AddContact(&bookake);
+			AddContact(bookake);
 		if (cmd_in == "SEARCH")
 			DisplaySearchPrompt(&bookake);
 		if (cmd_in == "EXIT")

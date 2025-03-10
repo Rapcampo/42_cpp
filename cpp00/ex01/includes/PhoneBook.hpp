@@ -12,7 +12,10 @@
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
+
+# include <iostream>
 # include "Contact.hpp"
+# include <iomanip>
 
 # define MAX_CONTACTS 8
 
