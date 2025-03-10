@@ -27,6 +27,8 @@ class Contact{
 		//constructors
 		Contact();
 		~Contact();
+		Contact(std::string fn, std::string ln, std::string nn,
+				std::string pn, std::string ds);
 
 		//setter
 		void setContact(std::string fn, std::string ln, std::string nn,

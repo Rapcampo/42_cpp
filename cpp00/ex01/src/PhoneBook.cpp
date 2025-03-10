@@ -33,3 +33,13 @@ void	PhoneBook::addContact(std::string fn, std::string ln, std::string nn,
 		entries = 1;
 	}
 }
+
+void	PhoneBook::getInfo() const {
+//	int	i = 0;
+	std::cout << "+----------+----------+----------+----------+\n";
+	std::cout << "|     index|First Name| Last Name|  Nickname|\n";
+	std::cout << "+----------+----------+----------+----------+\n";
+//	while (entries > i){
+//		std::cout << i;
+//	}
+}

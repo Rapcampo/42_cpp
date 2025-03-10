@@ -24,6 +24,20 @@
 
 //if input is exit call destructors and exit program;
 
+
+int	sToi(std::string nbr){
+
+	int n;
+	if (!nbr[0])
+		return (-1);
+	else if (nbr[0] < '0' && nbr[0] > '9')
+		return (-1);
+	else if (nbr[1])
+		return (-1);
+	n = nbr[0] - '0';
+	return (n);
+}
+
 std::string InputGetter(std::string prompt)
 {
 	std::string input = "";
@@ -35,23 +49,18 @@ std::string InputGetter(std::string prompt)
 	return (input);
 }
 
-void	DisplayContactInfo(PhoneBook *bookake, std::string index)
+/*void	DisplayContactInfo(PhoneBook *bookake)
 {
-	int indexer;
-	indexer = std::atoi(index.c_str());
-
-}
+}*/
 
 void	DisplaySearchPrompt(PhoneBook *bookake)
 {
 	std::string index;
 	bookake->getInfo();
 	index = InputGetter("Choose contact index: ");
-	if (//contact exists)
-		DisplayContactInfo(bookake, index);
-	else {
+//	else 
 		std::cout << "Specified contact index does not exist" << std::endl;
-	}
+//	DisplayContactInfo(bookake, index);
 }
 
 void	AddContact(PhoneBook &bookake)
@@ -80,9 +89,9 @@ int main(void)
 	
 	while (1)
 	{
-		std::cout << "This is \e[1;39mPhonetron 2000\e[0m, with this advanced piece of software you can ADD and SEARCH for your favourite contacts! Just don't forget to EXIT when you are done!" << std::endl;
+	//	std::cout << "This is \e[1;39mPhonetron 2000\e[0m, with this advanced piece of software you can ADD and SEARCH for your favourite contacts! Just don't forget to EXIT when you are done!" << std::endl;
 		std::cout << "Please enter your command: ";
-		if (!(std::getline(std::cin, cmd_in)))
+		if (!(std::getline(std::cin, cmd_in)) || std::cin.eof())
 			return (1);
 		if (cmd_in == "ADD")
 			AddContact(bookake);
