@@ -18,6 +18,21 @@
 # include <iostream>
 # include <iomanip>
 
+//colour prints
+
+# define RST "\e[0m"
+# define ULI "\e[4m"
+# define BLN "\e[5m"
+# define BLK "\e[1;30m"
+# define RED "\e[1;31m"
+# define GRN "\e[1;32m"
+# define YLW "\e[1;33m"
+# define BLU "\e[1;34m"
+# define PRP "\e[1;35m"
+# define CYN "\e[1;36m"
+# define WHT "\e[1;37m"
+# define CLR "\e[0;39m"
+
 void	DisplaySearchPrompt(PhoneBook *bookake);
 
 #endif

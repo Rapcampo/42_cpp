@@ -24,6 +24,15 @@ Contact::~Contact(){
 	return;
 }
 
+Contact::Contact(std::string fn, std::string ln, std::string nn,
+		std::string pn,std::string ds){
+	this->fn = fn;
+	this->ln = ln;
+	this->nn = nn;
+	this->pn = pn;
+	this->ds = ds;
+}
+
 void	Contact::setContact(std::string fn, std::string ln, std::string nn,
 		std::string pn,std::string ds){
 	this->fn = fn;

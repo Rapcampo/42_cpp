@@ -21,12 +21,12 @@
 
 class PhoneBook{
 	private:
-		Contact contact[MAX_CONTACTS];
 		int entries;
 	public:
 		PhoneBook();
 		~PhoneBook();
 
+		Contact contact[MAX_CONTACTS];
 		//setter
 		void	addContact(std::string fn, std::string ln, std::string nn,
 				std::string pn, std::string ds);

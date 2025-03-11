@@ -14,6 +14,7 @@
 #include "../includes/Contact.hpp"
 
 PhoneBook::PhoneBook(){
+	Contact contact[MAX_CONTACTS];
 	this->entries = 0;
 }
 
@@ -36,9 +37,9 @@ void	PhoneBook::addContact(std::string fn, std::string ln, std::string nn,
 
 void	PhoneBook::getInfo() const {
 //	int	i = 0;
-	std::cout << "+----------+----------+----------+----------+\n";
-	std::cout << "|     index|First Name| Last Name|  Nickname|\n";
-	std::cout << "+----------+----------+----------+----------+\n";
+	std::cout << "\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[0m\n";
+	std::cout << "\e[1;35m|\e[1;36m     index\e[1;35m|\e[1;36mFirst Name\e[1;35m|\e[1;36m Last Name\e[1;35m|\e[1;36m  Nickname\e[1;35m|\e[0m\n";
+	std::cout << "\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[0m\n";
 //	while (entries > i){
 //		std::cout << i;
 //	}
