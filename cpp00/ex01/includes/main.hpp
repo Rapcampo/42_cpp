@@ -17,6 +17,8 @@
 # include "PhoneBook.hpp"
 # include <iostream>
 # include <iomanip>
+#include <stdexcept>
+#include <cstdlib>
 
 //colour prints
 
@@ -32,6 +34,7 @@
 # define CYN "\e[1;36m"
 # define WHT "\e[1;37m"
 # define CLR "\e[0;39m"
+# define IN_ERR "\nEOF input is not valid, good try tho!"
 
 void	DisplaySearchPrompt(PhoneBook *bookake);
 

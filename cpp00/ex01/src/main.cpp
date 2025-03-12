@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/main.hpp"
-#include "../includes/PhoneBook.hpp"
-#include "../includes/Contact.hpp"
 
 //NOTE: needs to initialize phonebook class;
 //NOTE: needs add contact function, search function, exit function
@@ -32,11 +30,12 @@ int	sToi(std::string nbr){
 	int n;
 	if (!nbr[0])
 		return (-1);
-	else if (nbr[0] < '0' && nbr[0] > '9')
+	if (nbr[1])
 		return (-1);
-	else if (nbr[1])
+	if (nbr[0] >= '0' && nbr[0] <= '9')
+		n = nbr[0] - '0';
+	else
 		return (-1);
-	n = nbr[0] - '0';
 	return (n);
 }
 
@@ -46,7 +45,11 @@ std::string InputGetter(std::string prompt)
 	while (input.length() == 0)
 	{
 		std::cout << prompt;
-		std::getline(std::cin, input);
+		if (!(std::getline(std::cin, input)) || std::cin.eof())
+		{
+			std::cerr << RED IN_ERR RST << std::endl;
+			exit(1);
+		}
 	}
 	return (input);
 }
@@ -57,13 +60,17 @@ void	DisplaySearchPrompt(PhoneBook *book)
 	std::string index;
 	int indexer = 0;
 	book->getInfo();
-	index = InputGetter("Choose contact index: ");
-	if ((indexer = sToi(index)) == -1){
+	while (1){
+	index = InputGetter("Choose contact index, 0 to go back: ");
+	if (index == "0") 
+		return ;
+	if ((indexer = sToi(index) - 1) == -2){
 		std::cout << "Specified contact index does not exist" << std::endl;
 		return ;
 	}
 	else
 		book->contact[indexer].showContact();
+	}
 }
 
 void	AddContact(PhoneBook &book)
@@ -86,31 +93,23 @@ int main(void)
 	PhoneBook book;
 	std::string cmd_in;
 
-	//give user a small help message with usability and so on;
 	std::cout << "This is \e[1;35mPhonetron 2000\e[0m, with this advanced piece of software you can ADD and SEARCH for your favourite contacts! Just don't forget to EXIT when you are done!" << std::endl;
 	
 	while (1)
 	{
-	//	std::cout << "This is \e[1;39mPhonetron 2000\e[0m, with this advanced piece of software you can ADD and SEARCH for your favourite contacts! Just don't forget to EXIT when you are done!" << std::endl;
-		std::cout << "Please enter your command: ";
+		std::cout << "\e[1;36mPlease enter your command:\e[0m ";
 		if (!(std::getline(std::cin, cmd_in)) || std::cin.eof())
 			break ;
-			//return (1);
 		if (cmd_in == "ADD"){
-		//	std::cout << "cmd received" << std::endl;
-		//	break;
 			AddContact(book);
 		}
 		else if (cmd_in == "SEARCH"){
-		//	std::cout << "cmd received" << std::endl; break;
 			DisplaySearchPrompt(&book);
 		}
-		else if (cmd_in == "EXIT"){
-			std::cout << "cmd received" << std::endl;
+		else if (cmd_in == "EXIT")
 			break;
-		}
 		else
-			std::cout << "\n\e[1;35mPhoneTron 2000\e[0m does not support this command, please input a valid command!" << std::endl;
+			std::cout << "\e[1;35mPhoneTron 2000\e[0m does not support this command, please input a \e[1;32mvalid command!\e[0m" << std::endl;
 	}
 	std::cout << "\nThank you for using \e[1;35mPhoneTron 2000\e[0m, until next time!" << std::endl;
 	return (0);

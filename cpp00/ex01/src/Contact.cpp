@@ -43,11 +43,11 @@ void	Contact::setContact(std::string fn, std::string ln, std::string nn,
 }
 
 void	Contact::showContact() const {
-	std::cout << "First Name: " << fn << std::endl;
-	std::cout << "Last Name: " << ln << std::endl;
-	std::cout << "Nickname: " << nn << std::endl;
-	std::cout << "Phone Number: " << pn << std::endl;
-	std::cout << "Darkest Secret: " << ds << std::endl;
+	std::cout << "\e[1;31mFirst Name:\e[0m " << fn << std::endl;
+	std::cout << "\e[1;34mLast Name:\e[0m " << ln << std::endl;
+	std::cout << "\e[1;31mNickname:\e[0m " << nn << std::endl;
+	std::cout << "\e[1;34mPhone Number:\e[0m " << pn << std::endl;
+	std::cout << "\e[1;31mDarkest Secret:\e[0m " << ds << std::endl;
 }
 
 std::string Contact::getFirstName() const{

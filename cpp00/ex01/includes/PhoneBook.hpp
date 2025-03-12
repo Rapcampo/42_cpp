@@ -22,6 +22,7 @@
 class PhoneBook{
 	private:
 		int entries;
+		int	contactSize;
 	public:
 		PhoneBook();
 		~PhoneBook();

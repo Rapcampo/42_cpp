@@ -62,11 +62,11 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Minishell Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Minishell Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 
