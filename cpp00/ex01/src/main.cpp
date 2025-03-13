@@ -32,7 +32,7 @@ int	sToi(std::string nbr){
 		return (-1);
 	if (nbr[1])
 		return (-1);
-	if (nbr[0] >= '0' && nbr[0] <= '9')
+	if (nbr[0] >= '0' && nbr[0] <= '8')
 		n = nbr[0] - '0';
 	else
 		return (-1);
