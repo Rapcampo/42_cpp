@@ -32,6 +32,7 @@ class PhoneBook{
 		void	addContact(std::string fn, std::string ln, std::string nn,
 				std::string pn, std::string ds);
 		//getter
+		int		getSize() const;
 		void	getInfo() const;
 };
 

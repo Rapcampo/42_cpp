@@ -39,6 +39,10 @@ void	PhoneBook::addContact(std::string fn, std::string ln, std::string nn,
 		contactSize++;
 }
 
+int		PhoneBook::getSize() const {
+	return this->contactSize;
+}
+
 void	PhoneBook::getInfo() const {
 	int	i = 0;
 	std::cout << "\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[0m\n";

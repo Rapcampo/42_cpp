@@ -64,7 +64,7 @@ void	DisplaySearchPrompt(PhoneBook *book)
 	index = InputGetter("Choose contact index, 0 to go back: ");
 	if (index == "0") 
 		return ;
-	if ((indexer = sToi(index) - 1) == -2){
+	if ((indexer = sToi(index) - 1) == -2 || indexer  + 1 > book->getSize()){
 		std::cout << "Specified contact index does not exist" << std::endl;
 		return ;
 	}
@@ -93,7 +93,7 @@ int main(void)
 	PhoneBook book;
 	std::string cmd_in;
 
-	std::cout << "This is \e[1;35mPhonetron 2000\e[0m, with this advanced piece of software you can ADD and SEARCH for your favourite contacts! Just don't forget to EXIT when you are done!" << std::endl;
+	std::cout << "This is \e[1;35mPhonetron 2000\e[0m, with this advanced piece of software you can \e[1;31mADD\e[0m and \e[1;32mSEARCH\e[0m for your favourite contacts! Just don't forget to \e[1;33mEXIT\e[0m when you are done!" << std::endl;
 	
 	while (1)
 	{
