@@ -12,9 +12,9 @@
 
 # ================================= Files ======================================
 
-NAME	= phonebook
-SOURCE	= src/main.cpp src/PhoneBook.cpp  src/Contact.cpp
-OBJS	= objs/main.o objs/Contact.o objs/PhoneBook.o 
+NAME	= account
+SOURCE	= test.cpp Account.cpp
+OBJS	= objs/test.o objs/Account.o  
 
 # ============================ Folder Structures ===============================
 

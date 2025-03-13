@@ -48,7 +48,7 @@ std::string InputGetter(std::string prompt)
 		if (!(std::getline(std::cin, input)) || std::cin.eof())
 		{
 			std::cerr << RED IN_ERR RST << std::endl;
-			exit(1);
+			return ("");
 		}
 	}
 	return (input);
@@ -81,10 +81,20 @@ void	AddContact(PhoneBook &book)
 	std::string pn;
 	std::string ds;
 	fn = InputGetter("Enter First Name: ");
+	if (std::cin.eof())
+		return ;
 	ln = InputGetter("Enter Last Name: ");
+	if (std::cin.eof())
+		return ;
 	nn = InputGetter("Enter Nickname: ");
+	if (std::cin.eof())
+		return ;
 	pn = InputGetter("Enter Phone Number: ");
+	if (std::cin.eof())
+		return ;
 	ds = InputGetter("Enter Darkest Secret: ");
+	if (std::cin.eof())
+		return ;
 	book.addContact(fn,ln,nn,pn,ds);
 }
 
