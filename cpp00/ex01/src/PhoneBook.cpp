@@ -42,26 +42,28 @@ void	PhoneBook::addContact(std::string fn, std::string ln, std::string nn,
 void	PhoneBook::getInfo() const {
 	int	i = 0;
 	std::cout << "\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[0m\n";
-	std::cout << "\e[1;35m|\e[1;36m     index\e[1;35m|\e[1;36mFirst Name\e[1;35m|\e[1;36m Last Name\e[1;35m|\e[1;36m  Nickname\e[1;35m|\e[0m\n";
+	std::cout << "\e[1;35m|\e[1;33m     \e[4mindex\e[0;39m\e[1;35m|\e[1;4;33mFirst Name\e[0;39m\e[1;35m|\e[1;33m \e[4mLast Name\e[0;39m\e[1;35m|\e[1;33m  \e[4mNickname\e[0m\e[1;35m|\e[0m\n";
 	std::cout << "\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[0m\n";
 	while (contactSize > i){
-		std::cout << "\e[1;35m|\e[0m" << std::setfill(' ') << std::setw(10);
+		std::cout << "\e[1;35m|\e[0m" << std::setw(10);
 		std::cout << i + 1;
-		std::cout << "\e[1;35m|\e[0m" << std::setfill(' ') << std::setw(9);
+		std::cout << "\e[1;35m|\e[0m";
 		if (contact[i].getFirstName().length() > 10)
-			std::cout << contact[i].getFirstName().substr(0,9) << ".";
+			std::cout << std::setw(9) << contact[i].getFirstName().substr(0,9) << ".";
 		else
-			std::cout << contact[i].getFirstName();
-		std::cout << "\e[1;35m|\e[0m" << std::setfill(' ') << std::setw(9);
+			std::cout << std::setw(10) << contact[i].getFirstName();
+		std::cout << "\e[1;35m|\e[0m";
 		if (contact[i].getLastName().length() > 10)
-			std::cout << contact[i].getLastName().substr(0,9) << ".";
+			std::cout << std::setw (9) << contact[i].getLastName().substr(0,9) << ".";
 		else
-			std::cout << contact[i].getLastName();
-		std::cout << "\e[1;35m|\e[0m" << std::setfill(' ') << std::setw(9);
-		if (contact[i].getNickName().length() > 10)
-			std::cout << contact[i].getNickName().substr(0,9) << "|" << std::endl;
+			std::cout << std::setw(10) << contact[i].getLastName();
+		std::cout << "\e[1;35m|\e[0m";
+		if (contact[i].getNickName().length() > 10){
+			std::cout << std::setw(9) << contact[i].getNickName().substr(0,9) << ".";
+			std::cout << "\e[1;35m|\e[0m" << std::endl;
+		}
 		else
-			std::cout << contact[i].getNickName() << "\e[1;35m|\e[0m" << std::endl;
+			std::cout << std::setw(10) << contact[i].getNickName() << "\e[1;35m|\e[0m" << std::endl;
 		std::cout << "\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[1;32m----------\e[1;35m+\e[0m\n";
 		i++;
 	}
