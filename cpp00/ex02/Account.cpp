@@ -24,9 +24,23 @@ int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
-void Account::displayTimestamp(void);
+void Account::_displayTimestamp(void);
 
+Account::Account(void){
+	return;
+}
 
+Account::~Account(void){
+	return;
+}
+
+void Account::makeDeposit(int deposit);
+
+bool Account::makeWithdrawal(int withdrawal);
+
+Account::Account(int initial_deposit);
+
+void Account::displayAccountsInfos(void);
 
 int	Account::getNbAccounts(void){
 	return (Account::_nbAccounts);
