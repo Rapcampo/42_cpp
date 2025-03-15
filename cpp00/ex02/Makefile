@@ -12,9 +12,9 @@
 
 # ================================= Files ======================================
 
-NAME	= account
-SOURCE	= test.cpp Account.cpp
-OBJS	= objs/test.o objs/Account.o  
+NAME	= accounts
+SOURCE	= tests.cpp Account.cpp
+OBJS	= objs/tests.o objs/Account.o  
 
 # ============================ Folder Structures ===============================
 
@@ -62,11 +62,11 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Accounts Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Accounts Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 
