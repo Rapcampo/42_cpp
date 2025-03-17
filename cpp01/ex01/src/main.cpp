@@ -5,20 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 19:56:57 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/03/17 20:10:00 by rapcampo         ###   ########.fr       */
+/*   Created: 2025/03/17 21:14:06 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/03/17 21:17:47 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Zombie.hpp"
 
-Zombie* newZombie(std::string name);
-void	randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
-int	main(void){
-	Zombie* heap_zomb;
-	heap_zomb = newZombie("Heap Zombini");
-	randomChump("stack Zomboid");
-	delete(heap_zomb);
-	return (0);
+int main(void){
+	Zombie* hording = zombieHorde(10, "zombini");
+	for (int i = 0; i < 10; i++){
+		hording[i].annouce();
+	}
+	delete [] hording;
 }

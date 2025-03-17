@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 19:56:57 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/03/17 20:10:00 by rapcampo         ###   ########.fr       */
+/*   Created: 2025/03/17 19:38:53 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/03/17 19:55:21 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Zombie.hpp"
+#include <iostream>
 
-Zombie* newZombie(std::string name);
-void	randomChump(std::string name);
-
-int	main(void){
-	Zombie* heap_zomb;
-	heap_zomb = newZombie("Heap Zombini");
-	randomChump("stack Zomboid");
-	delete(heap_zomb);
-	return (0);
+Zombie::Zombie() : _name(""){
+	return;
 }
+
+Zombie::~Zombie(){
+	std::cout << "Zombie: " << Zombie::_name << " was destroyed!" << std::endl;
+}
+
+void Zombie::nameZombie(std::string name){
+	this->_name = name;
+}
+
+void	Zombie::annouce(void){
+	std::cout << Zombie::_name << ": " << CALL << std::endl;
+}
+
