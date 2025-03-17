@@ -47,7 +47,7 @@ std::string InputGetter(std::string prompt)
 		std::cout << prompt;
 		if (!(std::getline(std::cin, input)) || std::cin.eof())
 		{
-			std::cerr << RED IN_ERR RST << std::endl;
+			std::cout << RED IN_ERR RST << std::endl;
 			return ("");
 		}
 	}
