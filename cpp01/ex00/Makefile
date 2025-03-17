@@ -14,7 +14,7 @@
 
 NAME	= zombie
 SOURCE	= src/main.cpp src/Zombie.cpp  src/newZombie.cpp src/randomChump.cpp
-OBJS	= objs/main.o objs/randomChump.o objs/Zombie.o newZombie.o
+OBJS	= objs/main.o objs/randomChump.o objs/Zombie.o objs/newZombie.o
 
 # ============================ Folder Structures ===============================
 

@@ -11,9 +11,15 @@
 /* ************************************************************************** */
 
 #include "../includes/Zombie.hpp"
+#include <iostream>
+
+Zombie* newZombie(std::string name);
+void	randomChump(std::string name);
 
 int	main(void){
-	Zombie* zomb;
-	zomb = Zombie::newZombie("zombini");
-
+	Zombie* heap_zomb;
+	heap_zomb = newZombie("Heap Zombini");
+	randomChump("stack Zomboid");
+	delete(heap_zomb);
+	return (0);
 }

@@ -13,8 +13,7 @@
 #include "../includes/Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie(){
-	std::string _name = "";
+Zombie::Zombie() : _name(""){
 	return;
 }
 
@@ -22,7 +21,7 @@ Zombie::~Zombie(){
 	std::cout << "Zombie: " << Zombie::_name << " was destroyed!" << std::endl;
 }
 
-Zombie::Zombie(std::string name){
+void Zombie::nameZombie(std::string name){
 	this->_name = name;
 }
 
@@ -30,5 +29,3 @@ void	Zombie::annouce(void){
 	std::cout << Zombie::_name << ": " << CALL << std::endl;
 }
 
-void	Zombie::randomChump(std::string name){
-}
