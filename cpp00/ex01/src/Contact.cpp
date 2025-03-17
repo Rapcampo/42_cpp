@@ -12,12 +12,8 @@
 
 #include "../includes/Contact.hpp"
 
-Contact::Contact(){
-	std::string fn = "";
-	std::string ln = "";
-	std::string nn = "";
-	std::string pn = "";
-	std::string ds = "";
+Contact::Contact() : fn(""), ln(""), nn(""), pn(""), ds(""){
+	return;
 }
 
 Contact::~Contact(){
@@ -25,21 +21,8 @@ Contact::~Contact(){
 }
 
 Contact::Contact(std::string fn, std::string ln, std::string nn,
-		std::string pn,std::string ds){
-	this->fn = fn;
-	this->ln = ln;
-	this->nn = nn;
-	this->pn = pn;
-	this->ds = ds;
-}
-
-void	Contact::setContact(std::string fn, std::string ln, std::string nn,
-		std::string pn,std::string ds){
-	this->fn = fn;
-	this->ln = ln;
-	this->nn = nn;
-	this->pn = pn;
-	this->ds = ds;
+		std::string pn,std::string ds) : fn(fn), ln(ln), nn(nn), pn(pn), ds(ds){
+	return;
 }
 
 void	Contact::showContact() const {

@@ -103,7 +103,10 @@ int main(void)
 	PhoneBook book;
 	std::string cmd_in;
 
-	std::cout << "This is \e[1;35mPhonetron 2000\e[0m, with this advanced piece of software you can \e[1;31mADD\e[0m and \e[1;32mSEARCH\e[0m for your favourite contacts! Just don't forget to \e[1;33mEXIT\e[0m when you are done!" << std::endl;
+	std::cout << "This is \e[1;35mPhonetron 2000\e[0m,"
+		"with this advanced piece of software you can \e[1;31mADD\e[0m and "
+		"\e[1;32mSEARCH\e[0m for your favourite contacts! Just don't forget "
+		"to \e[1;33mEXIT\e[0m when you are done!" << std::endl;
 	
 	while (1)
 	{
@@ -119,7 +122,8 @@ int main(void)
 		else if (cmd_in == "EXIT")
 			break;
 		else
-			std::cout << "\e[1;35mPhoneTron 2000\e[0m does not support this command, please input a \e[1;32mvalid command!\e[0m" << std::endl;
+			std::cout << "\e[1;35mPhoneTron 2000\e[0m does not support this "
+				"command, please input a \e[1;32mvalid command!\e[0m" << std::endl;
 	}
 	std::cout << "\nThank you for using \e[1;35mPhoneTron 2000\e[0m, until next time!" << std::endl;
 	return (0);
