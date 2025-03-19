@@ -15,8 +15,10 @@
 Zombie* zombieHorde(int N, std::string name);
 
 int main(void){
-	Zombie* hording = zombieHorde(10, "zombini");
-	for (int i = 0; i < 10; i++){
+	int	hordeSize = 200;
+	Zombie* hording = zombieHorde(hordeSize, "zombini");
+	for (int i = 0; i < hordeSize; i++){
+		std::cout << i + 1 << ". ";
 		hording[i].annouce();
 	}
 	delete [] hording;
