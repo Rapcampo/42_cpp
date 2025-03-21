@@ -12,9 +12,9 @@
 
 # ================================= Files ======================================
 
-NAME	= brain
-SOURCE	= src/main.cpp #src/Zombie.cpp  src/newZombie.cpp src/randomChump.cpp
-OBJS	= objs/main.o #objs/randomChump.o objs/Zombie.o objs/newZombie.o
+NAME	= unnecessary_violence
+SOURCE	= src/main.cpp src/Weapon.cpp  src/HumanA.cpp src/HumanB.cpp
+OBJS	= objs/main.o objs/Weapon.o objs/HumanA.o objs/HumanB.o
 
 # ============================ Folder Structures ===============================
 
@@ -56,17 +56,17 @@ $(NAME): $(OBJS)
 $(OBJS): 
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
-	$(CC) $(FLAGS) -c $(SOURCE)# -I $(HEADERS)
+	$(CC) $(FLAGS) -c $(SOURCE) -I $(HEADERS)
 	mv *.o $(OBJS_DIR)
 
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)brain's Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)violence's Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)brain's Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)violence's Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 
