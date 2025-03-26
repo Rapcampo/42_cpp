@@ -13,43 +13,48 @@
 #include "../includes/Harl.hpp"
 #include "../includes/main.hpp"
 
-Harl::Harl(void){};
+Harl::Harl(){}
 
-Harl::~Harl(void){};
+Harl::~Harl(){}
 
 void	Harl::debug(void){
 	std::cout << GRN D_MSG RST << std::endl;
 }
 
 void	Harl::info(void){
-	std::cout << GRN I_MSG RST << std::endl;
+	std::cout << PRP I_MSG RST << std::endl;
 }
 
 void	Harl::warning(void){
-	std::cout << GRN W_MSG RST << std::endl;
+	std::cout << YLW W_MSG RST << std::endl;
 }
 
 void	Harl::error(void){
-	std::cout << GRN E_MSG RST << std::endl;
+	std::cout << RED E_MSG RST << std::endl;
 }
 
 int		Harl::levelDecoder(std::string level){
 	int l = 0;
-	std::string levels[5] = {"DEBUG", "INFO", "WARNING", "ERROR", NULL};
-	while (l < 4 && levels[l].compare(level) != 0){
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	while (l < 4 && levels[l] != level){
 		l++;
 	}
 	if (l > 3){
-		return (0);
+		return (-1);
 	}
 	return (l);
 }
 
 void	Harl::complain(std::string level){
 	int lCode = levelDecoder(level);
-
-	if (lCode != 0){
-		funcList(lCode);
+	void	(Harl::*funcList[4])() = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error,
+	};
+	if (lCode != -1){
+		(this->*funcList[lCode])();
 	}
 	else
 		return;

@@ -12,9 +12,9 @@
 
 # ================================= Files ======================================
 
-NAME	= Sed_is_for_losers 
-SOURCE	= src/main.cpp #src/Weapon.cpp  src/HumanA.cpp src/HumanB.cpp
-OBJS	= objs/main.o #objs/Weapon.o objs/HumanA.o objs/HumanB.o
+NAME	= Harl
+SOURCE	= src/main.cpp src/Harl.cpp  #src/HumanA.cpp src/HumanB.cpp
+OBJS	= objs/main.o objs/Harl.o #objs/HumanA.o objs/HumanB.o
 
 # ============================ Folder Structures ===============================
 
@@ -63,18 +63,21 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)sed's Objects have been" \
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Harl's Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)sed's Static library and "\
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Harl's Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 
 leak: all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) DEBUG
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) INFO 
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) WARNING
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) ERROR
 
 .SILENT:
 
