@@ -12,9 +12,9 @@
 
 # ================================= Files ======================================
 
-NAME	= unnecessary_violence
-SOURCE	= src/main.cpp src/Weapon.cpp  src/HumanA.cpp src/HumanB.cpp
-OBJS	= objs/main.o objs/Weapon.o objs/HumanA.o objs/HumanB.o
+NAME	= Sed_is_for_losers 
+SOURCE	= src/main.cpp #src/Weapon.cpp  src/HumanA.cpp src/HumanB.cpp
+OBJS	= objs/main.o #objs/Weapon.o objs/HumanA.o objs/HumanB.o
 
 # ============================ Folder Structures ===============================
 
@@ -62,11 +62,11 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)violence's Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)sed's Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)violence's Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)sed's Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 
