@@ -47,7 +47,7 @@ int		Harl::levelDecoder(std::string level){
 
 void	Harl::complain(std::string level){
 	int lCode = levelDecoder(level);
-	void	(Harl::*funcList[4])(void) = {
+	void	(Harl::*funcList[4])() = {
 		&Harl::debug,
 		&Harl::info,
 		&Harl::warning,
@@ -57,5 +57,5 @@ void	Harl::complain(std::string level){
 		(this->*funcList[lCode])();
 	}
 	else
-		std::cerr << RED << "ERROR: invalid argument" << std::endl;
+		return;
 }
