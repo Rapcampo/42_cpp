@@ -38,7 +38,7 @@ void	stringReplace(const std::string &filename, std::string &strR, std::string &
 			line.insert(i, strN);
 			i += strN.length();
 		}
-		outFile << line;
+		outFile << line << std::endl;
 	}
 	outFile.close();
 	return;
