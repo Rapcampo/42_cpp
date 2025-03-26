@@ -18,14 +18,6 @@
 #include <string>
 #include <sstream>*/
 
-//error msg macros
-
-# define ERR_MANY "Error: Too many arguments"
-# define USAGE "Correct usage is: [filename] [str original] [str new]"
-# define ERR_INVALID_ARG "Error: invalid argument for program"
-# define ERR_CANT_OP "Error: cannot open file pointed by filename"
-# define ERR_OP_OUT "Error: could not open outfile"
-
 //colour macros
 
 # define RST "\e[0m"

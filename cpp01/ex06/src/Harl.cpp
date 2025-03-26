@@ -53,9 +53,26 @@ void	Harl::complain(std::string level){
 		&Harl::warning,
 		&Harl::error,
 	};
-	if (lCode != -1){
-		(this->*funcList[lCode])();
+	switch (lCode){
+		case 0:
+			std::cout << "[ DEBUG ]" << std::endl;
+			(this->*funcList[0])();
+			std::cout << std::endl;
+		case 1:
+			std::cout << "[ INFO ]" << std::endl;
+			(this->*funcList[1])();
+			std::cout << std::endl;
+		case 2:
+			std::cout << "[ WARNING ]" << std::endl;
+			(this->*funcList[2])();
+			std::cout << std::endl;
+		case 3:
+			std::cout << "[ ERROR ]" << std::endl;
+			(this->*funcList[3])();
+			std::cout << std::endl;
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]"
+				<< std::endl;
 	}
-	else
-		return;
 }

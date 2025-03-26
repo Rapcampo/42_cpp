@@ -12,7 +12,7 @@
 
 # ================================= Files ======================================
 
-NAME	= Harl_filter
+NAME	= harlFilter
 SOURCE	= src/main.cpp src/Harl.cpp  #src/HumanA.cpp src/HumanB.cpp
 OBJS	= objs/main.o objs/Harl.o #objs/HumanA.o objs/HumanB.o
 
@@ -27,7 +27,7 @@ OBJS_DIR	= objs
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -std=c++98# -g #-O3  #-fsanitize=address 
+FLAGS		= -Wall -Wextra #-Werror -std=c++98# -g #-O3  #-fsanitize=address 
 MAKE_FLAG	= --no-print-directory
 
 # =========================== Ansi Escape Codes ================================
