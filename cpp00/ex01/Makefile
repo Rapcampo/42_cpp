@@ -27,7 +27,7 @@ OBJS_DIR	= objs
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -std=c++98# -g #-O3  #-fsanitize=address # $(DEPFLG)
+FLAGS		= -Wall -Wextra -Werror -std=c++98# -g #-O3  #-fsanitize=address
 MAKE_FLAG	= --no-print-directory
 
 # =========================== Ansi Escape Codes ================================
@@ -51,7 +51,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 	$(CC) $(FLAGS) -o $@ $^
-	echo "\n*************************$(GREEN)$(BLINK)    [Compilation Sucessfull!]    $(RESET)*************************\n"
+	echo "\n*************************$(GREEN)$(BLINK)    "\
+		"[Compilation Sucessfull!]    $(RESET)*************************\n"
 
 $(OBJS): 
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
@@ -62,11 +63,13 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Objects have been removed sucessfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Objects have "\
+		"been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Static library and programs removed successfully$(RESET)    +++++++++++++++\n\n"
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Phonebook Static library "\
+		"and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 
