@@ -12,9 +12,9 @@
 
 # ================================= Files ======================================
 
-NAME	= harlFilter
-SOURCE	= src/main.cpp src/Harl.cpp  #src/HumanA.cpp src/HumanB.cpp
-OBJS	= objs/main.o objs/Harl.o #objs/HumanA.o objs/HumanB.o
+NAME	= fixed
+SOURCE	= src/main.cpp src/Fixed.cpp  #src/HumanA.cpp src/HumanB.cpp
+OBJS	= objs/main.o objs/Fixed.o #objs/HumanA.o objs/HumanB.o
 
 # ============================ Folder Structures ===============================
 
@@ -63,12 +63,12 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Harl's Objects have been" \
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Fixed's Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Harl's Static library and "\
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Fixed's Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
