@@ -12,7 +12,7 @@
 
 #include "../includes/Fixed.hpp"
 
-Fixed::Fixed() : _fpnv(0){
+Fixed::Fixed(void) : _fpnv(0){
 	std::cout << "Default constructor called" << std::endl;
 }
 
@@ -21,7 +21,7 @@ Fixed::Fixed(const Fixed &copy){
 	*this = copy; //Operator overlaod
 }
 
-Fixed::~Fixed(){std::cout << "Destructor called" << std::endl;}
+Fixed::~Fixed(void){std::cout << "Destructor called" << std::endl;}
 
 //Operator 
 Fixed &Fixed::operator =(const Fixed& src){
@@ -37,4 +37,4 @@ int Fixed::getRawBits() const {
 	return(this->_fpnv);
 }
 
-void Fixed::setRawBits(int const raw){ this->_fpnv = raw;}
+void Fixed::setRawBits(int const raw) {this->_fpnv = raw;}
