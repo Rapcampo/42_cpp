@@ -12,16 +12,29 @@
 
 #include "../includes/Fixed.hpp"
 
-Fixed::Fixed(){
+Fixed::Fixed() : _fpnv(0){
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(int nbr) : _fpnv(nbr){
+Fixed::Fixed(const Fixed &copy){
 	std::cout << "Copy constructor called" << std::endl;
+	*this = copy; //Operator overlaod
 }
 
-Fixed::~Fixed(){
-	std::cout << "Destructor called" << std::endl;
+Fixed::~Fixed(){std::cout << "Destructor called" << std::endl;}
+
+//Operator 
+Fixed &Fixed::operator =(const Fixed& src){
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &src){
+		this->_fpnv = src.getRawBits();
+	}
+	return (*this);
 }
 
+int Fixed::getRawBits() const {
+	std::cout << "getRawBits member function called" << std::endl;
+	return(this->_fpnv);
+}
 
+void Fixed::setRawBits(int const raw){ this->_fpnv = raw;}

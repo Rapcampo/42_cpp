@@ -16,13 +16,13 @@
 class Fixed{
 	private:
 		int	_fpnv;
-		static const int _fracb;
+		static const int _fracb = 8;
 
 	public:
-		Fixed();
-		Fixed(int nbr);
-		~Fixed();
-		//op overload ???
+		Fixed(); //default constructor
+		Fixed(const Fixed &cp); //copy constructor
+		~Fixed(); //default destructor
+		Fixed &operator = (const Fixed &src); //Assigment Operator
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);
 };
