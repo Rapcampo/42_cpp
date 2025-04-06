@@ -20,14 +20,18 @@ class Fixed{
 
 	public:
 		Fixed(); //default constructor
+		~Fixed(); //default destructor
 		Fixed(const int val);
 		Fixed(const float fval);
 		Fixed(const Fixed &cp); //copy constructor
-		~Fixed(); //default destructor
 		Fixed &operator = (const Fixed &src); //Assigment Operator
-		Fixed &operator << (const Fixed &src); //Insertion overload
+	//	Fixed &operator << (const Fixed &src); //Insertion overload
+	
 		float toFloat(void) const; //converter int to float
 		int toInt(void) const; //converter float to int
+		
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);
 };
+
+std::ostream &operator<<(std::ostream&out, const Fixed &fixed);

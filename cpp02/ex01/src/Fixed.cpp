@@ -16,11 +16,11 @@ Fixed::Fixed(void) : _fpnv(0){
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int val) : _fpnv(val){
+Fixed::Fixed(const int val) : _fpnv(val * (1 << _fracb)){
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float fval) : _fpnv(fval){
+Fixed::Fixed(const float fval) : _fpnv(int(fval * (1 << _fracb) + 0.5)) {
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -31,7 +31,7 @@ Fixed::Fixed(const Fixed &copy){
 
 Fixed::~Fixed(void){std::cout << "Destructor called" << std::endl;}
 
-//Operator 
+//Operator overload
 Fixed &Fixed::operator =(const Fixed& src){
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src){
@@ -47,10 +47,24 @@ int Fixed::getRawBits() const {
 
 void Fixed::setRawBits(int const raw) {this->_fpnv = raw;}
 
-float Fixed::toFloat(void) const{return 0;}//prototype
+float Fixed::toFloat(void) const{
+	int characteristic;
+	int mantissa;
+	float fpointnb;
 
-int	Fixed::toInt(void) const {return 0;} //yet another prototype
+	characteristic = this->_fpnv >> this->_fracb;
+	mantissa = this->_fpnv & ((1 << this->_fracb) - 1);
+	fpointnb = mantissa / float(1 << this->_fracb);
 
-Fixed &Fixed::operator <<(const Fixed& src){return *this;} //one more prototype
+	return (float(characteristic) + fpointnb);
+}
 
+int	Fixed::toInt(void) const {
+	return this->_fpnv >> _fracb;
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed){
+	out << fixed.toFloat();
+	return (out);
+}
 
