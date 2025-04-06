@@ -35,7 +35,7 @@ Fixed::~Fixed(void){std::cout << "Destructor called" << std::endl;}
 Fixed &Fixed::operator =(const Fixed& src){
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src){
-		this->_fpnv = src.getRawBits();
+		this->_fpnv = src._fpnv;
 	}
 	return (*this);
 }
