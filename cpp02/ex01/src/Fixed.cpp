@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed(void) : _fpnv(0){
 	std::cout << "Default constructor called" << std::endl;
@@ -20,7 +21,7 @@ Fixed::Fixed(const int val) : _fpnv(val * (1 << _fracb)){
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float fval) : _fpnv(int(fval * (1 << _fracb) + 0.5)) {
+Fixed::Fixed(const float fval) : _fpnv(roundf(fval * (1 << _fracb))){
 	std::cout << "Float constructor called" << std::endl;
 }
 

@@ -11,37 +11,38 @@
 /* ************************************************************************** */
 
 #include "../includes/Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed(void) : _fpnv(0){
-	std::cout << "Default constructor called" << std::endl;
+//	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int val) : _fpnv(val * (1 << _fracb)){
-	std::cout << "Int constructor called" << std::endl;
+//	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float fval) : _fpnv(int(fval * (1 << _fracb) + 0.5)) {
-	std::cout << "Float constructor called" << std::endl;
+Fixed::Fixed(const float fval) : _fpnv(roundf(fval * (1 << _fracb))) {
+//	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &copy){
-	std::cout << "Copy constructor called" << std::endl;
+//	std::cout << "Copy constructor called" << std::endl;
 	*this = copy; //Operator overlaod
 }
 
-Fixed::~Fixed(void){std::cout << "Destructor called" << std::endl;}
+Fixed::~Fixed(void){/*std::cout << "Destructor called" << std::endl;*/}
 
 //Operator overload
 Fixed &Fixed::operator =(const Fixed& src){
-	std::cout << "Copy assignment operator called" << std::endl;
+//	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src){
-		this->_fpnv = src._fpnv;
+		this->_fpnv = src.getRawBits();
 	}
 	return (*this);
 }
 
 int Fixed::getRawBits() const {
-	std::cout << "getRawBits member function called" << std::endl;
+//	std::cout << "getRawBits member function called" << std::endl;
 	return(this->_fpnv);
 }
 
@@ -71,27 +72,27 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed){
 //comparison booleans
 
 bool Fixed::operator > (const Fixed &src) const {
-	return this->_fpnv > src._fpnv;
+	return this->_fpnv > src.getRawBits();
 }
 
 bool Fixed::operator < (const Fixed &src) const {
-	return this->_fpnv < src._fpnv;
+	return this->_fpnv < src.getRawBits();
 }
 
 bool Fixed::operator >= (const Fixed &src) const {
-	return this->_fpnv >= src._fpnv;
+	return this->_fpnv >= src.getRawBits();
 }
 
 bool Fixed::operator <= (const Fixed &src) const {
-	return this->_fpnv <= src._fpnv;
+	return this->_fpnv <= src.getRawBits();
 }
 
 bool Fixed::operator == (const Fixed &src) const {
-	return this->_fpnv == src._fpnv;
+	return this->_fpnv == src.getRawBits();
 }
 
 bool Fixed::operator != (const Fixed &src) const {
-	return this->_fpnv != src._fpnv;
+	return this->_fpnv != src.getRawBits();
 }
 
 //increment and decrement
@@ -114,48 +115,36 @@ Fixed Fixed::operator -- (int){
 
 Fixed Fixed::operator + (const Fixed &src) const{
 	Fixed product;
-	product._fpnv = this->_fpnv + src._fpnv;
+	product._fpnv = this->_fpnv + src.getRawBits();
 	return product;
 }
 
 Fixed Fixed::operator - (const Fixed &src) const{
 	Fixed product;
-	product._fpnv = this->_fpnv - src._fpnv;
+	product._fpnv = this->_fpnv - src.getRawBits();
 	return product;
 }
 
 Fixed Fixed::operator * (const Fixed &src) const{
 	Fixed product;
-	product._fpnv  = (this->_fpnv * src._fpnv) >> _fracb;
+	product._fpnv  = (this->_fpnv * src.getRawBits()) >> _fracb;
 	return product;
 }
  
 Fixed Fixed::operator / (const Fixed &src) const{
 	Fixed product;
-	product._fpnv  = (this->_fpnv << _fracb) / src._fpnv;
+	product._fpnv  = (this->_fpnv << _fracb) / src.getRawBits();
 	return product;
 }
 
-Fixed &Fixed::max(Fixed &n1, Fixed &n2){
-	if (n1 > n2)
-		return n1;
-	return n2;
-}
+Fixed &Fixed::max(Fixed &n1, Fixed &n2){return n1 > n2 ? n1 : n2;}
 
 const Fixed &Fixed::max(const Fixed &n1, const Fixed &n2){
-	if (n1 > n2)
-		return n1;
-	return n2;
+	return n1 > n2? n1:n2;
 }
 
-Fixed &Fixed::min(Fixed &n1, Fixed &n2){
-	if (n1 < n2)
-		return n1;
-	return n2;
-}
+Fixed &Fixed::min(Fixed &n1, Fixed &n2){return n1 < n2 ? n1 : n2;}
 
 const Fixed &Fixed::min(const Fixed &n1, const Fixed &n2){
-	if (n1 < n2)
-		return n1;
-	return n2;
+	return n1 < n2 ? n1 : n2;
 }
