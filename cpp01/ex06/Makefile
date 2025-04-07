@@ -27,7 +27,7 @@ OBJS_DIR	= objs
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra #-Werror -std=c++98# -g #-O3  #-fsanitize=address 
+FLAGS		= -Wall -Wextra -Werror -std=c++98# -g #-O3  #-fsanitize=address 
 MAKE_FLAG	= --no-print-directory
 
 # =========================== Ansi Escape Codes ================================
