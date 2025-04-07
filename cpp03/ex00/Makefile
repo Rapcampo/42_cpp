@@ -12,9 +12,9 @@
 
 # ================================= Files ======================================
 
-NAME	= fixed
-SOURCE	= src/main.cpp src/Fixed.cpp  #src/HumanA.cpp src/HumanB.cpp
-OBJS	= objs/main.o objs/Fixed.o #objs/HumanA.o objs/HumanB.o
+NAME	= ClapTrap
+SOURCE	= src/main.cpp src/ClapTrap.cpp  #src/HumanA.cpp src/HumanB.cpp
+OBJS	= objs/main.o objs/ClapTrap.o #objs/HumanA.o objs/HumanB.o
 
 # ============================ Folder Structures ===============================
 
