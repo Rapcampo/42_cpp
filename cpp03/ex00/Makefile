@@ -63,21 +63,18 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Fixed's Objects have been" \
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)ClapTrap's Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Fixed's Static library and "\
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)ClapTrap's Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 
 leak: all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) DEBUG
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) INFO 
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) WARNING
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) ERROR
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 .SILENT:
 
