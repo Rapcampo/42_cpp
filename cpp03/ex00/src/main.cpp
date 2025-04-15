@@ -6,7 +6,7 @@
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:46:17 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/04/15 20:50:53 by rapcampo         ###   ########.fr       */
+/*   Updated: 2025/04/15 21:34:16 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int main(void){
 	ClapTrap ct1("jorginho");
+	ClapTrap ct2j(ct1);
 	ct1.beRepaired(1);
 	ct1.takeDamage(2);
 	ct1.beRepaired(1);

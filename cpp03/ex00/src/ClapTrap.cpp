@@ -30,6 +30,11 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &src){
 	return (*this);
 }
 
+ClapTrap::ClapTrap(const ClapTrap &src)
+	: _name(src._name), _hp(src._hp), _energy(src._energy), _attack(src._attack){
+	std::cout << "ClapTrap " << this->_name << " copy constructor called" << std::endl;
+}
+
 void ClapTrap::attack(const std::string &target){
 	if (this->_energy > 0){
 		std::cout << "ClapTrap " << this->_name << " attacks " << target
