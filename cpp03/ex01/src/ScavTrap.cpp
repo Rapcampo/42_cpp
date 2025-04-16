@@ -12,7 +12,35 @@
 
 #include "../includes/ScavTrap.hpp"
 
-ScavTrap::Scavtrap(const std::string name) : ClapTrap(name) : _name(name), _hp(100), _energy(25), _attack(20){
-	std::cout << "ScavTrap " << this->_name << " has been created!" << std::endl;
+ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, 100, 50, 20){
+	std::cout << "ScavTrap "<< this->getName() << " has been created!" << std::endl;
 }
 
+ScavTrap::~ScavTrap(){
+	std::cout << "ScavTrap " << this->getName() << " has been destroyed!" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src){
+	std::cout << "ScavTrap copy constructor called" << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &src){
+	ClapTrap::operator=(src);
+	std::cout << "ScavTrap Operator overload called!" << std::endl;
+	return *this;
+}
+
+void ScavTrap::attack(const std::string &target){
+	if (this->getEnergy() > 0){
+		std::cout << "ScavTrap " << this->getName() << " attacks " << target
+		<< ", causing " << this->getAttack() << " points of damage!" << std::endl;
+		this->setEnergy(-1);
+	}
+	else {
+		std::cout << "ScavTrap " << this->getName() << " has no energy left!" << std::endl;
+	}
+}
+
+void ScavTrap::guardGate(){
+	std::cout << "ScavTrap is now in Gate Keeper mode." << std::endl;
+}

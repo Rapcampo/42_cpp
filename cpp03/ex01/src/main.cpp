@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ClapTrap.hpp"
+#include "../includes/ScavTrap.hpp"
 #include <iostream>
 
 int main(void){
@@ -23,4 +23,17 @@ int main(void){
 	for (int i = 10; i > 0; i--)
 		ct1.attack("Leonildo");
 	ct1.takeDamage(10);
+
+	std::cout << "\n\n\n============== ScavTrap Part ==============\n\n\n";
+
+	ScavTrap st1("Reginaldo");
+	st1.attack("Ermenegildo");
+	st1.takeDamage(30);
+	st1.beRepaired(20);
+	st1.beRepaired(20);
+	st1.guardGate();
+/*	for(int i = 200; i > 0; i--){
+		st1.attack("blu");
+		st1.beRepaired(10);
+	}*/
 }

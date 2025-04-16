@@ -24,8 +24,15 @@ class ClapTrap{
 		ClapTrap(const std::string name);
 		~ClapTrap();
 		ClapTrap(const ClapTrap &src);
+		ClapTrap(const std::string name, unsigned int hp,
+				unsigned int energy,unsigned int attack);
 		ClapTrap &operator=(const ClapTrap &src);
 		void	attack(const std::string &target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+		std::string getName() const;
+		unsigned int	getEnergy() const;
+		unsigned int	getHealth() const;
+		unsigned int	getAttack() const;
+		void	setEnergy(int amount);
 };
