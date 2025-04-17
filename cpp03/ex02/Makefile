@@ -14,7 +14,7 @@
 
 NAME	= FragTrap 
 SOURCE	= src/main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FragTrap.cpp
-OBJS	= objs/main.o objs/ClapTrap.o objs/ScavTrap.o src/FragTrap.cpp
+OBJS	= objs/main.o objs/ClapTrap.o objs/ScavTrap.o objs/FragTrap.o
 
 # ============================ Folder Structures ===============================
 
