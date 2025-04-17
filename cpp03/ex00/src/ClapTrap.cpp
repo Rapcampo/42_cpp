@@ -36,14 +36,16 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 }
 
 void ClapTrap::attack(const std::string &target){
-	if (this->_energy > 0){
+	if (this->_energy > 0 && this->_hp > 0){
 		std::cout << "ClapTrap " << this->_name << " attacks " << target
 		<< ", causing " << this->_attack << " points of damage!" << std::endl;
 		this->_energy--;
 	}
-	else {
+	else if (this->_energy <= 0){
 		std::cout << "ClapTrap " << this->_name << " has no energy left!" << std::endl;
 	}
+	else 
+		std::cout << "ClapTrap " << this->_name << " has no Health left!" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
