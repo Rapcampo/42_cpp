@@ -13,11 +13,11 @@
 #include "../includes/ScavTrap.hpp"
 
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, 100, 50, 20){
-	std::cout << "ScavTrap "<< this->getName() << " has been created!" << std::endl;
+	std::cout << "\e[1;32mScavTrap "<< this->getName() << " has been created!\e[0m" << std::endl;
 }
 
 ScavTrap::~ScavTrap(){
-	std::cout << "ScavTrap " << this->getName() << " has been destroyed!" << std::endl;
+	std::cout << "\e[1;33mScavTrap " << this->getName() << " has been destroyed!\e[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src){
@@ -31,14 +31,16 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src){
 }
 
 void ScavTrap::attack(const std::string &target){
-	if (this->getEnergy() > 0){
+	if (this->getEnergy() > 0 && this->getHealth() > 0){
 		std::cout << "ScavTrap " << this->getName() << " attacks " << target
 		<< ", causing " << this->getAttack() << " points of damage!" << std::endl;
 		this->setEnergy(-1);
 	}
-	else {
+	else if (this->getEnergy() <= 0){
 		std::cout << "ScavTrap " << this->getName() << " has no energy left!" << std::endl;
 	}
+	else 
+		std::cout << "ScavTrap " << this->getName() << " has no Health left!" << std::endl;
 }
 
 void ScavTrap::guardGate(){

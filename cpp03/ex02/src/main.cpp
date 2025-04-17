@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ScavTrap.hpp"
+#include "../includes/FragTrap.hpp"
 #include <iostream>
 
 int main(void){
@@ -27,11 +28,27 @@ int main(void){
 	std::cout << "\n\n\n============== ScavTrap Part ==============\n\n\n";
 
 	ScavTrap st1("Reginaldo");
+	ScavTrap st2 = st1;
 	st1.attack("Ermenegildo");
 	st1.takeDamage(30);
 	st1.beRepaired(20);
 	st1.beRepaired(20);
 	st1.guardGate();
+/*	for(int i = 200; i > 0; i--){
+		st1.attack("blu");
+		st1.beRepaired(10);
+	}*/
+
+	std::cout << "\n\n\n\e[1;35m============== FragTrap Part ==============\e[0m\n\n\n";
+
+	FragTrap ft1("Valerio");
+	ft1.attack("Bruno");
+	ft1.takeDamage(60);
+	ft1.beRepaired(20);
+	ft1.beRepaired(20);
+	ft1.highFivesGuys();
+	ft1.takeDamage(100);
+	ft1.attack("Bruno");
 /*	for(int i = 200; i > 0; i--){
 		st1.attack("blu");
 		st1.beRepaired(10);
