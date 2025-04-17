@@ -13,12 +13,12 @@
 #include "../includes/FragTrap.hpp"
 
 
-FragTrap::FragTrap(const std::string name) : ClapTrap(name, 100, 50, 20){
-	std::cout << "\e[1;35mScavTrap "<< this->getName() << " has been created!\e[0m" << std::endl;
+FragTrap::FragTrap(const std::string name) : ClapTrap(name, 100, 100, 30){
+	std::cout << "\e[1;35mFragTrap"<< this->getName() << " has been created!\e[0m" << std::endl;
 }
 
 FragTrap::~FragTrap(){
-	std::cout << "\e[1;36mScavTrap " << this->getName() << " has been destroyed!\e[0m" << std::endl;
+	std::cout << "\e[1;36mFragTrap" << this->getName() << " has been destroyed!\e[0m" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src){
