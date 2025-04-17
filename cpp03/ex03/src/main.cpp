@@ -26,7 +26,7 @@ int main(void){
 		ct1.attack("Leonildo");
 	ct1.takeDamage(100);
 	ct1.attack("Leonildo");
-
+*/
 	std::cout << "\n\n\n\e[1;32m============== ScavTrap Part ==============\e[0m\n\n\n";
 
 	ScavTrap st1("Reginaldo");
@@ -36,10 +36,10 @@ int main(void){
 	st1.beRepaired(20);
 	st1.beRepaired(20);
 	st1.guardGate();
-	for(int i = 200; i > 0; i--){
+	/*	for(int i = 200; i > 0; i--){
 		st1.attack("blu");
 		st1.beRepaired(10);
-	}
+	}*/
 
 	std::cout << "\n\n\n\e[1;35m============== FragTrap Part ==============\e[0m\n\n\n";
 
@@ -51,7 +51,7 @@ int main(void){
 	ft1.highFivesGuys();
 	ft1.takeDamage(100);
 	ft1.attack("Bruno");
-	for(int i = 200; i > 0; i--){
+/*	for(int i = 200; i > 0; i--){
 		ft1.attack("blu");
 		ft1.beRepaired(10);
 	}*/
@@ -61,5 +61,8 @@ int main(void){
 	DiamondTrap dt2 = dt1;
 	dt1.takeDamage(10);
 	dt1.attack("JeanPierre");
+	dt1.beRepaired(10);
 	dt1.whoAmI();
+	dt1.guardGate();
+	dt1.highFivesGuys();
 }

@@ -13,12 +13,13 @@
 #include "../includes/DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(std::string name) 
-	: ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), _name(name){
-	std::cout << "\e[1;35mDiamondTrap"<< this->_name << " has been created!\e[0m" << std::endl;
+	: ClapTrap(name + "_clap_name", 100, 50, 30), ScavTrap(name), FragTrap(name)
+	  , _name(name){
+	std::cout << "\e[1;35mDiamondTrap "<< this->_name << " has been created!\e[0m" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap(){
-	std::cout << "\e[1;36mDiamondTrap" << this->_name << " has been destroyed!\e[0m" << std::endl;
+	std::cout << "\e[1;36mDiamondTrap " << this->_name << " has been destroyed!\e[0m" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &src) 
