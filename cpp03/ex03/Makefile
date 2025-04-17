@@ -12,9 +12,11 @@
 
 # ================================= Files ======================================
 
-NAME	= ClapTrap
-SOURCE	= src/main.cpp src/ClapTrap.cpp  #src/HumanA.cpp src/HumanB.cpp
-OBJS	= objs/main.o objs/ClapTrap.o #objs/HumanA.o objs/HumanB.o
+NAME	= DiamondTrap 
+SOURCE	= src/main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FragTrap.cpp\
+		  src/DiamondTrap.cpp
+OBJS	= objs/main.o objs/ClapTrap.o objs/ScavTrap.o objs/FragTrap.o\
+		  objs/DiamondTrap.o
 
 # ============================ Folder Structures ===============================
 

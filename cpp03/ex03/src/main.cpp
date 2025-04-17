@@ -10,11 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ClapTrap.hpp"
+#include "../includes/ScavTrap.hpp"
+#include "../includes/FragTrap.hpp"
+#include "../includes/DiamondTrap.hpp"
 #include <iostream>
 
 int main(void){
-	ClapTrap ct1("jorginho");
+/*	ClapTrap ct1("jorginho");
 	ClapTrap ct2j(ct1);
 	ct1.beRepaired(1);
 	ct1.takeDamage(2);
@@ -22,5 +24,42 @@ int main(void){
 	ct1.beRepaired(1);
 	for (int i = 10; i > 0; i--)
 		ct1.attack("Leonildo");
-	ct1.takeDamage(10);
+	ct1.takeDamage(100);
+	ct1.attack("Leonildo");
+
+	std::cout << "\n\n\n\e[1;32m============== ScavTrap Part ==============\e[0m\n\n\n";
+
+	ScavTrap st1("Reginaldo");
+	ScavTrap st2 = st1;
+	st1.attack("Ermenegildo");
+	st1.takeDamage(30);
+	st1.beRepaired(20);
+	st1.beRepaired(20);
+	st1.guardGate();
+	for(int i = 200; i > 0; i--){
+		st1.attack("blu");
+		st1.beRepaired(10);
+	}
+
+	std::cout << "\n\n\n\e[1;35m============== FragTrap Part ==============\e[0m\n\n\n";
+
+	FragTrap ft1("Valerio");
+	ft1.attack("Bruno");
+	ft1.takeDamage(60);
+	ft1.beRepaired(20);
+	ft1.beRepaired(20);
+	ft1.highFivesGuys();
+	ft1.takeDamage(100);
+	ft1.attack("Bruno");
+	for(int i = 200; i > 0; i--){
+		ft1.attack("blu");
+		ft1.beRepaired(10);
+	}*/
+
+	std::cout << "\n\n\n\e[1;37m============== DiamondTrap Part ==============\e[0m\n\n\n";
+	DiamondTrap dt1("Carlinhos");
+	DiamondTrap dt2 = dt1;
+	dt1.takeDamage(10);
+	dt1.attack("JeanPierre");
+	dt1.whoAmI();
 }
