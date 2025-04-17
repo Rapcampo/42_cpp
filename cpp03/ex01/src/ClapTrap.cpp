@@ -12,7 +12,7 @@
 
 #include "../includes/ClapTrap.hpp"
 
-ClapTrap::ClapTrap(const std::string name) : _name(name), _hp(100), _energy(50), _attack(20){
+ClapTrap::ClapTrap(const std::string name) : _name(name), _hp(100), _energy(10), _attack(0){
 	std::cout << "\e[1;32m" << this->_name << " has been created!\e[0m" << std::endl;
 }
 
