@@ -19,8 +19,7 @@ Dog::Dog() : Animal(){
 
 Dog::~Dog(){}
 
-Dog::Dog(const Dog &src){
-	this->type = src.type;
+Dog::Dog(const Dog &src) : Animal(src){
 }
 
 Dog &Dog::operator=(const Dog &src){

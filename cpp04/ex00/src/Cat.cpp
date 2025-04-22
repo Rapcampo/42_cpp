@@ -18,8 +18,7 @@ Cat::Cat() : Animal(){
 
 Cat::~Cat(){}
 
-Cat::Cat(const Cat &src){
-	this->type = src.type;
+Cat::Cat(const Cat &src) : Animal(src){
 }
 
 Cat &Cat::operator=(const Cat &src){
