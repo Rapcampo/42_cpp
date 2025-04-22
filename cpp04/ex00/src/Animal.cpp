@@ -26,11 +26,11 @@ Animal &Animal::operator=(const Animal &src){
 	return (*this);
 }
 
-void Animal::makeSound(){
+void Animal::makeSound() const{
 	std::cout << "You hear the deafening sound of silence..." << std::endl;
 }
 
-std::string Animal::getType(){
+std::string Animal::getType() const{
 	return (this->type);
 }
 
