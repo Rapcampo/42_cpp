@@ -25,11 +25,13 @@ Cat::~Cat(){
 }
 
 Cat::Cat(const Cat &src) : Animal(src){
+	this->brain = new Brain(*src.brain);
 	std::cout << "Cat Copy Constructor Called" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &src){
 	Animal::operator=(src);
+	this->brain = new Brain(*src.brain);
 	std::cout << "Cat Assignment Operator Called" << std::endl;
 	return (*this);
 }

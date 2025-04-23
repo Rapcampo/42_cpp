@@ -13,7 +13,8 @@
 # ================================= Files ======================================
 
 NAME	= Animals 
-SOURCE	= main.cpp Animal.cpp  Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SOURCE	= main.cpp Animal.cpp  Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp\
+		  Brain.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
@@ -27,7 +28,7 @@ OBJS_DIR	= ./objs/
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -std=c++98# -g #-O3  #-fsanitize=address 
+FLAGS		= -Wall -Wextra -Werror -std=c++98 #-g -O3  -fsanitize=address 
 MAKE_FLAG	= --no-print-directory
 
 # =========================== Ansi Escape Codes ================================

@@ -36,7 +36,7 @@ int main(){
 	delete meta;
 	delete wani;
 	delete wcat;
-	std::cout << "\n\n\n \e[1;32m OTHER TESTS!\e[0m\n\n\n";
+	std::cout << "\n\n\n \e[1;32m ex00 TESTS!\e[0m\n\n\n";
 	Dog Dogcp;
 	Cat Catcp;
 	Animal dog2 = Dog(Dogcp);
@@ -45,4 +45,16 @@ int main(){
 	std::cout << cat2.getType() << " " << std::endl;
 	dog2 = Catcp;
 	std::cout << dog2.getType() << " " << std::endl;
+	std::cout << "\n\n\n \e[1;33m Brain TESTS!\e[0m\n\n\n";
+	const Animal** kingdom = new const Animal*[20];
+	for(int i = 0; i < 20; i++){
+		if (i % 2 == 0)
+			kingdom[i] = new Cat();
+		else
+			kingdom[i] = new Dog();
+		kingdom[i]->makeSound();
+	}
+	for (int j = 0; j < 20; j++)
+		delete kingdom[j];
+	delete[] kingdom;
 }
