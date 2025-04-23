@@ -43,3 +43,7 @@ void Cat::makeSound() const{
 std::string Cat::getType() const{
 	return (Animal::getType());
 }
+
+void Cat::getBrain() const{
+	std::cout << &this->brain << std::endl;
+}

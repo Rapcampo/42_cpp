@@ -39,12 +39,14 @@ int main(){
 	std::cout << "\n\n\n \e[1;32m ex00 TESTS!\e[0m\n\n\n";
 	Dog Dogcp;
 	Cat Catcp;
-	Animal dog2 = Dog(Dogcp);
-	Animal cat2 = Cat(Catcp);
+	Dogcp.getBrain();
+	Catcp.getBrain();
+	Dog dog2 = Dog(Dogcp);
+	Cat cat2 = Cat(Catcp);
+	dog2.getBrain();
+	cat2.getBrain();
 	std::cout << dog2.getType() << " " << std::endl;
 	std::cout << cat2.getType() << " " << std::endl;
-	dog2 = Catcp;
-	std::cout << dog2.getType() << " " << std::endl;
 	std::cout << "\n\n\n \e[1;33m Brain TESTS!\e[0m\n\n\n";
 	const Animal** kingdom = new const Animal*[20];
 	for(int i = 0; i < 20; i++){

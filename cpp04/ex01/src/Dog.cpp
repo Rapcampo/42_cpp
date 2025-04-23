@@ -43,3 +43,7 @@ void Dog::makeSound() const{
 std::string Dog::getType() const{
 	return (Animal::getType());
 }
+
+void Dog::getBrain()const{
+	std::cout << &this->brain << std::endl;
+}
