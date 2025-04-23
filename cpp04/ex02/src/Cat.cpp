@@ -45,5 +45,5 @@ std::string Cat::getType() const{
 }
 
 void Cat::getBrain() const{
-	std::cout << &this->brain << std::endl;
+	std::cout << this->brain << std::endl;
 }

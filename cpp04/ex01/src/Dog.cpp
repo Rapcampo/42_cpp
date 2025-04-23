@@ -45,5 +45,5 @@ std::string Dog::getType() const{
 }
 
 void Dog::getBrain()const{
-	std::cout << &this->brain << std::endl;
+	std::cout << this->brain << std::endl;
 }
