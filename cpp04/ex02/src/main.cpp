@@ -18,24 +18,17 @@
 
 int main(){
 	std::cout << "\n\n\n \e[1;31m STANDARD TESTS!\e[0m\n\n\n";
-	const Animal* meta = new Animal();
+//	const Animal* meta = new Animal();
 	const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
-	const WrongAnimal* wani = new WrongAnimal();
-	const WrongAnimal* wcat = new WrongCat();
 	std::cout << dog->getType() << " " << std::endl;
 	std::cout << cat->getType() << " " << std::endl;
-	std::cout << wcat->getType() << " " << std::endl;
 	cat->makeSound(); //will output the cat sound!
 	dog->makeSound();
-	meta->makeSound();
-	wani->makeSound();
-	wcat->makeSound();
+//	meta->makeSound();
 	delete dog;
 	delete cat;
-	delete meta;
-	delete wani;
-	delete wcat;
+//	delete meta;
 	std::cout << "\n\n\n \e[1;32m ex00 TESTS!\e[0m\n\n\n";
 	Dog Dogcp;
 	Cat Catcp;
@@ -49,14 +42,14 @@ int main(){
 	std::cout << cat2.getType() << " " << std::endl;
 	std::cout << "\n\n\n \e[1;33m Brain TESTS!\e[0m\n\n\n";
 	const Animal** kingdom = new const Animal*[20];
-	for(int i = 0; i < 20; i++){
+	for(int i = 0; i < 6; i++){
 		if (i % 2 == 0)
 			kingdom[i] = new Cat();
 		else
 			kingdom[i] = new Dog();
 		kingdom[i]->makeSound();
 	}
-	for (int j = 0; j < 20; j++)
+	for (int j = 0; j < 6; j++)
 		delete kingdom[j];
 	delete[] kingdom;
 }
