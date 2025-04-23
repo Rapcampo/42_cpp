@@ -13,14 +13,14 @@
 # ================================= Files ======================================
 
 NAME	= Animals 
-SOURCE	= src/main.cpp src/Animal.cpp  src/Cat.cpp src/Dog.cpp
-OBJS	= objs/main.o objs/Animal.o objs/Cat.o objs/Dog.o
+SOURCE	= main.cpp Animal.cpp  Cat.cpp Dog.cpp
+OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
 
-HEADERS		= includes
-SOURCE_DIR	= src
-OBJS_DIR	= objs
+HEADERS		= ./includes/
+SOURCE_DIR	= $(addprefix ./src/, $(SOURCE))
+OBJS_DIR	= ./objs/
 
 # ============================ Commands & Flags ===============================
 
@@ -54,10 +54,10 @@ $(NAME): $(OBJS)
 	echo "\n*************************$(GREEN)$(BLINK)    "\
 		"[Compilation Sucessfull!]    $(RESET)*************************\n"
 
-$(OBJS): 
+$(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
-	$(CC) $(FLAGS) -c $(SOURCE) -I $(HEADERS)
+	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
 	mv *.o $(OBJS_DIR)
 
 clean:
