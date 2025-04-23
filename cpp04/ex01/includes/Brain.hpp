@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 18:45:57 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/04/22 18:49:19 by rapcampo         ###   ########.fr       */
+/*   Created: 2025/04/23 17:56:29 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/04/23 18:00:58 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-# include <iostream>
-# include "Animal.hpp"
-# include "Brain.hpp"
+#include <iostream>
 
-class Cat : public Animal{
+class Brain{
 	private:
-		Brain* brain;
+		std::string _ideas[100];
+	
 	public:
-		Cat();
-		~Cat();
-		Cat(const Cat &src);
-		Cat &operator=(const Cat &src);
-		void makeSound() const;
-		std::string getType() const;
+		Brain();
+		~Brain();
+		Brain(const Brain &src);
+		Brain &operator=(const Brain &src);
 };

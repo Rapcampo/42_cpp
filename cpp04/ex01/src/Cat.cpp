@@ -11,13 +11,16 @@
 /* ************************************************************************** */
 
 #include "../includes/Cat.hpp"
+#include "../includes/Brain.hpp"
 
 Cat::Cat() : Animal(){
 	this->setType("Cat");
+	this->brain = new Brain();
 	std::cout << "Cat Default Constructor called" << std::endl;
 }
 
 Cat::~Cat(){
+	delete this->brain;
 	std::cout << "Cat Default Destructor called" << std::endl;
 }
 

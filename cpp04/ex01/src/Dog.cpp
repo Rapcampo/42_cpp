@@ -15,10 +15,12 @@
 
 Dog::Dog() : Animal(){
 	this->setType("Dog");
+	this->brain = new Brain();
 	std::cout << "Dog Default Constructor called" << std::endl;
 }
 
 Dog::~Dog(){
+	delete this->brain;
 	std::cout << "Dog Default Destructor called" << std::endl;
 }
 
