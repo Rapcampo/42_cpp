@@ -12,17 +12,23 @@
 
 #include "../includes/Animal.hpp"
 
-Animal::Animal() : type("void"){}
+Animal::Animal() : type("Void"){
+	std::cout << "Animal Default Constructor called" << std::endl;
+}
 
-Animal::~Animal(){}
+Animal::~Animal(){
+	std::cout << "Animal Default Destructor called" << std::endl;
+}
 
 Animal::Animal(const Animal &src){
 	this->type = src.type;
+	std::cout << "Animal Copy Constructor Called" << std::endl;
 }
 
 Animal &Animal::operator=(const Animal &src){
 	if (this != &src)
 		this->type = src.type;
+	std::cout << "Animal Assignment Operator Called" << std::endl;
 	return (*this);
 }
 

@@ -17,6 +17,7 @@
 #include "../includes/Dog.hpp"
 
 int main(){
+	std::cout << "\n\n\n \e[1;31m STANDARD TESTS!\e[0m\n\n\n";
 	const Animal* meta = new Animal();
 	const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
@@ -30,6 +31,12 @@ int main(){
 	meta->makeSound();
 	wani->makeSound();
 	wcat->makeSound();
+	std::cout << "\n\n\n \e[1;32m OTHER TESTS!\e[0m\n\n\n";
+	const Animal* meta2 = new Animal(*meta);
+	const Animal* dog2 = new Dog(dog);
+	const Animal* cat2 = new Cat(cat);
+	dog2 = meta;
+	std::cout << dog2->getType() << " " << std::endl;
 	delete dog;
 	delete cat;
 	delete meta;

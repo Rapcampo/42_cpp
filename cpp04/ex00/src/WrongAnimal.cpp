@@ -12,17 +12,23 @@
 
 #include "../includes/WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : type(""){}
+WrongAnimal::WrongAnimal() : type("WrongVoid"){
+	std::cout << "WrongAnimal Default Constructor called" << std::endl;
+}
 
-WrongAnimal::~WrongAnimal(){}
+WrongAnimal::~WrongAnimal(){
+	std::cout << "WrongAnimal Default Destructor called" << std::endl;
+}
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src){
 	this->type = src.getType();
+	std::cout << "WrongAnimal Copy Constructor Called" << std::endl;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &src){
 	if (this != &src)
 		this->type = src.getType();
+	std::cout << "WrongAnimal Assignment Operator Called" << std::endl;
 	return (*this);
 }
 

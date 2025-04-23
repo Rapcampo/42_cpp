@@ -13,15 +13,21 @@
 #include "../includes/WrongCat.hpp"
 
 WrongCat::WrongCat() : WrongAnimal(){
-	this->type = "wrong cat";
+	this->type = "WrongCat";
+	std::cout << "WrongCat Default Constructor called" << std::endl;
 }
 
-WrongCat::~WrongCat(){}
+WrongCat::~WrongCat(){
+	std::cout << "WrongCat Default Destructor called" << std::endl;
+}
 
-WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src){}
+WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src){
+	std::cout << "WrongCat Copy Constructor Called" << std::endl;
+}
 
 WrongCat &WrongCat::operator=(const WrongCat &src){
 	WrongAnimal::operator=(src);
+	std::cout << "WrongAnimal Assignment Operator Called" << std::endl;
 	return (*this);
 }
 

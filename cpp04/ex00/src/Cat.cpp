@@ -14,14 +14,20 @@
 
 Cat::Cat() : Animal(){
 	this->setType("Cat");
+	std::cout << "Cat Default Constructor called" << std::endl;
 }
 
-Cat::~Cat(){}
+Cat::~Cat(){
+	std::cout << "Cat Default Destructor called" << std::endl;
+}
 
-Cat::Cat(const Cat &src) : Animal(src){}
+Cat::Cat(const Cat &src) : Animal(src){
+	std::cout << "Cat Copy Constructor Called" << std::endl;
+}
 
 Cat &Cat::operator=(const Cat &src){
 	Animal::operator=(src);
+	std::cout << "Cat Assignment Operator Called" << std::endl;
 	return (*this);
 }
 
