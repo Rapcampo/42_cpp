@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 19:05:28 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/04/22 19:11:41 by rapcampo         ###   ########.fr       */
+/*   Created: 2025/04/23 15:58:24 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/04/23 16:00:29 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Cat.hpp"
+#pragma once
+#include "WrongAnimal.hpp"
 
-Cat::Cat() : Animal(){
-	this->setType("Cat");
-}
-
-Cat::~Cat(){}
-
-Cat::Cat(const Cat &src) : Animal(src){}
-
-Cat &Cat::operator=(const Cat &src){
-	Animal::operator=(src);
-	return (*this);
-}
-
-void Cat::makeSound() const{
-	std::cout << "The cat indeed meows..." << std::endl;
-}
-
-std::string Cat::getType() const{
-	return (Animal::getType());
-}
+class WrongCat : public WrongAnimal{
+	public:
+		WrongCat();
+		~WrongCat();
+		WrongCat(const WrongCat &src);
+		WrongCat &operator=(const WrongCat &src);
+		std::string getType() const;
+		void makeSound() const;
+};

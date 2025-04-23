@@ -6,21 +6,21 @@
 #    By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 13:52:55 by rapcampo          #+#    #+#              #
-#    Updated: 2025/03/06 15:32:13 by rapcampo         ###   ########.fr        #
+#    Updated: 2025/04/22 18:41:35 by rapcampo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ================================= Files ======================================
 
-NAME	= ClapTrap
-SOURCE	= src/main.cpp src/ClapTrap.cpp  #src/HumanA.cpp src/HumanB.cpp
-OBJS	= objs/main.o objs/ClapTrap.o #objs/HumanA.o objs/HumanB.o
+NAME	= Animals 
+SOURCE	= main.cpp Animal.cpp  Cat.cpp Dog.cpp
+OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
 
-HEADERS		= includes
-SOURCE_DIR	= src
-OBJS_DIR	= objs
+HEADERS		= ./includes/
+SOURCE_DIR	= $(addprefix ./src/, $(SOURCE))
+OBJS_DIR	= ./objs/
 
 # ============================ Commands & Flags ===============================
 
@@ -54,21 +54,21 @@ $(NAME): $(OBJS)
 	echo "\n*************************$(GREEN)$(BLINK)    "\
 		"[Compilation Sucessfull!]    $(RESET)*************************\n"
 
-$(OBJS): 
+$(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
-	$(CC) $(FLAGS) -c $(SOURCE) -I $(HEADERS)
+	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
 	mv *.o $(OBJS_DIR)
 
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)ClapTrap's Objects have been" \
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Animals' Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)ClapTrap's Static library and "\
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Animals' Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all

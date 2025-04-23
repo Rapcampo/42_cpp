@@ -6,14 +6,14 @@
 #    By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 13:52:55 by rapcampo          #+#    #+#              #
-#    Updated: 2025/04/22 18:41:35 by rapcampo         ###   ########.fr        #
+#    Updated: 2025/04/23 15:53:39 by rapcampo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ================================= Files ======================================
 
 NAME	= Animals 
-SOURCE	= main.cpp Animal.cpp  Cat.cpp Dog.cpp
+SOURCE	= main.cpp Animal.cpp  Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
