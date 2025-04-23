@@ -6,14 +6,15 @@
 #    By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 13:52:55 by rapcampo          #+#    #+#              #
-#    Updated: 2025/04/22 18:41:35 by rapcampo         ###   ########.fr        #
+#    Updated: 2025/04/23 15:53:39 by rapcampo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ================================= Files ======================================
 
-NAME	= Animals 
-SOURCE	= main.cpp Animal.cpp  Cat.cpp Dog.cpp
+NAME	= AMateria
+SOURCE	= main.cpp AMateria.cpp  ICharacter.cpp Character.cpp\
+		  ImateriaSource.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
@@ -27,7 +28,7 @@ OBJS_DIR	= ./objs/
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -std=c++98# -g #-O3  #-fsanitize=address 
+FLAGS		= -Wall -Wextra -Werror -std=c++98 #-g -O3  -fsanitize=address 
 MAKE_FLAG	= --no-print-directory
 
 # =========================== Ansi Escape Codes ================================
@@ -63,12 +64,12 @@ $(OBJS):
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Animals' Objects have been" \
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)AMateria's Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)Animals' Static library and "\
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)AMateria's Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
