@@ -31,15 +31,18 @@ int main(){
 	meta->makeSound();
 	wani->makeSound();
 	wcat->makeSound();
-	std::cout << "\n\n\n \e[1;32m OTHER TESTS!\e[0m\n\n\n";
-	const Animal* meta2 = new Animal(*meta);
-	const Animal* dog2 = new Dog(dog);
-	const Animal* cat2 = new Cat(cat);
-	dog2 = meta;
-	std::cout << dog2->getType() << " " << std::endl;
 	delete dog;
 	delete cat;
 	delete meta;
 	delete wani;
 	delete wcat;
+	std::cout << "\n\n\n \e[1;32m OTHER TESTS!\e[0m\n\n\n";
+	Dog Dogcp;
+	Cat Catcp;
+	Animal dog2 = Dog(Dogcp);
+	Animal cat2 = Cat(Catcp);
+	std::cout << dog2.getType() << " " << std::endl;
+	std::cout << cat2.getType() << " " << std::endl;
+	dog2 = Catcp;
+	std::cout << dog2.getType() << " " << std::endl;
 }
