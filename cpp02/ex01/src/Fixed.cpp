@@ -17,22 +17,24 @@ Fixed::Fixed(void) : _fpnv(0){
 	std::cout << "Default constructor called" << std::endl;
 }
 
+//number multiplied by the fixed scalling factor.
 Fixed::Fixed(const int val) : _fpnv(val * (1 << _fracb)){
 	std::cout << "Int constructor called" << std::endl;
 }
 
+//roundf from cmath applies code complient rounding for more accurate results.
+//not necessary but nice to have.
 Fixed::Fixed(const float fval) : _fpnv(roundf(fval * (1 << _fracb))){
 	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &copy){
 	std::cout << "Copy constructor called" << std::endl;
-	*this = copy; //Operator overlaod
+	*this = copy;
 }
 
 Fixed::~Fixed(void){std::cout << "Destructor called" << std::endl;}
 
-//Operator overload
 Fixed &Fixed::operator =(const Fixed& src){
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src){

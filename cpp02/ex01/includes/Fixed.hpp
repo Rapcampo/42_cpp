@@ -24,8 +24,7 @@ class Fixed{
 		Fixed(const int val);
 		Fixed(const float fval);
 		Fixed(const Fixed &cp); //copy constructor
-		Fixed &operator = (const Fixed &src); //Assigment Operator
-	//	Fixed &operator << (const Fixed &src); //Insertion overload
+		Fixed &operator=(const Fixed &src); //Assigment Operator
 	
 		float toFloat(void) const; //converter int to float
 		int toInt(void) const; //converter float to int

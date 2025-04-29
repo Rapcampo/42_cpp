@@ -16,13 +16,13 @@
 class Fixed{
 	private:
 		int	_fpnv;
-		static const int _fracb = 8;
+		static const int _fracb = 8; //definition of fractional precision points
 
 	public:
 		Fixed(); //default constructor
-		Fixed(const Fixed &cp); //copy constructor
 		~Fixed(); //default destructor
-		Fixed &operator = (const Fixed &src); //Assigment Operator
+		Fixed(const Fixed &cp); //copy constructor
+		Fixed &operator=(const Fixed &src); //Assigment Operator
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);
 };
