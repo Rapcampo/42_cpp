@@ -18,6 +18,7 @@
 #include "IMateriaSource.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
+#include "MateriaSource.hpp"
 
 //colour prints
 
