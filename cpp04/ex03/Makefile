@@ -13,8 +13,8 @@
 # ================================= Files ======================================
 
 NAME	= AMateria
-SOURCE	= main.cpp AMateria.cpp  ICharacter.cpp Character.cpp\
-		  ImateriaSource.cpp
+SOURCE	= main.cpp #AMateria.cpp ICharacter.cpp Character.cpp\
+		  ImateriaSource.cpp Ice.cpp Cure.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
@@ -58,7 +58,7 @@ $(NAME): $(OBJS)
 $(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
-	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
+	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS) #-DDEBUG
 	mv *.o $(OBJS_DIR)
 
 clean:
@@ -76,6 +76,9 @@ re: fclean all
 
 leak: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+
+run: re
+	./$(NAME)
 
 .SILENT:
 

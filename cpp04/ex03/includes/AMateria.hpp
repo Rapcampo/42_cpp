@@ -14,6 +14,8 @@
 # include "ICharacter.hpp"
 # include <string>
 
+class ICharacter;
+
 class AMateria{
 	protected:
 		std::string _type;
