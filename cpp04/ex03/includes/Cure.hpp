@@ -14,13 +14,12 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-class Cure : virtual public AMateria{
+class Cure : public AMateria{
 	public:
 		Cure();
 		~Cure();
 		Cure(const Cure &src);
 		Cure &operator=(const Cure &src);
-		std::string const &getType() const;	
-		Cure *clone() const;
+		AMateria *clone() const;
 		void use(ICharacter &target);
 };

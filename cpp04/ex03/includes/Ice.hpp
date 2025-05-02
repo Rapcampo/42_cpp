@@ -12,11 +12,14 @@
 
 #pragma once
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class Ice : virtual public AMateria{
+class Ice : public AMateria{
 	public:
 		Ice();
 		~Ice();
 		Ice(const Ice &src);
 		Ice &operator=(const Ice &src);
+		AMateria *clone() const;
+		void use(const ICharacter &target);
 };

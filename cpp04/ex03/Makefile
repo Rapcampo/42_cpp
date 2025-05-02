@@ -28,7 +28,9 @@ OBJS_DIR	= ./objs/
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -std=c++98 #-g -O3  -fsanitize=address 
+FLAGS		= -Wall -Wextra -Werror -std=c++98 #-O3 -g -fsanitize=address
+LEAKS		= -g -fsanitize=address
+DEBUG		= -DDEBUG
 MAKE_FLAG	= --no-print-directory
 
 # =========================== Ansi Escape Codes ================================
@@ -51,14 +53,22 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
+ifdef debug
+	$(CC) $(FLAGS) -o $@ $^ $(LEAK)
+else
 	$(CC) $(FLAGS) -o $@ $^
+endif
 	echo "\n*************************$(GREEN)$(BLINK)    "\
 		"[Compilation Sucessfull!]    $(RESET)*************************\n"
 
 $(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
-	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS) #-DDEBUG
+ifdef debug
+	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
+else
+	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
+endif
 	mv *.o $(OBJS_DIR)
 
 clean:

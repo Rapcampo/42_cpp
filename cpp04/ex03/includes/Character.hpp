@@ -11,13 +11,18 @@
 /* ************************************************************************** */
 
 #pragma once
+#include "AMateria.hpp"
 #include "ICharacter.hpp"
 #include <iostream>
 
+# define SLOTS 4
+
 class Character : public ICharacter{
 	private:
-		int _inv[4];
 		const std::string _name;
+		int _invSlots;
+		AMateria *_equip[SLOTS];
+		AMateria *_unequip[SLOTS];
 
 	public:
 		Character(const std::string name);
