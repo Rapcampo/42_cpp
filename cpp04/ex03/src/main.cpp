@@ -13,11 +13,12 @@
 #include "../includes/main.hpp"
 
 int main(){
-	MSG(RED "this SHOULD NOT PRINT" RST);
+	MSG(RED "\n\n*** DEBUG BUILD ***\n\n" RST);
 }
 
 /*int main()
 {
+	MSG(RED "\n\n*** DEBUG BUILD ***\n\n" RST);
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
