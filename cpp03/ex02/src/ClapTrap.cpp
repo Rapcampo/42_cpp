@@ -12,11 +12,15 @@
 
 #include "../includes/ClapTrap.hpp"
 
+ClapTrap::ClapTrap(): _name(""), _hp(10), _energy(10), _attack(0){
+	std::cout << "ClapTrap Default Constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string name) : _name(name), _hp(10), _energy(10), _attack(0){
 	std::cout << "\e[1;32m" << this->_name << " has been created!\e[0m" << std::endl;
 }
 
-ClapTrap::~ClapTrap(void){
+ClapTrap::~ClapTrap(){
 	std::cout << "\e[1;31m" << this->_name << " has been destroyed!\e[0m" << std::endl;
 }
 

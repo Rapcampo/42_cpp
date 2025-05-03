@@ -15,7 +15,9 @@
 
 int main(void){
 	ClapTrap ct1("jorginho");
-	ClapTrap ct2j(ct1);
+	ClapTrap ct2(ct1);
+	ClapTrap ct3;
+	ct3 = ct1;
 	ct1.beRepaired(1);
 	ct1.takeDamage(2);
 	ct1.beRepaired(1);

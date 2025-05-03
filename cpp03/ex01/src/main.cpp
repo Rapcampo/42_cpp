@@ -31,6 +31,8 @@ int main(void){
 	st1.takeDamage(30);
 	st1.beRepaired(20);
 	st1.beRepaired(20);
+	ScavTrap st2;
+	st2 = st1;
 	st1.guardGate();
 /*	for(int i = 200; i > 0; i--){
 		st1.attack("blu");

@@ -12,6 +12,11 @@
 
 #include "../includes/DiamondTrap.hpp"
 
+DiamondTrap::DiamondTrap() :ClapTrap("default_clap_name", 100, 50, 30),
+	ScavTrap(), FragTrap(), _name("default"){
+	std::cout << "DiamondTrap default constructor called" << std::endl;
+}
+
 DiamondTrap::DiamondTrap(std::string name) 
 	: ClapTrap(name + "_clap_name", 100, 50, 30), ScavTrap(name), FragTrap(name)
 	  , _name(name){

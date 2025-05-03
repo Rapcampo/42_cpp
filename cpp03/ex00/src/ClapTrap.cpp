@@ -12,8 +12,13 @@
 
 #include "../includes/ClapTrap.hpp"
 
+ClapTrap::ClapTrap(): _name(""), _hp(10), _energy(10), _attack(0){
+	std::cout << "ClapTrap Default Constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string name) : _name(name), _hp(10), _energy(10), _attack(0){
 	std::cout << "\e[1;32m" << this->_name << " has been created!\e[0m" << std::endl;
+	std::cout << "parameter constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void){
@@ -23,10 +28,11 @@ ClapTrap::~ClapTrap(void){
 ClapTrap &ClapTrap::operator=(const ClapTrap &src){
 	if (this != &src){
 		this->_hp = src._hp;
-		this->_name= src._name;
-		this->_energy= src._energy;
-		this->_attack= src._attack;
+		this->_name = src._name;
+		this->_energy = src._energy;
+		this->_attack = src._attack;
 	}
+	std::cout << "ClapTrap Operator Overload Called" << std::endl;
 	return (*this);
 }
 
