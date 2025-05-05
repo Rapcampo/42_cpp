@@ -19,7 +19,7 @@
 
 class Character : public ICharacter{
 	private:
-		const std::string _name;
+		std::string _name;
 		int _invSlots;
 		AMateria *_equip[SLOTS];
 		AMateria *_unequip[SLOTS];
