@@ -69,7 +69,7 @@ ifdef debug
 else
 	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
 endif
-	mv *.o $(OBJS_DIR)
+	mv $(SOURCE:.c=.o) $(OBJS_DIR)
 
 clean:
 	$(RM) $(OBJS)

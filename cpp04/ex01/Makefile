@@ -59,7 +59,7 @@ $(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
 	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
-	mv *.o $(OBJS_DIR)
+	mv $(SOURCE:.cpp=.o) $(OBJS_DIR)
 
 clean:
 	$(RM) $(OBJS)
