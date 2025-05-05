@@ -48,12 +48,12 @@ void MateriaSource::learnMateria(AMateria *materia){
 	if (_held >= 4)
 		return ;
 	MSG("MateriaSource learned " + materia->getType());
-	this->_slots[_held++] = materia;
+	this->_slots[this->_held++] = materia;
 }
 
 AMateria *MateriaSource::createMateria(const std::string &type){
 	for(int i = 0; i < this->_held; i++)
-		if (this->_slots[_held]->getType() == type)
-			return (this->_slots[_held]->clone());
+		if (this->_slots[i]->getType() == type)
+			return (this->_slots[i]->clone());
 	return (0);
 }

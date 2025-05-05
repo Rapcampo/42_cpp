@@ -13,7 +13,7 @@
 #include "../includes/Ice.hpp"
 #include "../includes/main.hpp"
 
-Ice::Ice() : AMateria("cure"){
+Ice::Ice() : AMateria("ice"){
 	MSG(BLU "Ice constructor called" RST);
 }
 

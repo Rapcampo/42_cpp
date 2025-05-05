@@ -28,7 +28,7 @@ OBJS_DIR	= ./objs/
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS		= -Wall -Wextra -Werror -std=c++98 -g
 LEAKS		= -g -fsanitize=address
 DEBUG		= -DDEBUG
 MAKE_FLAG	= --no-print-directory
@@ -54,7 +54,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 ifdef debug
-	$(CC) $(FLAGS) -o $@ $^ $(LEAK)
+	$(CC) $(FLAGS) $(LEAK) -o $@ $^ 
 else
 	$(CC) $(FLAGS) -o $@ $^
 endif
@@ -65,7 +65,7 @@ $(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
 ifdef debug
-	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
+	$(CC) $(FLAGS) $(LEAK) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
 else
 	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
 endif
