@@ -15,6 +15,9 @@
 #include "IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource{
+	private:
+		AMateria *_slots[4];
+		int	_held;
 	public:
 		MateriaSource();
 		MateriaSource(const MateriaSource &src);

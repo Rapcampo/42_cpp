@@ -25,6 +25,7 @@ class Character : public ICharacter{
 		AMateria *_unequip[SLOTS];
 
 	public:
+		Character();
 		Character(const std::string name);
 		~Character();
 		Character(const Character &src);
