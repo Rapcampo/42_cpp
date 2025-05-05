@@ -13,8 +13,8 @@
 # ================================= Files ======================================
 
 NAME	= AMateria
-SOURCE	= main.cpp #AMateria.cpp ICharacter.cpp Character.cpp\
-		  ImateriaSource.cpp Ice.cpp Cure.cpp
+SOURCE	= main.cpp AMateria.cpp Character.cpp MateriaSource.cpp \
+		  Ice.cpp Cure.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
@@ -69,7 +69,7 @@ ifdef debug
 else
 	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
 endif
-	mv $(SOURCE:.c=.o) $(OBJS_DIR)
+	mv $(SOURCE:.cpp=.o) $(OBJS_DIR)
 
 clean:
 	$(RM) $(OBJS)

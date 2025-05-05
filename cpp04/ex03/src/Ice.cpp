@@ -26,8 +26,10 @@ Ice::Ice(const Ice &src) : AMateria(src){
 }
 
 Ice &Ice::operator=(const Ice &src){
-	AMateria::operator=(src);
-	MSG(BLU "Ice Assignment operator called");
+	if (this != &src){
+		MSG(BLU "Ice Assignment operator called" RST);
+		this->_type = src._type;
+	}
 	return (*this);
 }
 

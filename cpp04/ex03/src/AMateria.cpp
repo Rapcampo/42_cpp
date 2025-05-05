@@ -13,17 +13,24 @@
 #include "../includes/AMateria.hpp"
 #include "../includes/main.hpp"
 
-AMateria::AMateria(std::string const &type){
+AMateria::AMateria(std::string const &type) : _type(type){
 	MSG(GRN "AMateria constructor called" RST);
 }
 
 AMateria::AMateria(const AMateria &src){
-	MSG(GRN "AMateria copy const called");
+	MSG(GRN "AMateria copy const called" RST);
 	this->_type = src._type;
 }
 
+AMateria &AMateria::operator=(const AMateria &src){
+	if (this !=  &src){
+		this->_type = src._type;
+	}
+	return (*this);
+}
+
 AMateria::~AMateria(){
-	MSG(YLW "AMateria destructor called");
+	MSG(YLW "AMateria destructor called" RST);
 }
 
 const std::string &AMateria::getType() const{

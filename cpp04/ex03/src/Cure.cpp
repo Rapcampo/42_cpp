@@ -26,8 +26,10 @@ Cure::Cure(const Cure &src) : AMateria(src){
 }
 
 Cure &Cure::operator=(const Cure &src){
-	AMateria::operator=(src);
-	MSG(PRP "Cure Assignment operator called");
+	if (this != &src){
+		MSG(PRP "Cure Assignment operator called" RST);
+		this->_type = src._type;
+	}
 	return (*this);
 }
 
