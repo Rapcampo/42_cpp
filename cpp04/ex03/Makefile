@@ -54,7 +54,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 ifdef debug
-	$(CC) $(FLAGS) $(LEAK) -o $@ $^ 
+	$(CC) $(FLAGS) $(LEAKS) -o $@ $^ 
 else
 	$(CC) $(FLAGS) -o $@ $^
 endif
@@ -65,7 +65,7 @@ $(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
 ifdef debug
-	$(CC) $(FLAGS) $(LEAK) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
+	$(CC) $(FLAGS) $(LEAKS) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
 else
 	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
 endif
