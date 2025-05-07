@@ -12,7 +12,7 @@
 
 #include "../includes/main.hpp"
  
-#ifdef DEBUG
+//#ifdef DEBUG
 int main(){
 	MSG(RED "\n\n*** DEBUG BUILD ***\n\n" RST);
 
@@ -56,9 +56,9 @@ int main(){
 	return 0;
 }
 
-#else
+//#else
 
-int main()
+/*int main()
 {
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -77,4 +77,4 @@ int main()
 	delete src;
 	return 0;
 }
-#endif
+#endif*/
