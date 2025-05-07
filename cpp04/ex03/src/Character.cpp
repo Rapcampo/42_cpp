@@ -61,8 +61,10 @@ Character &Character::operator=(const Character &src){
 }
 
 void Character::equip(AMateria *m){
-	if (_invSlots >= SLOTS)
+	if (_invSlots >= SLOTS){
+		delete m;
 		return ;
+	}
 	MSG(this->getName() + " equipped the materia: " + m->getType());
 	this->_equip[_invSlots++] = m;
 }
@@ -72,7 +74,7 @@ void Character::unequip(int idx){
 		return ;
 	if (!this->_equip[idx] || this->_unequip[idx])
 		return ;
-	MSG(this->getName() + " dropped " + this->_equip[idx]->getType() + "on the floor");
+	MSG("\e[1;35m" + this->getName() + " dropped " + this->_equip[idx]->getType() + " on the floor!\e[0m");
 	this->_unequip[idx] = this->_equip[idx];
 	this->_equip[idx] = 0;
 }

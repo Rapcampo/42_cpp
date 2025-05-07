@@ -33,7 +33,7 @@ Ice &Ice::operator=(const Ice &src){
 	return (*this);
 }
 
-AMateria *Ice::clone()const{
+AMateria *Ice::clone() const{
 	return (new Ice(*this));
 }
 
