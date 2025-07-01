@@ -12,9 +12,8 @@
 
 # ================================= Files ======================================
 
-NAME	= AMateria
-SOURCE	= main.cpp AMateria.cpp Character.cpp MateriaSource.cpp \
-		  Ice.cpp Cure.cpp
+NAME	= Bureaucrat
+SOURCE	= main.cpp Bureaucrat.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
@@ -74,12 +73,12 @@ endif
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)AMateria's Objects have been" \
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)AMateria's Static library and "\
+	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all

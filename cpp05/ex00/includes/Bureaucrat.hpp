@@ -12,7 +12,7 @@
 
 #pragma once
 #include <iostream>
-#include <stdexcept>
+#include <exception>
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
@@ -20,7 +20,7 @@
 class Bureaucrat{
 	private:
 		const std::string	_name;
-		unsigned int		_grade;
+		int					_grade;
 	
 	public:
 		Bureaucrat();
@@ -32,13 +32,13 @@ class Bureaucrat{
 		unsigned int getGrade() const;
 		void incGrade();
 		void decGrade();
-		class GradeTooHighExeception : public std::runtime_error{
+		class GradeTooHighExeception : public std::exception{
 			public:
-
+				virtual const char *what()const throw();
 		};
-		class GradeTooLowException : public std::runtime_error{
+		class GradeTooLowException : public std::exception{
 			public:
-
+				virtual const char *what()const throw();
 		};
 };
 
