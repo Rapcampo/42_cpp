@@ -17,6 +17,12 @@
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
+# ifdef DEBUG
+#	define MSG(str) std::cout << str << std::endl;
+# else
+#	define MSG(str)
+# endif
+
 class Bureaucrat{
 	private:
 		const std::string	_name;
