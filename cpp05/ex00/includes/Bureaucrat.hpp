@@ -17,6 +17,21 @@
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
+//colour prints
+
+# define RST "\e[0m"
+# define ULI "\e[4m"
+# define BLN "\e[5m"
+# define BLK "\e[1;30m"
+# define RED "\e[1;31m"
+# define GRN "\e[1;32m"
+# define YLW "\e[1;33m"
+# define BLU "\e[1;34m"
+# define PRP "\e[1;35m"
+# define CYN "\e[1;36m"
+# define WHT "\e[1;37m"
+# define CLR "\e[0;39m"
+
 # ifdef DEBUG
 #	define MSG(str) std::cout << str << std::endl;
 # else
@@ -27,6 +42,7 @@ class Bureaucrat{
 	private:
 		const std::string	_name;
 		int					_grade;
+		void	sanitizeGrade(int grade);
 	
 	public:
 		Bureaucrat();
@@ -35,10 +51,10 @@ class Bureaucrat{
 		Bureaucrat &operator=(const Bureaucrat &src);
 		Bureaucrat(const std::string name, int grade);
 		const std::string &getName() const;
-		unsigned int getGrade() const;
+		int getGrade() const;
 		void incGrade();
 		void decGrade();
-		class GradeTooHighExeception : public std::exception{
+		class GradeTooHighException : public std::exception{
 			public:
 				virtual const char *what()const throw();
 		};
