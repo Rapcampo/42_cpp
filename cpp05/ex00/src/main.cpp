@@ -52,15 +52,19 @@ static void	testSuite(){
 		Bureaucrat goodboy("Hardworker", 75);
 		std::cout << goodboy << std::endl;
 		goodboy.decGrade();
+		std::cout << "after first decrement" << std::endl;
 		std::cout << goodboy << std::endl;
 		goodboy.incGrade();
 		goodboy.incGrade();
+		std::cout << "after two increments" << std::endl;
 		std::cout << goodboy << std::endl;
 		while (goodboy.getGrade() < MIN_GRADE)
 			goodboy.decGrade();
+		std::cout << "after min grade loop" << std::endl;
 		std::cout << goodboy << std::endl;
 		while (goodboy.getGrade() > MAX_GRADE)
 			goodboy.incGrade();
+		std::cout << "after max grade loop" << std::endl;
 		std::cout << goodboy << std::endl;
 	} catch(std::exception &e){
 		std::cout << e.what() << std::endl;
