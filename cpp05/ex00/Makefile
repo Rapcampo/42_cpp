@@ -27,7 +27,7 @@ OBJS_DIR	= ./objs/
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -std=c++98 -g
+FLAGS		= -Wall -Wextra -Werror -std=c++98
 LEAKS		= -g -fsanitize=address
 DEBUG		= -DDEBUG
 MAKE_FLAG	= --no-print-directory
