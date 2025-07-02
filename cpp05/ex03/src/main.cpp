@@ -14,6 +14,7 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/Intern.hpp"
 
 /*static void	testSuiteBur(){
 
@@ -74,7 +75,7 @@ static void testSuiteForm(){
 	std::cout << BLU"\nTest 1: Shrubbery Form\n" RST << std::endl;
 	try{
 		Bureaucrat lowb("nobody", 120);
-		ShrubberyCreationForm s1("Home");
+		Intern s1("Home");
 		lowb.signForm(s1);
 		lowb.executeForm(s1);
 	} catch(std::exception &e){
