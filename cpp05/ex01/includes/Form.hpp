@@ -28,21 +28,25 @@ class Form{
 		~Form();
 		Form(const Form &src);
 		Form &operator=(const Form &src);
-		Form(const std::string name, int signvalue, int valueexec);
-		const int getSignGrade();
-		const int getExecGrade();
-		const std::string &getFormName();
+		Form(const std::string &name, int signGrade, int execGrade);
+		const int getSignGrade() const;
+		const int getExecGrade() const;
+		const std::string &getFormName() const;
+		const bool isSigned() const;
 		void	beSigned(const Bureaucrat &bur);
-		void	isSigned();
 
 		class GradeTooHighException : public std::exception{
 			public:
-				virtual const char *what()const throw();
+				virtual const char *what() const throw();
 		};
 		class GradeTooLowException : public std::exception{
 			public:
-				virtual const char *what()const throw();
+				virtual const char *what() const throw();
+		};
+		class FormAlreadySignedException : public std::exception{
+			public:
+				virtual const char *what() const throw();
 		};
 };
 
-std::ostream &operator<<(std::ostream &out, const Form &obj);
+std::ostream &operator<<(std::ostream &out, const Form &frm);
