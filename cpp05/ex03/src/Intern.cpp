@@ -12,21 +12,15 @@
 
 #include "../includes/Intern.hpp"
 
-Intern::Intern(){
-	MSG("Intern default constructor called");
-}
+Intern::Intern(){}
 
-Intern::~Intern(){
-	MSG("Intern destructor called");
-}
+Intern::~Intern(){}
 
 Intern::Intern(const Intern &src){
 	(void)src;
-	MSG("Intern copy constructor called");
 }
 Intern &Intern::operator=(const Intern &src){
 	(void)src;
-	MSG("Intern assignment operator called");
 	return *this;
 }
 

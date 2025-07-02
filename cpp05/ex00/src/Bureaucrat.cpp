@@ -13,54 +13,44 @@
 #include "../includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("defaulterino"), _grade(150){
-	MSG(GRN "Bureacrat default constructor called" RST);
 }
 
 Bureaucrat::~Bureaucrat(){
-	MSG(YLW "Bureaucrat default destructor called" RST);
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name){
 	sanitizeGrade(grade);
-	MSG(GRN "Bureaucrat parameter constructor called" RST);
 	this->_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &src) : _name(src._name), _grade(src._grade){
-	MSG("Bureaucrat copy constructor called");
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src){
 	if (this != &src)
 		this->_grade = src._grade;
-	MSG("Bureaucrat assignment operator called");
 	return *this;
 }
 
 const std::string &Bureaucrat::getName() const {
-	MSG("getName function called");
 	return _name;
 }
 
 int Bureaucrat::getGrade() const {
-	MSG("getName function called");
 	return _grade;
 }
 
 void	Bureaucrat::incGrade(){
-	MSG("incGrade function called");
 	sanitizeGrade(_grade - 1);
 	_grade--;
 }
 
 void	Bureaucrat::decGrade(){
-	MSG("decGrade function called");
 	sanitizeGrade(_grade + 1);
 	_grade++;
 }
 
 void	Bureaucrat::sanitizeGrade(int grade){
-	MSG(YLW BLN"Grade sanitizer called" RST);
 	if (grade < MAX_GRADE)
 		throw GradeTooHighException();
 	else if (grade > MIN_GRADE)

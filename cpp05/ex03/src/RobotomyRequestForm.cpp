@@ -17,25 +17,20 @@
 
 RobotomyRequestForm::RobotomyRequestForm()
 	: AForm("RobotomyRequestForm", 72, 45), _target("default") {
-		MSG(YLW "Robotomy default constructor called" RST)
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {
-	MSG(PRP "Robotomy destructor called" RST);
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 	: AForm("RobotomyRequestForm", 72, 45), _target(target) {
-		MSG(YLW "Robotomy parameter constructor called" RST)
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src)
 	: AForm(src), _target(src._target){
-	MSG("Robotomy copy constructor called");
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &src){
-	MSG("Robotomy operator assignment called");
 	if (this != &src)
 		AForm::operator=(src);
 	return (*this);

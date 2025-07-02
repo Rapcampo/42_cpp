@@ -33,12 +33,6 @@
 # define WHT "\e[1;37m"
 # define CLR "\e[0;39m"
 
-# ifdef DEBUG
-#	define MSG(str) std::cout << str << std::endl;
-# else
-#	define MSG(str)
-# endif
-
 class Form;
 
 class Bureaucrat{

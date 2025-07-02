@@ -17,25 +17,20 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm()
 	: AForm("ShrubberyCreationForm", 145, 137), _target("default") {
-		MSG(YLW "ShrubberyCreation default constructor called" RST)
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-	MSG(PRP "ShrubberyCreation destructor called" RST);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 	: AForm("ShrubberyCreationForm", 145, 137), _target(target) {
-		MSG(YLW "ShrubberyCreation parameter constructor called" RST)
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
 	: AForm(src), _target(src._target){
-	MSG("ShrubberyCreation copy constructor called");
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src){
-	MSG("ShrubberyCreation operator assignment called");
 	if (this != &src)
 		AForm::operator=(src);
 	return (*this);

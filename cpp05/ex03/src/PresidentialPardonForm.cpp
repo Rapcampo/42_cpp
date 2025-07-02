@@ -15,25 +15,20 @@
 
 PresidentialPardonForm::PresidentialPardonForm()
 	: AForm("PresidentialPardonForm", 25, 5), _target("default") {
-		MSG(YLW "PresidentPardon default constructor called" RST)
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
-	MSG(PRP "PresidentPardon destructor called" RST);
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 	: AForm("PresidentialPardonForm", 25, 5), _target(target) {
-		MSG(YLW "PresidentPardon parameter constructor called" RST)
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src)
 	: AForm(src), _target(src._target){
-	MSG("PresidentPardon copy constructor called");
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &src){
-	MSG("PresidentPardon operator assignment called");
 	if (this != &src)
 		AForm::operator=(src);
 	return (*this);

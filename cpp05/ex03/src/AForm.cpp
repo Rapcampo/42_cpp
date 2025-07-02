@@ -13,16 +13,13 @@
 #include "../includes/Bureaucrat.hpp"
 
 AForm::AForm() : _name("template"), _signed(false), _signGrade(150), _execGrade(150){
-	MSG(GRN "AForm Default constructor called" RST);
 }
 
 AForm::~AForm(){
-	MSG(YLW "AForm Destructor called" RST);
 }
 
 AForm::AForm(const AForm &src)	: _name(src._name), _signed(src._signed),
 	_signGrade(src._signGrade), _execGrade(src._execGrade){
-	MSG("AForm Copy Constructor called")
 }
 
 AForm::AForm(const std::string &name, int signGrade, int execGrade)
@@ -31,11 +28,9 @@ AForm::AForm(const std::string &name, int signGrade, int execGrade)
 			throw GradeTooHighException();
 		if (signGrade > 150 || execGrade > 150)
 			throw GradeTooLowException();
-	MSG(GRN "parameter constructor called" RST);
 }
 
 AForm &AForm::operator=(const AForm &src){
-	MSG("AForm assigment operator called");
 	if (this != &src){
 		_signed = src._signed;
 	}
@@ -51,7 +46,6 @@ const std::string &AForm::getFormName() const {return _name;}
 bool AForm::isSigned() const {return _signed;}
 
 void	AForm::beSigned(const Bureaucrat &bur){
-	MSG("beSigned funciton called");
 	if (bur.getGrade() > _signGrade)
 		throw GradeTooLowException();
 	else if (_signed == true)
