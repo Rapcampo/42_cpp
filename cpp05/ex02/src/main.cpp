@@ -83,7 +83,7 @@ static void testSuiteForm(){
 
 	std::cout << RED"\nTest 2: Robotomy Form\n" RST << std::endl;
 	try{
-		Bureaucrat midb("Fry", 50);
+		Bureaucrat midb("Fry", 40);
 		RobotomyRequestForm r1("Bender");
 		midb.signForm(r1);
 		midb.executeForm(r1);

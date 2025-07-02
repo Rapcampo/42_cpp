@@ -26,6 +26,7 @@ class ShrubberyCreationForm : public AForm {
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 
 		virtual void	execute(const Bureaucrat & executor) const;
+		void	executeShrub() const;
 		const std::string &getTarget() const;
 
 		class CannotOpenFileException : public std::exception {
