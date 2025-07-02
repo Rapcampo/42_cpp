@@ -25,11 +25,6 @@ class RobotomyRequestForm : public AForm {
 
 		virtual void	execute(const Bureaucrat & executor) const;
 		const std::string &getTarget() const;
-
-		class FormNotSignedException : public std::exception {
-			public:
-				virtual const char *what() const throw();
-		};
 };
 
 std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &form);

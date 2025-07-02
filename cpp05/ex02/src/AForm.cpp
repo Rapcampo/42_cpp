@@ -71,6 +71,10 @@ const char *AForm::FormAlreadySignedException::what() const throw(){
 	return ("AForm has already been signed");
 }
 
+const char *AForm::FormNotSignedException::what() const throw(){
+	return ("AForm has not been signed");
+}
+
 std::ostream &operator<<(std::ostream &out, const AForm &frm){
 	out << BLU "AForm: " CLR<< frm.getFormName() << "\n"
 		<< YLW "Status: " CLR << (frm.isSigned() ? GRN"Signed" CLR : RED "Unsigned" CLR) << "\n"
