@@ -1,0 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/02 19:49:41 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/07/02 20:08:58 by rapcampo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/Intern.hpp"
+
+Intern::Intern(){
+	MSG("Intern default constructor called");
+}
+
+Intern::~Intern(){
+	MSG("Intern destructor called");
+}
+
+Intern::Intern(const Intern &src){
+	(void)src;
+	MSG("Intern copy constructor called");
+}
+Intern &Intern::operator=(const Intern &src){
+	(void)src;
+	MSG("Intern assignment operator called");
+	return *this;
+}
+
+AForm *Intern::makeForm(const std::string &typeForm, const std::string &target) const{
+	const char *forms[4] = {
+		"shrubbery creation",
+		"robotomy request",
+		"presidential pardon",
+		NULL
+	};
+	AForm *result = NULL;
+	int i = -1;
+	while (forms[++i]){
+		if (typeForm == forms[i]){
+			switch (i){
+				case 0:
+					result = new ShrubberyCreationForm(target);
+					break;
+				case 1:
+					result = new ShrubberyCreationForm(target);
+					break;
+				case 2:
+					result = new ShrubberyCreationForm(target);
+					break;
+				case 3:
+					throw FormDoesNotExistException();
+			}
+			std::cout << "Intern creates " << typeForm << " form." << std::endl;
+			break;
+		}
+	}
+	return (result);
+}
+
+const char *Intern::FormDoesNotExistException::what() const throw() {
+	return ("Form type not found!");
+}
