@@ -46,18 +46,18 @@ AForm *Intern::makeForm(const std::string &typeForm, const std::string &target) 
 					result = new ShrubberyCreationForm(target);
 					break;
 				case 1:
-					result = new ShrubberyCreationForm(target);
+					result = new RobotomyRequestForm(target);
 					break;
 				case 2:
-					result = new ShrubberyCreationForm(target);
+					result = new PresidentialPardonForm(target);
 					break;
-				case 3:
-					throw FormDoesNotExistException();
 			}
 			std::cout << "Intern creates " << typeForm << " form." << std::endl;
 			break;
 		}
 	}
+	if (!result)
+		throw FormDoesNotExistException();
 	return (result);
 }
 

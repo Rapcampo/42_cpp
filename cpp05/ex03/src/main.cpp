@@ -71,13 +71,17 @@
 }*/
 
 static void testSuiteForm(){
+	Intern poorSoul;
+	AForm *form;
 
 	std::cout << BLU"\nTest 1: Shrubbery Form\n" RST << std::endl;
 	try{
 		Bureaucrat lowb("nobody", 120);
-		Intern s1("Home");
-		lowb.signForm(s1);
-		lowb.executeForm(s1);
+		form = poorSoul.makeForm("shrubbery creation", "home");
+		std::cout << *form << std::endl;
+		lowb.signForm(*form);
+		lowb.executeForm(*form);
+		delete form;
 	} catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
@@ -85,9 +89,11 @@ static void testSuiteForm(){
 	std::cout << RED"\nTest 2: Robotomy Form\n" RST << std::endl;
 	try{
 		Bureaucrat midb("Fry", 40);
-		RobotomyRequestForm r1("Bender");
-		midb.signForm(r1);
-		midb.executeForm(r1);
+		form = poorSoul.makeForm("robotomy request", "Bender");
+		std::cout << *form << std::endl;
+		midb.signForm(*form);
+		midb.executeForm(*form);
+		delete form;
 	} catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
@@ -95,9 +101,23 @@ static void testSuiteForm(){
 	std::cout << PRP"\nTest 3: Presidential Form\n" RST << std::endl;
 	try{
 		Bureaucrat highb("Queen", 1);
-		PresidentialPardonForm p1("Jack Sparrow");
-		highb.signForm(p1);
-		highb.executeForm(p1);
+		form = poorSoul.makeForm("presidential pardon", "Jack Sparrow");
+		std::cout << *form << std::endl;
+		highb.signForm(*form);
+		highb.executeForm(*form);
+		delete form;
+	} catch(std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << YLW"\nTest 4: Unexistant Form\n" RST << std::endl;
+	try{
+		Bureaucrat bb("Queen", 1);
+		form = poorSoul.makeForm("resignment letter", "Intern");
+		std::cout << *form << std::endl;
+		bb.signForm(*form);
+		bb.executeForm(*form);
+		delete form;
 	} catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}

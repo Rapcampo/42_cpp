@@ -76,7 +76,7 @@ const char *AForm::FormNotSignedException::what() const throw(){
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &frm){
-	out << BLU "AForm: " CLR<< frm.getFormName() << "\n"
+	out << BLU "Form: " CLR<< frm.getFormName() << "\n"
 		<< YLW "Status: " CLR << (frm.isSigned() ? GRN"Signed" CLR : RED "Unsigned" CLR) << "\n"
 		<< PRP "Required grade to sign: " CLR<< frm.getSignGrade() << "\n"
 		<< CYN "Required grade to execute: " RST<< frm.getExecGrade();

@@ -14,7 +14,7 @@
 
 NAME	= Bureaucrat
 SOURCE	= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
-		  PresidentialPardonForm.cpp RobotomyRequestForm.cpp
+		  PresidentialPardonForm.cpp RobotomyRequestForm.cpp Intern.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
