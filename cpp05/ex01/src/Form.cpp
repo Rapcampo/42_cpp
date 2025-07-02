@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/Form.hpp"
 #include "../includes/Bureaucrat.hpp"
 
 Form::Form() : _name("template"), _signed(false), _signGrade(150), _execGrade(150){
