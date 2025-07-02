@@ -60,19 +60,19 @@ void	AForm::beSigned(const Bureaucrat &bur){
 }
 
 const char *AForm::GradeTooLowException::what() const throw(){
-	return ("AForm grade is too low");
+	return ("grade is too low");
 }
 
 const char *AForm::GradeTooHighException::what() const throw(){
-	return ("AForm grade is too high");
+	return ("grade is too high");
 }
 
 const char *AForm::FormAlreadySignedException::what() const throw(){
-	return ("AForm has already been signed");
+	return ("has already been signed");
 }
 
 const char *AForm::FormNotSignedException::what() const throw(){
-	return ("AForm has not been signed");
+	return ("has not been signed");
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &frm){
