@@ -79,7 +79,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat & executor) const{
 	file << "                   ;%@@@@%%:;;;.                   " << "\n";
 	file << "               ...;%@@@@@%%:;;;;,..                " << "\n";
 	file.close();
-	}catch(std::exception &e){
+	}catch(const ShrubberyCreationForm::CannotOpenFileException &e){
 		std::cout << "Could not excute Shrubbery form."
 			<< "Reason: " << e.what() << std::endl;
 	}

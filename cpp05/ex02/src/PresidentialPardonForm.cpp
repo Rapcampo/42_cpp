@@ -48,12 +48,15 @@ void PresidentialPardonForm::execute(const Bureaucrat & executor) const {
 	try{
 		if (!this->isSigned())
 			throw AForm::FormNotSignedException();
-		if (executor.getGrade() > this->getExecGrade())
+		else if (executor.getGrade() > this->getExecGrade())
 			throw AForm::GradeTooLowException();
 		std::cout 
 			<< GRN + this->_target + " has been pardoned by Zaphod Beeblebrox!" RST 
 			<< std::endl;
-	}catch (std::exception &e){
+	}catch (const AForm::FormNotSignedException &e){
+		std::cout << RED + this->_target + " could not be pardoned\n" RST 
+			+ YLW "Reason: " + e.what() << std::endl;
+	}catch (const AForm::GradeTooLowException &e){
 		std::cout << RED + this->_target + " could not be pardoned\n" RST 
 			+ YLW "Reason: " + e.what() << std::endl;
 	}
