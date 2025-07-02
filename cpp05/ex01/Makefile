@@ -13,7 +13,7 @@
 # ================================= Files ======================================
 
 NAME	= Bureaucrat
-SOURCE	= main.cpp Bureaucrat.cpp
+SOURCE	= main.cpp Bureaucrat.cpp Form.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================

@@ -42,13 +42,13 @@ Form &Form::operator=(const Form &src){
 	return (*this);
 }
 
-const int Form::getSignGrade() const {return _signGrade;}
+int Form::getSignGrade() const {return _signGrade;}
 
-const int Form::getExecGrade() const {return _execGrade;}
+int Form::getExecGrade() const {return _execGrade;}
 
 const std::string &Form::getFormName() const {return _name;}
 
-const bool Form::isSigned() const {return _signed;}
+bool Form::isSigned() const {return _signed;}
 
 void	Form::beSigned(const Bureaucrat &bur){
 	MSG("beSigned funciton called");

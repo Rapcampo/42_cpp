@@ -103,7 +103,7 @@ static void testSuiteForm(){
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << BLU"\nTest 5: Form sign Bur grade equal than required\n" RST << std::endl;
+	std::cout << RED"\nTest 5: Form sign Bur grade equal than required\n" RST << std::endl;
 	try{
 		Bureaucrat hib("somebody", 20);
 		Form _2b1b("2b1b", 20, 50);
@@ -111,12 +111,11 @@ static void testSuiteForm(){
 		std::cout << _2b1b << std::endl;
 		_2b1b.beSigned(hib);
 		std::cout << _2b1b << std::endl;
-		_2b1b.beSigned(hib);
 	} catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << BLU"\nTest 6: Form sign Bur grade higher than required\n" RST << std::endl;
+	std::cout << PRP"\nTest 6: Form sign Bur grade higher than required\n" RST << std::endl;
 	try{
 		Bureaucrat h2b("vicepres", 2);
 		Form _2b1c("2b1c", 10, 2);
@@ -124,12 +123,11 @@ static void testSuiteForm(){
 		std::cout << _2b1c << std::endl;
 		_2b1c.beSigned(h2b);
 		std::cout << _2b1c << std::endl;
-		_2b1c.beSigned(h2b);
 	} catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << BLU"\nTest 6: Form signed more than once\n" RST << std::endl;
+	std::cout << BLU"\nTest 7: Form signed more than once\n" RST << std::endl;
 	try{
 		Bureaucrat h2c("vicepres", 2);
 		Form _2b1d("2b1a", 10, 2);

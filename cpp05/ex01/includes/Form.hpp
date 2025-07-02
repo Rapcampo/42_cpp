@@ -29,10 +29,10 @@ class Form{
 		Form(const Form &src);
 		Form &operator=(const Form &src);
 		Form(const std::string &name, int signGrade, int execGrade);
-		const int getSignGrade() const;
-		const int getExecGrade() const;
+		int getSignGrade() const;
+		int getExecGrade() const;
 		const std::string &getFormName() const;
-		const bool isSigned() const;
+		bool isSigned() const;
 		void	beSigned(const Bureaucrat &bur);
 
 		class GradeTooHighException : public std::exception{
