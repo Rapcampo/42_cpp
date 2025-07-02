@@ -13,6 +13,7 @@
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/Bureaucrat.hpp"
 #include <cstdlib>
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm()
 	: AForm("RobotomyRequestForm", 72, 45), _target("default") {
@@ -51,6 +52,7 @@ void RobotomyRequestForm::execute(const Bureaucrat & executor) const {
 		throw AForm::FormNotSignedException();
 	if (executor.getGrade() > this->getExecGrade())
 		throw AForm::GradeTooLowException();
+	std::srand(std::time(0));
 	if (std::rand() % 2 == 0)
 		print = GRN + this->_target + " has been robotomized successfully!" RST;
 	else
