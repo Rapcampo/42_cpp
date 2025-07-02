@@ -13,6 +13,7 @@
 #pragma once
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
@@ -38,6 +39,8 @@
 #	define MSG(str)
 # endif
 
+class Form;
+
 class Bureaucrat{
 	private:
 		const std::string	_name;
@@ -54,6 +57,8 @@ class Bureaucrat{
 		int getGrade() const;
 		void incGrade();
 		void decGrade();
+		void signForm(Form &form);
+
 		class GradeTooHighException : public std::exception{
 			public:
 				virtual const char *what()const throw();
