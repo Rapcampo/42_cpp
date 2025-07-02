@@ -54,6 +54,8 @@ void	Form::beSigned(const Bureaucrat &bur){
 	MSG("beSigned funciton called");
 	if (bur.getGrade() > _signGrade)
 		throw GradeTooLowException();
+	else if (_signed == true)
+		throw FormAlreadySignedException();
 	_signed = true;
 }
 
