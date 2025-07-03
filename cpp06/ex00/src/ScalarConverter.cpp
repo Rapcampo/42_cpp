@@ -12,6 +12,11 @@
 
 #include "../includes/ScalarConverter.hpp"
 
+typedef struct s_dataTypes{
+	bool isType;
+	bool **funcList(std::string &);
+} t_dataTypes;
+
 ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &src){*this = src;}
@@ -23,6 +28,10 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src){
 }
 
 void	ScalarConverter::convert(const std::string &strLiteral){
+	t_dataTypes types;
+
+	types.funcList = (bool(*[])(std::string &)){ScalarConverter::isInt, ScalarConverter::isChar};
+	for (int i = 0; types.funcList[i]; i++);
 	//parsing things
 	//convert function
 	//non standard type message
