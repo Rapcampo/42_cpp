@@ -12,8 +12,8 @@
 
 # ================================= Files ======================================
 
-NAME	= Bureaucrat
-SOURCE	= main.cpp Converter.cpp
+NAME	= converter
+SOURCE	= main.cpp ScalarConverter.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
