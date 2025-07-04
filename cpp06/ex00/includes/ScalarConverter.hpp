@@ -19,12 +19,11 @@ class ScalarConverter{
 		ScalarConverter(const ScalarConverter &src);
 		ScalarConverter &operator=(const ScalarConverter &src);
 
-		bool isChar(std::string &lt);
-		bool isInt(std::string &lt);
-		bool isFloat(std::string &lt);
-		bool isDouble(std::string &lt);
-		bool isPseudo(std::string &lt);
+		static void toChar(const std::string &lt, char c);
+		static void toInt(const std::string &lt, int i);
+		static void toFloat(const std::string &lt, float f);
+		static void toDouble(const std::string &lt, double d);
 
 	public:
-		static void convert(const std::string &strLiteral);
+		static void convert(const std::string &lt);
 };
