@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ScalarConverter.hpp"
+#include <limits>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -96,7 +97,7 @@ void	ScalarConverter::convert(const std::string &lt){
 	try{
 		checkString(lt);
 	}catch(...){
-		std::cout << "this is not a valid type :(" << std::endl;
+		std::cout << RED "this is not a valid type :(" RST<< std::endl;
 		return;
 	}
 	while (foundType != true && ++typePos < 4)
@@ -115,7 +116,7 @@ void	ScalarConverter::convert(const std::string &lt){
 			typeConverter(lt, std::strtod(lt.c_str(), 0));
 			break;
 		case 4:
-			std::cout << "Cannot Assert type to convert" << std::endl;
+			std::cout << RED "Cannot Assert type to convert" RST<< std::endl;
 			break;
 	}
 }
@@ -128,27 +129,63 @@ void ScalarConverter::typeConverter(const std::string &lt, long double nb){
 }
 
 void	ScalarConverter::toPseudo(const std::string &lt){
-	std::cout << "char: impossible\n";
-	std::cout << "int: impossible\n";
+	std::cout << GRN "char: impossible\n" CLR;
+	std::cout << PRP "int: impossible\n" CLR;
 	if (lt.find("nan") != lt.npos){
-		std::cout << "float: nanf\n";
-		std::cout << "double: nan" << std::endl;
+		std::cout << YLW "float: nanf\n" CLR;
+		std::cout << CYN "double: nan" RST<< std::endl;
 	}else{
-		std::cout << "float: " << lt.find_first_of("+-") << "inff\n";
-		std::cout << "float: " << lt.find_first_of("+-") << "inf" << std::endl;
+		std::cout << YLW "float: " << lt.find_first_of("+-") << "inff\n" CLR;
+		std::cout << CYN "double: " << lt.find_first_of("+-") << "inf" RST << std::endl;
 	}
 }
 
 void	ScalarConverter::toChar(const std::string &lt, char c){
 	if (overflow(lt, 0))
-		std::cout << "char: impossible" << std::endl;
+		std::cout << GRN "char: impossible" RST << std::endl;
 	else if (!std::isprint(c))
-		std::cout << "char: Non displayable" << std::endl;
+		std::cout << GRN "char: Non displayable" RST<< std::endl;
 	else
-		std::cout << "char: " << c << std::endl;
+		std::cout << GRN "char: " << c << RST << std::endl;
 }
 
 void	ScalarConverter::toInt(const std::string &lt, int i){
 	if (overflow(lt, 1))
-		std::cout <<"int: impossible" << std::endl;
+		std::cout << PRP "int: impossible" RST << std::endl;
+	else
+		std::cout << PRP "int: " << i << RST << std::endl;
+}
+
+void	ScalarConverter::toFloat(const std::string &lt, float f){
+	if (overflow(lt, 2))
+		std::cout << YLW "float: impossible" RST << std::endl;
+	else
+		std::cout << YLW "float: " << f << RST << std::endl;
+}
+
+void	ScalarConverter::toDouble(const std::string &lt, double d){
+	if (overflow(lt, 3))
+		std::cout << CYN "double: impossible" RST << std::endl;
+	else
+		std::cout << CYN "double: " << d << RST << std::endl;
+}
+
+static bool overflow(const std::string &lt, int typePos){
+	long double nb = std::strtod(lt.c_str(), 0);
+	switch (typePos){
+		case 0:
+			return (nb < std::numeric_limits<char>::min() ||
+					nb > std::numeric_limits<char>::max());
+		case 1:
+			return (nb < std::numeric_limits<int>::min() ||
+					nb > std::numeric_limits<int>::max());
+		case 2:
+			return (nb < std::numeric_limits<float>::min() ||
+					nb > std::numeric_limits<float>::max());
+		case 3:
+			return (nb < std::numeric_limits<double>::min() ||
+					nb > std::numeric_limits<double>::max());
+		default:
+			return false;
+	}
 }
