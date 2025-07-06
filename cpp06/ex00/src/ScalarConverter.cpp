@@ -34,7 +34,11 @@ static bool isDouble(const std::string &lt);
 static void checkString(const std::string &lt);
 
 static bool isChar(const std::string &lt){
-	return (lt.size() <= 1 && std::isprint(lt[0] && !std::isdigit(lt[0])));
+	if (lt.length() == 1 && !std::isdigit(lt[0]))
+		return true;
+	if (lt.length() == 3 && lt[0] == '\'' && lt[2] == '\'')
+		return true;
+	return false;
 }
 
 static bool isInt(const std::string &lt){
@@ -63,8 +67,8 @@ static bool isDouble(const std::string &lt){
 		return false;
 	if (lt.find_first_of('.') == lt.npos)
 		return false;
-	if (lt.find_first_of(DIGITS) != lt.npos &&
-			lt.find_first_of('.') == lt.size() - 2)
+	if (lt.find_first_of(DIGITS) != lt.npos
+			&& lt.find_last_of(DIGITS) > lt.find_first_of('.'))
 		return true;
 	return false;
 }
@@ -72,6 +76,8 @@ static bool isDouble(const std::string &lt){
 static void checkString(const std::string &lt){
 	int i = -1;
 	while (std::isspace(lt[++i]));
+	if (isChar(lt))
+		return;
 	if (lt.find_first_not_of(VALID, i) != lt.npos)
 		throw std::exception();
 	if (lt.find_first_of('.') != lt.find_last_of('.') ||
