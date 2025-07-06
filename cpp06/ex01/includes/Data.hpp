@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 22:54:56 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/07/02 22:55:25 by rapcampo         ###   ########.fr       */
+/*   Created: 2025/07/07 00:37:15 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/07/07 00:38:51 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <stdint.h>
-#include "Data.hpp"
+#include <string>
 
-
-class Serializer{
-	private:
-		Serializer();
-		~Serializer();
-		Serializer(const Serializer &src);
-		Serializer &operator=(const Serializer &src);
-
-	public:
-		static uintptr_t serialize(Data *ptr);
-		static Data* deserialize(uintptr_t raw);
+struct Data{
+	std::string name;
+	int health;
+	int mana;
+	bool has_finished_cpp06;
+	bool is_taking_emotional_damage;
 };
