@@ -30,6 +30,8 @@
 # define WHT "\e[1;37m"
 # define CLR "\e[0;39m"
 
+# define MANY_ARG "Error: too many arguments"
+
 class ScalarConverter{
 	private:
 		ScalarConverter();
