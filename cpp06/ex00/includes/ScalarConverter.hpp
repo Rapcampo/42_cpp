@@ -12,6 +12,9 @@
 
 #include <iostream>
 
+# define VALID "+-0123456789.f"
+# define DIGITS "0123456789"
+
 class ScalarConverter{
 	private:
 		ScalarConverter();
@@ -23,6 +26,7 @@ class ScalarConverter{
 		static void toInt(const std::string &lt, int i);
 		static void toFloat(const std::string &lt, float f);
 		static void toDouble(const std::string &lt, double d);
+		static void toPseudo(const std::string &lt);
 
 	public:
 		static void convert(const std::string &lt);
