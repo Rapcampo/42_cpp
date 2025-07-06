@@ -49,17 +49,18 @@ static bool isInt(const std::string &lt){
 
 static bool isFloat(const std::string &lt){
 	size_t dot = lt.find_first_of('.');
-	if (lt.find_first_of('f') == lt.npos)
+	size_t fpos = lt.find_first_of('f');
+	size_t ldigit = lt.find_last_of(DIGITS);
+	if (fpos == lt.npos || lt.find_first_of(DIGITS) == lt.npos || dot == lt.npos)
 		return false;
-	if (lt.find_first_of(DIGITS) == lt.npos)
+	if (fpos < dot || ldigit < dot)
 		return false;
-	if (lt.find_first_of('f') == lt.size()
-			&& lt.find_first_of(DIGITS, dot) != lt.npos)
-		return true;
-	return false;
+	return true;
 }
 
 static bool isDouble(const std::string &lt){
+	if (lt.find_first_of('f') != lt.npos)
+		return false;
 	if (lt.find_first_of('.') == lt.npos)
 		return false;
 	if (lt.find_first_of(DIGITS) != lt.npos &&
@@ -179,10 +180,10 @@ static bool overflow(const std::string &lt, int typePos){
 			return (nb < std::numeric_limits<int>::min() ||
 					nb > std::numeric_limits<int>::max());
 		case 2:
-			return (nb < std::numeric_limits<float>::min() ||
+			return (nb < -std::numeric_limits<float>::min() ||
 					nb > std::numeric_limits<float>::max());
 		case 3:
-			return (nb < std::numeric_limits<double>::min() ||
+			return (nb < -std::numeric_limits<double>::min() ||
 					nb > std::numeric_limits<double>::max());
 		default:
 			return false;
