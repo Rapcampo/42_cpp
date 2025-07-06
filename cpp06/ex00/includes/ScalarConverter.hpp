@@ -27,6 +27,7 @@ class ScalarConverter{
 		static void toFloat(const std::string &lt, float f);
 		static void toDouble(const std::string &lt, double d);
 		static void toPseudo(const std::string &lt);
+		static void typeConverter(const std::string &lt, long double nb);
 
 	public:
 		static void convert(const std::string &lt);

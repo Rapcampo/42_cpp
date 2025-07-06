@@ -25,12 +25,48 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src){
 
 typedef bool (*funcs[5])(const std::string &lt);
 
+static bool overflow(const std::string &lt, int typePos);
 static bool isPseudo(const std::string &lt);
 static bool isChar(const std::string &lt);
 static bool isInt(const std::string &lt);
 static bool isFloat(const std::string &lt);
 static bool isDouble(const std::string &lt);
 static void checkString(const std::string &lt);
+static void	typeConverter(const std::string &lt, long double nb);
+
+static bool isChar(const std::string &lt){
+	return (lt.size() <= 1 && std::isprint(lt[0] && !std::isdigit(lt[0])));
+}
+
+static bool isInt(const std::string &lt){
+	int i = -1;
+	while (std::isspace(lt[++i]));
+	if (lt[i] == '+' || lt[i] == '-')
+		i++;
+	if (lt.find_first_not_of(DIGITS, i) != lt.npos)
+		return false;
+	return true;
+}
+
+static bool isFloat(const std::string &lt){
+	if (lt.find_first_of('f') == lt.npos)
+		return false;
+	if (lt.find_first_of(DIGITS) == lt.npos)
+		return false;
+	if (lt.find_first_of('f') == lt.size()
+			&& lt.find_first_of('.') == lt.size() - 2)
+		return true;
+	return false;
+}
+
+static bool isDouble(const std::string &lt){
+	if (lt.find_first_of('.') == lt.npos)
+		return false;
+	if (lt.find_first_of(DIGITS) != lt.npos &&
+			lt.find_first_of('.') == lt.size() - 2)
+		return true;
+	return false;
+}
 
 static void checkString(const std::string &lt){
 	int i = -i;
@@ -67,21 +103,28 @@ void	ScalarConverter::convert(const std::string &lt){
 		foundType = f[typePos](lt);
 	switch (typePos){
 		case 0:
-			toChar(lt, static_cast<char>(std::atoi(lt.c_str())));
+			typeConverter(lt, lt[0]);
 			break;
 		case 1:
-			toInt(lt, static_cast<int>(std::atoi(lt.c_str())));
+			typeConverter(lt, std::atoi(lt.c_str()));
 			break;
 		case 2:
-			toFloat(lt, static_cast<float>(std::strtof(lt.c_str(), 0)));
+			typeConverter(lt, std::strtof(lt.c_str(), 0));
 			break;
 		case 3:
-			toDouble(lt, static_cast<double>(std::strtod(lt.c_str(), 0)));
+			typeConverter(lt, std::strtod(lt.c_str(), 0));
 			break;
 		case 4:
 			std::cout << "Cannot Assert type to convert" << std::endl;
 			break;
 	}
+}
+
+void ScalarConverter::typeConverter(const std::string &lt, long double nb){
+	toChar(lt, static_cast<char>(nb));
+	toInt(lt, static_cast<int>(nb));
+	toFloat(lt, static_cast<float>(nb));
+	toDouble(lt, static_cast<double>(nb));
 }
 
 void	ScalarConverter::toPseudo(const std::string &lt){
@@ -97,14 +140,15 @@ void	ScalarConverter::toPseudo(const std::string &lt){
 }
 
 void	ScalarConverter::toChar(const std::string &lt, char c){
-	if (!(lt.size() <= 1 && std::isprint(lt[0]) && !std::isdigit(lt[0])))
+	if (overflow(lt, 0))
 		std::cout << "char: impossible" << std::endl;
-	if (c < 32 || c > 126)
+	else if (!std::isprint(c))
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: " << c << std::endl;
 }
 
 void	ScalarConverter::toInt(const std::string &lt, int i){
-
+	if (overflow(lt, 1))
+		std::cout <<"int: impossible" << std::endl;
 }
