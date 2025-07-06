@@ -18,7 +18,7 @@
 #include <cstdlib>
 #include <cmath>
 
-# define VALID "+-0123456789.f"
+# define VALID "+-0123456789.fe"
 # define DIGITS "0123456789"
 
 //colour prints

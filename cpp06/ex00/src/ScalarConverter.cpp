@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ScalarConverter.hpp"
+#include <limits>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -187,10 +188,10 @@ static bool overflow(const std::string &lt, int typePos){
 			return (nb < std::numeric_limits<int>::min() ||
 					nb > std::numeric_limits<int>::max());
 		case 2:
-			return (nb < -std::numeric_limits<float>::min() ||
+			return (nb < -std::numeric_limits<float>::max() ||
 					nb > std::numeric_limits<float>::max());
 		case 3:
-			return (nb < -std::numeric_limits<double>::min() ||
+			return (nb < -std::numeric_limits<double>::max() ||
 					nb > std::numeric_limits<double>::max());
 		default:
 			return false;
