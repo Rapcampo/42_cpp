@@ -143,10 +143,9 @@ void	ScalarConverter::toPseudo(const std::string &lt){
 void	ScalarConverter::toChar(const std::string &lt, char c){
 	if (overflow(lt, 0))
 		std::cout << GRN "char: impossible" RST << std::endl;
-	else if (!std::isprint(c))
-		std::cout << GRN "char: Non displayable" RST<< std::endl;
 	else
-		std::cout << GRN "char: '" << c <<"'" RST << std::endl;
+		std::isprint(c) ? std::cout << GRN "char: '" << c <<"'" RST << std::endl
+			: std::cout << GRN "char: Non displayable" RST<< std::endl;
 }
 
 void	ScalarConverter::toInt(const std::string &lt, int i){
@@ -160,14 +159,16 @@ void	ScalarConverter::toFloat(const std::string &lt, float f){
 	if (overflow(lt, 2))
 		std::cout << YLW "float: impossible" RST << std::endl;
 	else
-		std::cout << YLW "float: " << f << ".0f" RST << std::endl;
+		f == floor(f) ? std::cout << CYN "double: " << f << ".0f" RST << std::endl :
+			std::cout << CYN "double: " << f << "f" RST << std::endl;
 }
 
 void	ScalarConverter::toDouble(const std::string &lt, double d){
 	if (overflow(lt, 3))
 		std::cout << CYN "double: impossible" RST << std::endl;
 	else
-		std::cout << CYN "double: " << d << ".0" RST << std::endl;
+		d == floor(d) ? std::cout << CYN "double: " << d << ".0" RST << std::endl :
+			std::cout << CYN "double: " << d << RST << std::endl;
 }
 
 static bool overflow(const std::string &lt, int typePos){

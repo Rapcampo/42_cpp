@@ -16,6 +16,7 @@
 #include <string>
 #include <limits>
 #include <cstdlib>
+#include <cmath>
 
 # define VALID "+-0123456789.f"
 # define DIGITS "0123456789"
