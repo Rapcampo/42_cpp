@@ -10,8 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Identifier.hpp"
+#include "../includes/Base.hpp"
+#include "../includes/A.hpp"
+#include "../includes/B.hpp"
+#include "../includes/C.hpp"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
+Base *generate(void);
+void identify(Base &p);
+void identify(Base *p);
+ 
 Base *generate(void){
 	std::srand(std::time(0));
 	int random = std::rand() % 3;

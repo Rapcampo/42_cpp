@@ -1,31 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Identifier.hpp                                     :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 23:46:40 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/07/02 23:49:22 by rapcampo         ###   ########.fr       */
+/*   Created: 2025/07/07 00:54:10 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/07/07 00:55:38 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
+#include "Base.hpp"
 
-
-class Base{
-	public:
-		virtual ~Base();
-};
-
-Base *generate(void);
-void identify(Base &p);
-void identify(Base *p);
-
-class A : public Base {};
-class B : public Base {};
 class C : public Base {};

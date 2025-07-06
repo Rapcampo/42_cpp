@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.cpp                                           :+:      :+:    :+:   */
+/*   Identifier.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 00:02:41 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/07/03 00:03:11 by rapcampo         ###   ########.fr       */
+/*   Created: 2025/07/02 23:46:40 by rapcampo          #+#    #+#             */
+/*   Updated: 2025/07/02 23:49:22 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Base.hpp"
+#pragma once
 
-Base::~Base() {}
+class Base{
+	public:
+		virtual ~Base();
+};
