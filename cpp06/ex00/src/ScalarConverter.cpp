@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/ScalarConverter.hpp"
-#include <limits>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -33,7 +32,6 @@ static bool isInt(const std::string &lt);
 static bool isFloat(const std::string &lt);
 static bool isDouble(const std::string &lt);
 static void checkString(const std::string &lt);
-static void	typeConverter(const std::string &lt, long double nb);
 
 static bool isChar(const std::string &lt){
 	return (lt.size() <= 1 && std::isprint(lt[0] && !std::isdigit(lt[0])));
@@ -50,12 +48,13 @@ static bool isInt(const std::string &lt){
 }
 
 static bool isFloat(const std::string &lt){
+	size_t dot = lt.find_first_of('.');
 	if (lt.find_first_of('f') == lt.npos)
 		return false;
 	if (lt.find_first_of(DIGITS) == lt.npos)
 		return false;
 	if (lt.find_first_of('f') == lt.size()
-			&& lt.find_first_of('.') == lt.size() - 2)
+			&& lt.find_first_of(DIGITS, dot) != lt.npos)
 		return true;
 	return false;
 }
@@ -70,14 +69,14 @@ static bool isDouble(const std::string &lt){
 }
 
 static void checkString(const std::string &lt){
-	int i = -i;
+	int i = -1;
 	while (std::isspace(lt[++i]));
 	if (lt.find_first_not_of(VALID, i) != lt.npos)
 		throw std::exception();
 	if (lt.find_first_of('.') != lt.find_last_of('.') ||
 			lt.find_first_of('f') != lt.find_last_of('f') ||
-			lt.find_last_of('-') != lt.find_last_of('-') ||
-			lt.find_last_of('+') != lt.find_last_of('+'))
+			lt.find_first_of('-') != lt.find_last_of('-') ||
+			lt.find_first_of('+') != lt.find_last_of('+'))
 		throw std::exception();
 }
 
@@ -135,8 +134,8 @@ void	ScalarConverter::toPseudo(const std::string &lt){
 		std::cout << YLW "float: nanf\n" CLR;
 		std::cout << CYN "double: nan" RST<< std::endl;
 	}else{
-		std::cout << YLW "float: " << lt.find_first_of("+-") << "inff\n" CLR;
-		std::cout << CYN "double: " << lt.find_first_of("+-") << "inf" RST << std::endl;
+		std::cout << YLW "float: " << lt[lt.find_first_of("+-")] << "inff\n" CLR;
+		std::cout << CYN "double: " << lt[lt.find_first_of("+-")] << "inf" RST << std::endl;
 	}
 }
 
@@ -146,7 +145,7 @@ void	ScalarConverter::toChar(const std::string &lt, char c){
 	else if (!std::isprint(c))
 		std::cout << GRN "char: Non displayable" RST<< std::endl;
 	else
-		std::cout << GRN "char: " << c << RST << std::endl;
+		std::cout << GRN "char: '" << c <<"'" RST << std::endl;
 }
 
 void	ScalarConverter::toInt(const std::string &lt, int i){
@@ -160,14 +159,14 @@ void	ScalarConverter::toFloat(const std::string &lt, float f){
 	if (overflow(lt, 2))
 		std::cout << YLW "float: impossible" RST << std::endl;
 	else
-		std::cout << YLW "float: " << f << RST << std::endl;
+		std::cout << YLW "float: " << f << ".0f" RST << std::endl;
 }
 
 void	ScalarConverter::toDouble(const std::string &lt, double d){
 	if (overflow(lt, 3))
 		std::cout << CYN "double: impossible" RST << std::endl;
 	else
-		std::cout << CYN "double: " << d << RST << std::endl;
+		std::cout << CYN "double: " << d << ".0" RST << std::endl;
 }
 
 static bool overflow(const std::string &lt, int typePos){

@@ -10,7 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include <iostream>
+#include <string>
+#include <limits>
+#include <cstdlib>
 
 # define VALID "+-0123456789.f"
 # define DIGITS "0123456789"
