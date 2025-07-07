@@ -12,8 +12,8 @@
 
 # ================================= Files ======================================
 
-NAME	= converter
-SOURCE	= main.cpp ScalarConverter.cpp
+NAME	= iter
+SOURCE	= main.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
