@@ -35,25 +35,25 @@ Base *generate(void){
 
 void identify(Base *p){
 	if (dynamic_cast<A*>(p))
-		std::cout << "Class A" << std::endl;
+		std::cout << "Pointer: Class A" << std::endl;
 	else if (dynamic_cast<B*>(p))
-		std::cout << "Class B" << std::endl;
+		std::cout << "Pointer: Class B" << std::endl;
 	else if (dynamic_cast<C*>(p))
-		std::cout << "Class C" << std::endl;
+		std::cout << "Pointer: Class C" << std::endl;
 }
 
 void identify(Base &p){
 	try{
 		(void)dynamic_cast<A&>(p);
-		std::cout << "Class A" << std::endl;
+		std::cout << "Reference: Class A" << std::endl;
 	}catch(...){}
 	try{
 		(void)dynamic_cast<B&>(p);
-		std::cout << "Class B" << std::endl;
+		std::cout << "Reference: Class B" << std::endl;
 	}catch(...){}
 	try{
 		(void)dynamic_cast<C&>(p);
-		std::cout << "Class C" << std::endl;
+		std::cout << "Reference: Class C" << std::endl;
 	}catch(...){}
 }
 
