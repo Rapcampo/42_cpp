@@ -55,10 +55,9 @@ static bool isInt(const std::string &lt){
 static bool isFloat(const std::string &lt){
 	size_t dot = lt.find_first_of('.');
 	size_t fpos = lt.find_first_of('f');
-	size_t ldigit = lt.find_last_of(DIGITS);
 	if (fpos == lt.npos || lt.find_first_of(DIGITS) == lt.npos || dot == lt.npos)
 		return false;
-	if (fpos < dot || ldigit < dot)
+	if (fpos < dot)
 		return false;
 	return true;
 }
@@ -68,8 +67,7 @@ static bool isDouble(const std::string &lt){
 		return false;
 	if (lt.find_first_of('.') == lt.npos)
 		return false;
-	if (lt.find_first_of(DIGITS) != lt.npos
-			&& lt.find_last_of(DIGITS) > lt.find_first_of('.'))
+	if (lt.find_first_of(DIGITS) != lt.npos)
 		return true;
 	return false;
 }
@@ -89,8 +87,14 @@ static void checkString(const std::string &lt){
 }
 
 static bool isPseudo(const std::string &lt){
-	return (lt == "-inf" || lt == "+inf" || lt == "+inff" ||
-			lt == "-inff" || lt == "nan" || lt == "nanf");
+	int i = -1;
+	while (std::isspace(lt[++i]));
+	return (((lt.compare(i, lt.npos, "-inf")) == 0)
+			|| ((lt.compare(i, lt.npos, "+inf")) == 0)
+			|| ((lt.compare(i, lt.npos, "-inff")) == 0)
+			|| ((lt.compare(i, lt.npos, "+inff")) == 0)
+			|| ((lt.compare(i, lt.npos, "nan")) == 0)
+			|| ((lt.compare(i, lt.npos, "nanf")) == 0));
 }
 
 void	ScalarConverter::convert(const std::string &lt){
@@ -98,32 +102,38 @@ void	ScalarConverter::convert(const std::string &lt){
 	int typePos = -1;
 	funcs f = {isChar, isInt, isFloat, isDouble, NULL};
 	if (isPseudo(lt)){
+		std::cout << BLU ULI "Received string type: Pseudo Number" << std::endl;
 		toPseudo(lt);
 		return;
 	}
 	try{
 		checkString(lt);
 	}catch(...){
-		std::cout << RED "this is not a valid type :(" RST<< std::endl;
+		std::cout << RED << lt << " is is not a valid type :(" RST<< std::endl;
 		return;
 	}
 	while (foundType != true && ++typePos < 4)
 		foundType = f[typePos](lt);
 	switch (typePos){
 		case 0:
+			std::cout << BLU ULI "Received string type: Char" << std::endl;
 			typeConverter(lt, lt[0]);
 			break;
 		case 1:
+			std::cout << BLU ULI "Received string type: Int" << std::endl;
 			typeConverter(lt, std::atoi(lt.c_str()));
 			break;
 		case 2:
+			std::cout << BLU ULI "Received string type: Float" << std::endl;
 			typeConverter(lt, std::strtof(lt.c_str(), 0));
 			break;
 		case 3:
+			std::cout << BLU ULI "Received string type: Double" << std::endl;
 			typeConverter(lt, std::strtod(lt.c_str(), 0));
 			break;
 		case 4:
-			std::cout << RED "Cannot Assert type to convert" RST<< std::endl;
+			std::cout << RED <<  "Cannot Assert type " 
+				<< lt <<" to convert" RST<< std::endl;
 			break;
 	}
 }
@@ -142,8 +152,10 @@ void	ScalarConverter::toPseudo(const std::string &lt){
 		std::cout << YLW "float: nanf\n" CLR;
 		std::cout << CYN "double: nan" RST<< std::endl;
 	}else{
-		std::cout << YLW "float: " << lt[lt.find_first_of("+-")] << "inff\n" CLR;
-		std::cout << CYN "double: " << lt[lt.find_first_of("+-")] << "inf" RST << std::endl;
+		std::cout << YLW "float: " << lt[lt.find_first_of("+-")]
+			<< "inff\n" CLR;
+		std::cout << CYN "double: " << lt[lt.find_first_of("+-")]
+			<< "inf" RST << std::endl;
 	}
 }
 
@@ -166,15 +178,17 @@ void	ScalarConverter::toFloat(const std::string &lt, float f){
 	if (overflow(lt, 2))
 		std::cout << YLW "float: impossible" RST << std::endl;
 	else
-		f == floor(f) ? std::cout << CYN "double: " << f << ".0f" RST << std::endl :
-			std::cout << CYN "double: " << f << "f" RST << std::endl;
+		f == floor(f) ? std::cout << YLW "float: " 
+			<< f << ".0f" RST << std::endl :
+			std::cout << YLW "float: " << f << "f" RST << std::endl;
 }
 
 void	ScalarConverter::toDouble(const std::string &lt, double d){
 	if (overflow(lt, 3))
 		std::cout << CYN "double: impossible" RST << std::endl;
 	else
-		d == floor(d) ? std::cout << CYN "double: " << d << ".0" RST << std::endl :
+		d == floor(d) ? std::cout << CYN "double: " 
+			<< d << ".0" RST << std::endl :
 			std::cout << CYN "double: " << d << RST << std::endl;
 }
 
