@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/ScalarConverter.hpp"
-#include <limits>
 
 ScalarConverter::ScalarConverter() {}
 
