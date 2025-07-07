@@ -11,7 +11,7 @@ echo "Iniciando testes com '$INPUT_FILE'..."
 
 while IFS= read -r line || [[ -n "$line" ]]; do
   echo -e "\033[1;32m>>> ./converter \"$line\"\033[0m"
-  valgrind -q --leak-check=full --show-leak-kinds=all ./converter "$line"
+  ./converter "$line"
   echo
   read -p "Pressione ENTER para continuar..."
 done < "$INPUT_FILE"

@@ -48,8 +48,8 @@ bool isChar(const std::string &lt){
 }
 
 bool isInt(const std::string &lt){
-	size_t i = 0;
-	while (std::isspace(lt[i++]));
+	size_t i = -1;
+	while (std::isspace(lt[++i]));
 	if (lt[i] == '+' || lt[i] == '-')
 		i++;
 	if (lt.find_first_not_of(DIGITS, i) != lt.npos)
@@ -78,8 +78,8 @@ bool isDouble(const std::string &lt){
 }
 
 void checkString(const std::string &lt){
-	size_t i = 0;
-	while (std::isspace(lt[i++]));
+	size_t i = -1;
+	while (std::isspace(lt[++i]));
 	if (isChar(lt))
 		return;
 	if (lt.find_first_not_of(VALID, i) != lt.npos)
@@ -93,8 +93,8 @@ void checkString(const std::string &lt){
 }
 
 bool isPseudo(const std::string &lt){
-	size_t i = 0;
-	while (std::isspace(lt[i++]));
+	size_t i = -1;
+	while (std::isspace(lt[++i]));
 	return (((lt.compare(i, lt.npos, "-inf")) == 0)
 			|| ((lt.compare(i, lt.npos, "+inf")) == 0)
 			|| ((lt.compare(i, lt.npos, "-inff")) == 0)
@@ -122,19 +122,19 @@ void	ScalarConverter::convert(const std::string &lt){
 		foundType = f[typePos](lt);
 	switch (typePos){
 		case 0:
-			std::cout << BLU ULI "Received string type: Char" << std::endl;
+			std::cout << BLU ULI "Received string type: Char" RST<< std::endl;
 			typeConverter(lt, lt[0]);
 			break;
 		case 1:
-			std::cout << BLU ULI "Received string type: Int" << std::endl;
+			std::cout << BLU ULI "Received string type: Int" RST<< std::endl;
 			typeConverter(lt, std::atoi(lt.c_str()));
 			break;
 		case 2:
-			std::cout << BLU ULI "Received string type: Float" << std::endl;
+			std::cout << BLU ULI "Received string type: Float" RST<< std::endl;
 			typeConverter(lt, std::strtof(lt.c_str(), 0));
 			break;
 		case 3:
-			std::cout << BLU ULI "Received string type: Double" << std::endl;
+			std::cout << BLU ULI "Received string type: Double" RST<< std::endl;
 			typeConverter(lt, std::strtod(lt.c_str(), 0));
 			break;
 		case 4:
