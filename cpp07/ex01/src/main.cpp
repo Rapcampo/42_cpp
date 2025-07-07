@@ -39,11 +39,11 @@ void	testInt(){
 	size_t len = sizeof(array) / sizeof(int);
 
 	std::cout << "Values in array:\n";
-	iter(array, len, print);
+	iter(array, len, print<const int>);
 
 	iter(array, len, square);
 	std::cout << "\nNew Values in array: \n";
-	iter(array, len, print);
+	iter(array, len, print<int>);
 	std::cout << std::endl;
 }
 
@@ -54,11 +54,11 @@ void	testFloat(){
 	size_t len = sizeof(array) / sizeof(float);
 
 	std::cout << "Values in array:\n";
-	iter(array, len, print);
+	iter(array, len, print<const float>);
 
 	iter(array, len, truncate);
 	std::cout << "\nNew Values in array: \n";
-	iter(array, len, print);
+	iter(array, len, print<const float>);
 	std::cout << std::endl;
 }
 
@@ -69,11 +69,11 @@ void	testString(){
 	size_t len = sizeof(array) / sizeof(std::string);
 
 	std::cout << "Values in array:\n";
-	iter(array, len, print);
+	iter(array, len, print<const std::string>);
 
 	iter(array, len, removeLastLetter);
 	std::cout << "\nNew Values in array: \n";
-	iter(array, len, print);
+	iter(array, len, print<const std::string>);
 	std::cout << std::endl;
 }
 
