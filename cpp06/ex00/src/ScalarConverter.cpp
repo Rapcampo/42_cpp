@@ -179,6 +179,8 @@ void	ScalarConverter::toFloat(const std::string &lt, float f){
 		lt.find_first_of('-') == lt.npos ? 
 			std::cout << YLW "Float: +inff" RST << std::endl
 			: std::cout << YLW "Float: -inff" RST << std::endl;
+	else if (std::isnan(f))
+		std::cout << YLW "float: nanf" RST << std::endl;
 	else
 		f == floor(f) ? std::cout << YLW "float: " 
 			<< f << ".0f" RST << std::endl :
@@ -190,6 +192,8 @@ void	ScalarConverter::toDouble(const std::string &lt, double d){
 		lt.find_first_of('-') == lt.npos ? 
 			std::cout << CYN "double: +inf" RST << std::endl
 			: std::cout << CYN "double: -inf" RST << std::endl;
+	else if (std::isnan(d))
+		std::cout << CYN "double: nan" RST<< std::endl;
 	else
 		d == floor(d) ? std::cout << CYN "double: " 
 			<< d << ".0" RST << std::endl :
