@@ -48,8 +48,8 @@ bool isChar(const std::string &lt){
 }
 
 bool isInt(const std::string &lt){
-	int i = -1;
-	while (std::isspace(lt[++i]));
+	size_t i = 0;
+	while (std::isspace(lt[i++]));
 	if (lt[i] == '+' || lt[i] == '-')
 		i++;
 	if (lt.find_first_not_of(DIGITS, i) != lt.npos)
@@ -78,8 +78,8 @@ bool isDouble(const std::string &lt){
 }
 
 void checkString(const std::string &lt){
-	int i = -1;
-	while (std::isspace(lt[++i]));
+	size_t i = 0;
+	while (std::isspace(lt[i++]));
 	if (isChar(lt))
 		return;
 	if (lt.find_first_not_of(VALID, i) != lt.npos)
@@ -87,13 +87,14 @@ void checkString(const std::string &lt){
 	if (lt.find_first_of('.') != lt.find_last_of('.') ||
 			lt.find_first_of('f') != lt.find_last_of('f') ||
 			lt.find_first_of('-') != lt.find_last_of('-') ||
+			lt.find_first_of('e') != lt.find_last_of('e') ||
 			lt.find_first_of('+') != lt.find_last_of('+'))
 		throw std::exception();
 }
 
 bool isPseudo(const std::string &lt){
-	int i = -1;
-	while (std::isspace(lt[++i]));
+	size_t i = 0;
+	while (std::isspace(lt[i++]));
 	return (((lt.compare(i, lt.npos, "-inf")) == 0)
 			|| ((lt.compare(i, lt.npos, "+inf")) == 0)
 			|| ((lt.compare(i, lt.npos, "-inff")) == 0)
