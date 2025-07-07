@@ -176,7 +176,9 @@ void	ScalarConverter::toInt(const std::string &lt, int i){
 
 void	ScalarConverter::toFloat(const std::string &lt, float f){
 	if (overflow(lt, 2))
-		std::cout << YLW "float: impossible" RST << std::endl;
+		lt.find_first_of('-') == lt.npos ? 
+			std::cout << YLW "Float: +inff" RST << std::endl
+			: std::cout << YLW "Float: -inff" RST << std::endl;
 	else
 		f == floor(f) ? std::cout << YLW "float: " 
 			<< f << ".0f" RST << std::endl :
@@ -185,7 +187,9 @@ void	ScalarConverter::toFloat(const std::string &lt, float f){
 
 void	ScalarConverter::toDouble(const std::string &lt, double d){
 	if (overflow(lt, 3))
-		std::cout << CYN "double: impossible" RST << std::endl;
+		lt.find_first_of('-') == lt.npos ? 
+			std::cout << CYN "double: +inf" RST << std::endl
+			: std::cout << CYN "double: -inf" RST << std::endl;
 	else
 		d == floor(d) ? std::cout << CYN "double: " 
 			<< d << ".0" RST << std::endl :
