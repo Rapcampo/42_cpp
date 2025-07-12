@@ -14,21 +14,21 @@
 #include <iostream>
 #include <cmath>
 
-template <class T>
+template <typename T>
 
-void	print(T &p){
+static void	print(T &p){
 	std::cout << p << std::endl;
 }
 
-void	square(int &number){
+static void	square(int &number){
 	number *=number;
 }
 
-void	removeLastLetter(std::string &str){
+static void	removeLastLetter(std::string &str){
 	str.erase(str.length() - 1);
 }
 
-void	truncate(float &f){
+static void	truncate(float &f){
 	f = trunc(f);
 }
 

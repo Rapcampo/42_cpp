@@ -27,7 +27,7 @@ void	iter(T *array, size_t len, void(*f)(const T&)){
 		(*f)(array[i]);
 }
 
-template <class T>
+template <typename T>
 
 void	print(T &p){
 	std::cout << p << std::endl;
@@ -48,45 +48,54 @@ void	truncate(float &f){
 void	testInt(){
 	std::cout << "\n\tInt tests\n" << std::endl;
 
-	int array[] = {1, 2, 5, 125, 4, 34};
-	size_t len = sizeof(array) / sizeof(int);
+	Array<int> array(6);
+	int ex[6] = {1, 2, 5, 125, 4, 34};
+	for (int i = 0; i < array.size(); i++)
+		array[i] = ex[i];
+	size_t len = array.size();
 
 	std::cout << "Values in array:\n";
-	iter(array, len, print<const int>);
+	iter(array.data(), len, print<const int>);
 
-	iter(array, len, square);
+	iter(array.data(), len, square);
 	std::cout << "\nNew Values in array: \n";
-	iter(array, len, print<int>);
+	iter(array.data(), len, print<int>);
 	std::cout << std::endl;
 }
 
 void	testFloat(){
 	std::cout << "\n\tFloat tests\n" << std::endl;
 
-	float array[] = {1.2, 2.3, 5.4, 125.001, 4.1, 34.2};
-	size_t len = sizeof(array) / sizeof(float);
+	Array<float> array(6);
+	float ex[6] = {1.2, 2.3, 5.4, 125.001, 4.1, 34.2};
+	for (int i = 0; i < array.size(); i++)
+		array[i] = ex[i];
+	size_t len = array.size();
 
 	std::cout << "Values in array:\n";
-	iter(array, len, print<const float>);
+	iter(array.data(), len, print<const float>);
 
-	iter(array, len, truncate);
+	iter(array.data(), len, truncate);
 	std::cout << "\nNew Values in array: \n";
-	iter(array, len, print<const float>);
+	iter(array.data(), len, print<const float>);
 	std::cout << std::endl;
 }
 
 void	testString(){
 	std::cout << "\n\tString tests\n" << std::endl;
 
-	std::string array[] = {"this", "that", "here", "there", "42Porto", "example"};
-	size_t len = sizeof(array) / sizeof(std::string);
+	Array<std::string> array(6); 
+	std::string ex[6] = {"this", "that", "here", "there", "42Porto", "example"};
+	for (int i = 0; i < array.size(); i++)
+		array[i] = ex[i];
+	size_t len = array.size();
 
 	std::cout << "Values in array:\n";
-	iter(array, len, print<const std::string>);
+	iter(array.data(), len, print<const std::string>);
 
-	iter(array, len, removeLastLetter);
+	iter(array.data(), len, removeLastLetter);
 	std::cout << "\nNew Values in array: \n";
-	iter(array, len, print<const std::string>);
+	iter(array.data(), len, print<const std::string>);
 	std::cout << std::endl;
 }
 

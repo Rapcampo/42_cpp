@@ -16,7 +16,6 @@
 #include <exception>
 
 template <typename T>
-
 class Array{
 	private:
 		T *arr;
@@ -55,6 +54,7 @@ class Array{
 		}
 
 		unsigned int size() const {return this->n;}
+		T* data(){return this->arr;}
 
 		class IndexArrayOverflowException : public std::exception{
 			public:
