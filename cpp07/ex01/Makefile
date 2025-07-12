@@ -13,7 +13,7 @@
 # ================================= Files ======================================
 
 NAME	= iter
-SOURCE	= main.cpp
+SOURCE	= main.cpp #ex01.cpp 
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
