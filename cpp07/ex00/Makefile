@@ -13,7 +13,7 @@
 # ================================= Files ======================================
 
 NAME	= template
-SOURCE	= main.cpp
+SOURCE	= ex00.cpp #main.cpp
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
