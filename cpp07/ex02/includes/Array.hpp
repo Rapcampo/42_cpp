@@ -22,7 +22,7 @@ class Array{
 		unsigned int n;
 	
 	public:
-		Array();
+		Array(); 
 		~Array();
 		Array(unsigned int n);
 		Array(const Array &src);
@@ -30,4 +30,6 @@ class Array{
 		Array &operator[](unsigned int index);
 
 		unsigned int size() const;
+
+		class Index
 };
