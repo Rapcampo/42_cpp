@@ -32,7 +32,7 @@ class Array{
 
 		Array<T>(const Array &src) : n(src.n){
 			this->arr = new T[n];
-			for (int i = 0; i < this->n; i++)
+			for (unsigned int i = 0; i < this->n; i++)
 				this->arr[i] = src.arr[i];
 		}
 
