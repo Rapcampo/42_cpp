@@ -52,6 +52,12 @@ class Array{
 				throw IndexArrayOverflowException();
 			return (arr[index]);
 		}
+		
+		const T &operator[](unsigned int index)const {
+			if (index >= n)
+				throw IndexArrayOverflowException();
+			return (arr[index]);
+		}
 
 		unsigned int size() const {return this->n;}
 

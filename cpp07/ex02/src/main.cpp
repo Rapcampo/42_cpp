@@ -98,6 +98,27 @@ void	testString(){
 	std::cout << "\nNew Values in array: \n";
 	iter(&array[0], len, print<const std::string>);
 	std::cout << std::endl;
+	Array<std::string> cparr(array);
+	std::cout << "\nValues in copied array: \n";
+	iter(&array[0], len, print<const std::string>);
+	std::cout << std::endl;
+}
+
+void	testConstString(){
+	std::cout << "\n\t Const String tests\n" << std::endl;
+
+	Array<std::string> array(5); 
+	const std::string ex[5] = {"this", "that", "here", "there", "42Porto"};
+	for (unsigned int i = 0; i < array.size(); i++)
+		array[i] = ex[i];
+	size_t len = array.size();
+
+	std::cout << "Values in array:\n";
+	iter(const_cast<const std::string *>(&array[0]), len, print<const std::string>);
+	std::cout << std::endl;
+
+	//example of const string iteration not working as it would try to change values)
+	//iter(const_cast<const std::string *>(&array[0]), len, removeLastLetter);
 }
 
 int	main(void){
@@ -114,4 +135,5 @@ int	main(void){
 	testInt();
 	testFloat();
 	testString();
+	testConstString();
 }
