@@ -8,7 +8,7 @@ int main(int, char**)
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
-    for (unsigned int i = 0; i < MAX_VAL; i++)
+    for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand();
         numbers[i] = value;
@@ -20,7 +20,7 @@ int main(int, char**)
         Array<int> test(tmp);
     }
 
-    for (unsigned int i = 0; i < MAX_VAL; i++)
+    for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])
         {
@@ -48,6 +48,7 @@ int main(int, char**)
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
+		std::cout << numbers[i] << std::endl;
     }
     delete [] mirror;//
     return 0;

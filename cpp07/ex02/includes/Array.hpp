@@ -53,7 +53,7 @@ class Array{
 			return (arr[index]);
 		}
 		
-		const T &operator[](unsigned int index)const {
+		const T &operator[](unsigned int index) const {
 			if (index >= n)
 				throw IndexArrayOverflowException();
 			return (arr[index]);

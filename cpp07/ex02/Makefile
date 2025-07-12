@@ -13,7 +13,7 @@
 # ================================= Files ======================================
 
 NAME	= array
-SOURCE	= main.cpp
+SOURCE	= main.cpp #test.cpp 
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
