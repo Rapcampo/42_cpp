@@ -54,7 +54,6 @@ class Array{
 		}
 
 		unsigned int size() const {return this->n;}
-		T* data() const {return this->arr;}
 
 		class IndexArrayOverflowException : public std::exception{
 			public:

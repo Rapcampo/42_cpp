@@ -56,11 +56,11 @@ void	testInt(){
 	size_t len = array.size();
 
 	std::cout << "Values in array:\n";
-	iter(array.data(), len, print<const int>);
+	iter(&array[0], len, print<const int>);
 
-	iter(array.data(), len, square);
+	iter(&array[0], len, square);
 	std::cout << "\nNew Values in array: \n";
-	iter(array.data(), len, print<int>);
+	iter(&array[0], len, print<int>);
 	std::cout << std::endl;
 }
 
@@ -74,11 +74,11 @@ void	testFloat(){
 	size_t len = array.size();
 
 	std::cout << "Values in array:\n";
-	iter(array.data(), len, print<const float>);
+	iter(&array[0], len, print<const float>);
 
-	iter(array.data(), len, truncate);
+	iter(&array[0], len, truncate);
 	std::cout << "\nNew Values in array: \n";
-	iter(array.data(), len, print<const float>);
+	iter(&array[0], len, print<const float>);
 	std::cout << std::endl;
 }
 
