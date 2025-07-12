@@ -13,6 +13,7 @@
 #pragma once
 
 #include <iostream>
+#include <exception>
 
 template <typename T>
 
@@ -22,14 +23,43 @@ class Array{
 		unsigned int n;
 	
 	public:
-		Array(); 
-		~Array();
-		Array(unsigned int n);
-		Array(const Array &src);
-		Array &operator=(const Array &src);
-		Array &operator[](unsigned int index);
+		Array<T>() : n(0){ this->arr = new T[0];} 
+		~Array<T>() {delete [] arr;}
+		Array<T>(unsigned int n) : n(n){
+			this->arr = new T[this->n];
+			for (int i; i < this->n; i++)
+				this->arr[i] = new T();
+		}
 
-		unsigned int size() const;
+		Array<T>(const Array &src) : n(src.n){
+			this->arr = new T[n];
+			for (int i = 0; i < this->n; i++)
+				this->arr[i] = src.arr[i];
+		}
 
-		class Index
+		Array<T> &operator=(const Array &src){
+			if (this != &src){
+				delete [] this->arr;
+				this->n = src.n;
+				this->arr = new T[this->n];
+				for (int i = 0; i < this->n; i++)
+					this->arr[i] = src.arr[i];
+			}
+			return (*this);
+		}
+
+		T &operator[](unsigned int index){
+			if (index < 0 || index >= n)
+				throw IndexArrayOverflowException();
+			return (arr[index]);
+		}
+
+		unsigned int size() const {return this->n;}
+
+		class IndexArrayOverflowException : public std::exception{
+			public:
+				virtual const char *what() const throw(){
+					return "Index passed is bigger than array size";
+				}
+		};
 };
