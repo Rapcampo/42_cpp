@@ -12,6 +12,7 @@
 
 #include "../includes/Array.hpp"
 #include <cmath>
+#include <exception>
 
 template <typename T>
 
@@ -50,7 +51,7 @@ void	testInt(){
 
 	Array<int> array(6);
 	int ex[6] = {1, 2, 5, 125, 4, 34};
-	for (int i = 0; i < array.size(); i++)
+	for (unsigned int i = 0; i < array.size(); i++)
 		array[i] = ex[i];
 	size_t len = array.size();
 
@@ -68,7 +69,7 @@ void	testFloat(){
 
 	Array<float> array(6);
 	float ex[6] = {1.2, 2.3, 5.4, 125.001, 4.1, 34.2};
-	for (int i = 0; i < array.size(); i++)
+	for (unsigned int i = 0; i < array.size(); i++)
 		array[i] = ex[i];
 	size_t len = array.size();
 
@@ -86,20 +87,30 @@ void	testString(){
 
 	Array<std::string> array(6); 
 	std::string ex[6] = {"this", "that", "here", "there", "42Porto", "example"};
-	for (int i = 0; i < array.size(); i++)
+	for (unsigned int i = 0; i < array.size(); i++)
 		array[i] = ex[i];
 	size_t len = array.size();
 
 	std::cout << "Values in array:\n";
-	iter(array.data(), len, print<const std::string>);
+	iter(&array[0], len, print<const std::string>);
 
-	iter(array.data(), len, removeLastLetter);
+	iter(&array[0], len, removeLastLetter);
 	std::cout << "\nNew Values in array: \n";
-	iter(array.data(), len, print<const std::string>);
+	iter(&array[0], len, print<const std::string>);
 	std::cout << std::endl;
 }
 
 int	main(void){
+	Array<double>empty;
+	std::cout << &empty << std::endl;
+	Array<short>overflow(2);
+	unsigned int i = 3;
+	try{
+		overflow[i];
+	}catch(std::exception &e){
+		std::cout << e.what() <<std::endl;
+	}
+	
 	testInt();
 	testFloat();
 	testString();

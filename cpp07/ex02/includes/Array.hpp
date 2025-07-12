@@ -26,8 +26,8 @@ class Array{
 		~Array<T>() {delete [] arr;}
 		Array<T>(unsigned int n) : n(n){
 			this->arr = new T[this->n];
-			for (int i; i < this->n; i++)
-				this->arr[i] = new T();
+			for (unsigned int i = 0; i < this->n; i++)
+				this->arr[i] = T();
 		}
 
 		Array<T>(const Array &src) : n(src.n){
@@ -41,20 +41,20 @@ class Array{
 				delete [] this->arr;
 				this->n = src.n;
 				this->arr = new T[this->n];
-				for (int i = 0; i < this->n; i++)
+				for (unsigned int i = 0; i < this->n; i++)
 					this->arr[i] = src.arr[i];
 			}
 			return (*this);
 		}
 
 		T &operator[](unsigned int index){
-			if (index < 0 || index >= n)
+			if (index >= n)
 				throw IndexArrayOverflowException();
 			return (arr[index]);
 		}
 
 		unsigned int size() const {return this->n;}
-		T* data(){return this->arr;}
+		T* data() const {return this->arr;}
 
 		class IndexArrayOverflowException : public std::exception{
 			public:
