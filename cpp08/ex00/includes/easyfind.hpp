@@ -22,6 +22,6 @@ typename T::iterator	easyfind(T& container, int nb)
 
 	res = (std::find(container.begin(), container.end(), nb));
 		if (res == container.end())
-			throw "result not found";
+			throw std::exception();
 	return res;
 }
