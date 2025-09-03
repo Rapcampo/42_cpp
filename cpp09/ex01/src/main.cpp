@@ -19,7 +19,7 @@ static bool inputValidation(char *input){
 
 	raw = input;
 	if (raw.find_first_of('=') != raw.npos ||
-			raw.find_first_not_of(OPERATORS DIGITS) != raw.npos ||
+			(raw.find_first_not_of(OPERATORS DIGITS SPACE) != raw.npos) ||
 				raw.find_first_of(OPERATORS) == raw.npos ||
 					raw.find_first_of(DIGITS) == raw.npos)
 		return false;

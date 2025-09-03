@@ -18,6 +18,7 @@
 
 #define DIGITS "0123456789"
 #define OPERATORS "*+-/"
+#define SPACE " "
 
 #define ERR_NEED_ARG "Error: no argument was given, please input your RPN value!"
 #define ERR_WHY_EQUAL "Error: This is reverse polish notation, no equals are necessary!"
