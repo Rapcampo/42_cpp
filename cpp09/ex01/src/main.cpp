@@ -18,15 +18,13 @@ static bool inputValidation(char *input){
 	std::string raw;	
 
 	raw = input;
-	if (raw.find_first_not_of(OPERATORS DIGITS) != raw.npos ||
-			raw.find_first_of(OPERATORS) == raw.npos ||
-				raw.find_first_of(DIGITS) == raw.npos)
+	if (raw.find_first_of('=') != raw.npos ||
+			raw.find_first_not_of(OPERATORS DIGITS) != raw.npos ||
+				raw.find_first_of(OPERATORS) == raw.npos ||
+					raw.find_first_of(DIGITS) == raw.npos)
 		return false;
 	return true;
 }
-
-//allocate new stack with the elemtns in the string
-static std::stack<long> stackfy(char *nbstr);
 
 int	main(int argc, char **argv){
 	long res;
@@ -38,6 +36,11 @@ int	main(int argc, char **argv){
 		std::cout << ERR_WRONG_SYNTAX << std::endl;
 		return 2;
 	}
-	res = RPN::calculate(stackfy(argv[1]));
+	try{
+	res = RPN::calculate(argv[1]);
+	}catch (std::exception &e){
+		std::cout << e.what() << std::endl;
+		return 1;
+	}
 	std::cout << "the result is: " << res << std::endl;
 }
