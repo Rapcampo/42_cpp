@@ -13,7 +13,7 @@
 # ================================= Files ======================================
 
 NAME	= RPN
-SOURCE	= main.cpp #test.cpp 
+SOURCE	= main.cpp RPN.cpp 
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================

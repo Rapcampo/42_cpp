@@ -21,7 +21,7 @@ RPN::RPN(){}
 
 RPN::~RPN(){}
 
-RPN::RPN(const RPN &src){}
+RPN::RPN(const RPN &src){*this = src;}
 
 RPN &RPN::operator=(const RPN &src){
 	*this = src;
@@ -46,7 +46,7 @@ long RPN::do_op(std::stack<long> stack, char op){
 		return a + b;
 }
 
-long RPN::calculate(std::string &input){
+long RPN::calculate(const std::string &input){
 	long	result;
 	char	ope;
 	std::stack<long> stack;
