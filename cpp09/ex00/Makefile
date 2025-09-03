@@ -12,7 +12,7 @@
 
 # ================================= Files ======================================
 
-NAME	= easyfind
+NAME	= btc 
 SOURCE	= main.cpp #test.cpp 
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
