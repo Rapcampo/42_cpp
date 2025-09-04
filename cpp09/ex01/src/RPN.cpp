@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "../includes/RPN.hpp"
+#include <exception>
 #include <stdexcept>
+#include <cstdlib>
 
 //calculate should check for fist operator in the stack, pop the 2 first numbers
 //making calculations and push the result to the stack again
@@ -28,7 +30,7 @@ RPN &RPN::operator=(const RPN &src){
 	return *this;
 }
 
-long RPN::do_op(std::stack<long> stack, char op){
+long RPN::doOperation(std::stack<long> &stack, char op){
 	long a;
 	long b;
 
@@ -37,32 +39,38 @@ long RPN::do_op(std::stack<long> stack, char op){
 	b = stack.top();
 	stack.pop();
 	if (op == '*')
-		return a * b;
+		return b * a;
 	else if (op == '-')
-		return a - b;
+		return b - a;
 	else if(op == '/')
-		return a / b;
+		return b / a;
 	else
-		return a + b;
+		return b + a;
 }
 
 long RPN::calculate(const std::string &input){
-	long	result;
-	char	ope;
+	long	result = 0;
+	char	ope = 0;
 	std::stack<long> stack;
 	std::string token;
 	std::istringstream expression(input);
 
 	while (expression >> token){
+		if ((token.find_first_of(DIGITS) != token.npos 
+				&& token.find_last_not_of(DIGITS MINUS) != token.npos) ||
+			token.find_first_of(OPERATORS) != token.find_last_of(OPERATORS))
+			throw std::runtime_error(ERR_WRONG_SYNTAX);
 		if (token.find_first_of(DIGITS) != token.npos)
-			stack.push(token[0] - '0');
-		if (token.find_first_of(OPERATORS) != token.npos){
+			stack.push(std::strtol(token.c_str() , NULL, 10));
+		else if (token.find_first_of(OPERATORS) != token.npos){
 			ope = token[0];
 			if (stack.size() < 2)
-				std::runtime_error("ERR_OP_TWO");
-			result = RPN::do_op(stack, ope);
+				throw std::runtime_error(ERR_OP_TWO);
+			result = RPN::doOperation(stack, ope);
 			stack.push(result);
 		}
 	}
-	return result;
+	if (stack.size() != 1)
+		throw std::runtime_error(ERR_REMAIN);
+	return stack.top();
 }

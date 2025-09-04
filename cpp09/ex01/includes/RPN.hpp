@@ -19,11 +19,13 @@
 #define DIGITS "0123456789"
 #define OPERATORS "*+-/"
 #define SPACE " "
+#define MINUS "-"
 
 #define ERR_NEED_ARG "Error: no argument was given, please input your RPN value!"
 #define ERR_WHY_EQUAL "Error: This is reverse polish notation, no equals are necessary!"
 #define ERR_WRONG_SYNTAX "Error: This is not a valid RPN input!"
 #define ERR_OP_TWO "Error: Operations require at least two digits\n"
+#define ERR_REMAIN "Error: There are remainders in calculation\n"
 //stack is LIFO (last in first out)
 //classical stack example, popping stacks as evaluated
 
@@ -35,6 +37,6 @@ class RPN{
 		RPN &operator=(const RPN &src);
 	
 	public:
-		static long do_op(std::stack<long> stack, char op);
+		static long doOperation(std::stack<long> &stack, char op);
 		static long calculate(const std::string &input);
 };
