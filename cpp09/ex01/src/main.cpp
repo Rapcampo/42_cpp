@@ -42,5 +42,5 @@ int	main(int argc, char **argv){
 		std::cout << e.what() << std::endl;
 		return 1;
 	}
-	std::cout << "the result is: " << res << std::endl;
+	std::cout << "the result is: " << "\e[1;34m"<< res << "\e[0m"<< std::endl;
 }

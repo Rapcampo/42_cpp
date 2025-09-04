@@ -24,8 +24,8 @@
 #define ERR_NEED_ARG "Error: no argument was given, please input your RPN value!"
 #define ERR_WHY_EQUAL "Error: This is reverse polish notation, no equals are necessary!"
 #define ERR_WRONG_SYNTAX "Error: This is not a valid RPN input!"
-#define ERR_OP_TWO "Error: Operations require at least two digits\n"
-#define ERR_REMAIN "Error: There are remainders in calculation\n"
+#define ERR_OP_TWO "Error: Operations require at least two digits"
+#define ERR_REMAIN "Error: There are remainders in calculation"
 //stack is LIFO (last in first out)
 //classical stack example, popping stacks as evaluated
 
