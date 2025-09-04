@@ -19,7 +19,7 @@ while IFS= read -r expr || [[ -n "$expr" ]]; do
 
   # Run and print
   echo -e "\033[1;32m>>> ./RPN \"$expr\"\033[0m"
-  ./RPN "$expr"
+  valgrind --leak-check=full --show-leak-kinds=all ./RPN "$expr"
   echo -e "\e[1;35m$expected\e[0m"
   echo
 

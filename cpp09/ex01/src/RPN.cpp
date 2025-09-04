@@ -42,8 +42,11 @@ long RPN::doOperation(std::stack<long> &stack, char op){
 		return b * a;
 	else if (op == '-')
 		return b - a;
-	else if(op == '/')
+	else if(op == '/'){
+		if (a == 0)
+			throw std::runtime_error("Error: Division by 0!");
 		return b / a;
+	}
 	else
 		return b + a;
 }
