@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <set>
+#include <vector>
 #include <iostream>
 #include <algorithm>
 #include <ctime>
@@ -35,7 +35,7 @@
 class Span{
 	private:
 		unsigned int N;
-		std::multiset<int>	data;
+		std::vector<int>	data;
 	
 	public:
 		Span();
@@ -44,14 +44,14 @@ class Span{
 		Span &operator=(const Span &src);
 		Span(unsigned int N);
 
-		void         addNumber();
-		unsigned int shortestSpan();
-		unsigned int longestSpan();
+		void	addNumber(int nb);
+		int		shortestSpan();
+		int		longestSpan();
 
 		void	randomFill();
 
 		unsigned int getCapacity() const;
-		std::multiset<int> getMultiset() const;
+		std::vector<int> getData() const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Span &span);

@@ -12,8 +12,8 @@
 
 # ================================= Files ======================================
 
-NAME	= easyfind
-SOURCE	= main.cpp #test.cpp 
+NAME	= span
+SOURCE	= main.cpp Span.cpp 
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
