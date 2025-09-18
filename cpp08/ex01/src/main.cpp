@@ -40,7 +40,7 @@ int main()
 //	sleep(3);
 //	std::cout << rd;
 
-	Span rt = Span(100000);
+	Span rt = Span(10000);
 	try{
 		rt.randomFill();
 		std::cout << rt.shortestSpan() << std::endl;
