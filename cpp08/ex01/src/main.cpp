@@ -37,8 +37,8 @@ int main()
 	}catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
-	sleep(3);
-	std::cout << rd;
+//	sleep(3);
+//	std::cout << rd;
 
 	Span rt = Span(100000);
 	try{
@@ -49,8 +49,8 @@ int main()
 	}catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
-	sleep(3);
-	std::cout << rt;
+//	sleep(3);
+//	std::cout << rt;
 
 	Span empty;
 	try{

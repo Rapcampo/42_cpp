@@ -52,10 +52,9 @@ int Span::shortestSpan(){
 	if (this->data.size() < 2)
 		throw std::runtime_error("Too few numbers for Span instruction.");
 	std::sort(this->data.begin(), this->data.end());
-	std::vector<int>::const_iterator it = this->data.begin();
-	int dist = it[1] - it[0];
-	int check;
-	for (; it != this->data.end(); ++it){
+	int dist = this->data[1] - this->data[0];
+	int check = 0;
+	for (std::vector<int>::iterator it = this->data.begin() + 1; it != this->data.end(); ++it){
 		check = *it - *(it - 1);
 		if (check < dist)
 			dist = check;
