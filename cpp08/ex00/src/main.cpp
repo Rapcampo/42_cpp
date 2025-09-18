@@ -1,6 +1,8 @@
+#include <iomanip>
 #include <iostream>
 #include <vector>
 #include <list>
+#include <deque>
 #include "../includes/easyfind.hpp"
 
 
@@ -17,13 +19,13 @@ int main( int argc, char** argv )
 
   std::vector<int>::iterator vectorResult;
 
-  for ( int searchNumber = 0; searchNumber < 10; searchNumber++ ) {
+  for (int searchNumber = 0; searchNumber < 10; searchNumber++) {
     try {
-      vectorResult = easyfind( vectorNumbers, searchNumber );
+      vectorResult = easyfind(vectorNumbers, searchNumber);
       std::cout << "Found " << searchNumber
                 << " in the vector container." << std::endl;
-    } catch ( std::exception& e ) {
-      std::cout << e.what() << " value: " << searchNumber << std::endl;
+    } catch (std::exception& e) {
+      std::cout << e.what() << " of: " << searchNumber << std::endl;
     }
   }
 
@@ -37,15 +39,33 @@ int main( int argc, char** argv )
 
   std::list<int>::iterator listResult;
 
-  for ( int searchNumber = 0; searchNumber < 10; searchNumber++ ) {
+  for (int searchNumber = 0; searchNumber < 10; searchNumber++) {
     try {
       listResult = easyfind( listNumbers, searchNumber );
       std::cout << "Found " << searchNumber
                 << " in the list container." << std::endl;
-    } catch ( std::exception& e ) {
-      std::cout << e.what() << " value: " << searchNumber << std::endl;
+    } catch (std::exception& e) {
+      std::cout << e.what() << " of: " << searchNumber << std::endl;
     }
   }
 
+  std::cout << std::endl;
+
+  std::deque<int> dequeNumbers;
+  dequeNumbers.push_back(3);
+  dequeNumbers.push_back(6);
+  dequeNumbers.push_back(9);
+
+  std::deque<int>::iterator dequeResult;
+
+  for ( int searchNumber = 0; searchNumber < 10; searchNumber++ ) {
+    try {
+      dequeResult = easyfind(dequeNumbers, searchNumber);
+      std::cout << "Found " << searchNumber
+                << " in the list container." << std::endl;
+    } catch (std::exception& e) {
+      std::cout << e.what() << " of: " << searchNumber << std::endl;
+    }
+  }
   return 0;
 }
