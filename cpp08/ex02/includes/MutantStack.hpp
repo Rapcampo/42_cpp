@@ -42,7 +42,7 @@ class MutantStack : public std::stack<T>{
 		MutantStack(const MutantStack &src): std::stack<T>(src) {}
 
 		MutantStack &operator=(const MutantStack &src){
-			if (*this != src){
+			if (this != &src){
 				std::stack<T>::operator=(src);
 			}
 			return *this;
