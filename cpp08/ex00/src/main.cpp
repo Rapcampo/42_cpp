@@ -5,6 +5,7 @@
 #include <deque>
 #include "../includes/easyfind.hpp"
 
+#define SAMPLE_SIZE 10
 
 int main( int argc, char** argv )
 {
@@ -19,7 +20,7 @@ int main( int argc, char** argv )
 
   std::vector<int>::iterator vectorResult;
 
-  for (int searchNumber = 0; searchNumber < 10; searchNumber++) {
+  for (int searchNumber = 0; searchNumber < SAMPLE_SIZE; searchNumber++) {
     try {
       vectorResult = easyfind(vectorNumbers, searchNumber);
       std::cout << "Found " << searchNumber
@@ -39,7 +40,7 @@ int main( int argc, char** argv )
 
   std::list<int>::iterator listResult;
 
-  for (int searchNumber = 0; searchNumber < 10; searchNumber++) {
+  for (int searchNumber = 0; searchNumber < SAMPLE_SIZE; searchNumber++) {
     try {
       listResult = easyfind( listNumbers, searchNumber );
       std::cout << "Found " << searchNumber
@@ -58,7 +59,7 @@ int main( int argc, char** argv )
 
   std::deque<int>::iterator dequeResult;
 
-  for ( int searchNumber = 0; searchNumber < 10; searchNumber++ ) {
+  for ( int searchNumber = 0; searchNumber < SAMPLE_SIZE; searchNumber++ ) {
     try {
       dequeResult = easyfind(dequeNumbers, searchNumber);
       std::cout << "Found " << searchNumber

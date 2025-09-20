@@ -11,11 +11,13 @@
 /* ************************************************************************** */
 
 #include "../includes/Span.hpp"
-#include <unistd.h>
+//#include <unistd.h>
 
 int main()
 {
+	std::srand(std::time(0));
 	Span sp = Span(5);
+	std::cout << "\n" BLU << "=== [subject test] ===" << "\n" << RST << std::endl;
 	try{
 		sp.addNumber(6);
 		sp.addNumber(3);
@@ -30,10 +32,11 @@ int main()
 	}
 
 	Span rd = Span(1000);
+	std::cout << "\n" RED << "=== [1000 numbers test] ===" << "\n" << RST << std::endl;
 	try{
 		rd.randomFill();
-		std::cout << RED << rd.shortestSpan() << RST << std::endl;
-		std::cout << CYN <<  rd.longestSpan() << RST << std::endl;
+		std::cout <<  rd.shortestSpan() << RST << std::endl;
+		std::cout <<  rd.longestSpan() << RST << std::endl;
 	}catch(std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
@@ -41,6 +44,7 @@ int main()
 //	std::cout << rd;
 
 	Span rt = Span(10000);
+	std::cout << "\n" PRP<< "=== [10000 numbers test] ===" << "\n" << RST << std::endl;
 	try{
 		rt.randomFill();
 		std::cout << rt.shortestSpan() << std::endl;
@@ -53,6 +57,7 @@ int main()
 //	std::cout << rt;
 
 	Span empty;
+	std::cout << "\n" GRN << "=== [empty test] ===" << "\n" << RST << std::endl;
 	try{
 		empty.addNumber(1);
 	}catch(std::exception &e){
@@ -60,6 +65,7 @@ int main()
 	}
 
 	Span lonelynb(1);
+	std::cout << "\n" CYN << "=== [1 nb span test] ===" << "\n" << RST << std::endl;
 	try{
 		lonelynb.addNumber(1);
 		lonelynb.shortestSpan();

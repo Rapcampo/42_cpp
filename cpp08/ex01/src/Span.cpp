@@ -11,10 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/Span.hpp"
-#include <algorithm>
-#include <iomanip>
 #include <limits>
-#include <stdexcept>
 
 Span::Span(): N(0){};
 
@@ -73,11 +70,10 @@ int Span::longestSpan(){
 }
 
 int randomGen(){
-	return std::rand() % std::numeric_limits<int>::max();
+	return (std::rand() >> 2) | (std::rand( ) << 2) % std::numeric_limits<int>::max() >> 2;
 }
 
 void Span::randomFill(void){
-	std::srand(std::time(0));
 	this->data.resize(N);
 	std::generate(this->data.begin(), this->data.end(), &randomGen);
 }

@@ -14,8 +14,11 @@
 
 #include <vector>
 #include <iostream>
-#include <algorithm>
 #include <ctime>
+#include <algorithm>
+#include <iomanip>
+#include <limits>
+#include <stdexcept>
 
 //colour prints
 

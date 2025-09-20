@@ -70,6 +70,7 @@ class MutantStack : public std::stack<T>{
 		const_reverse_iterator rend(void) const {return this->c.rend();};
 
 		void	push_back(const T &t){this->push(t);}
+		void	emplace_back(T &t){this->emplace(t);}
 
 		T &back(){return this->top();}
 		const T &back() const{return this->top();}
