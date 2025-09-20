@@ -12,8 +12,8 @@
 
 # ================================= Files ======================================
 
-NAME	= PmergeMe
-SOURCE	= main.cpp PmergeMe.cpp 
+NAME	= btc
+SOURCE	= main.cpp BitcoinExchange.cpp 
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
