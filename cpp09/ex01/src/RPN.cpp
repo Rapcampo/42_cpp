@@ -26,7 +26,8 @@ RPN::~RPN(){}
 RPN::RPN(const RPN &src){*this = src;}
 
 RPN &RPN::operator=(const RPN &src){
-	*this = src;
+	if (this != &src)
+		return *this;
 	return *this;
 }
 
