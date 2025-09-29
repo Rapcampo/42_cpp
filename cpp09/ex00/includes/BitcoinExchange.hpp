@@ -15,16 +15,22 @@
 #include <iostream>
 #include <map>
 #include <string>
-
-//both vector and deque offer random read
-//
+#include <sstream>
+#include <fstream>
 
 class BitcoinExchange{
 	private:
-		std::string	database;
+		std::map<std::string, double> dataset;
+		void getExchangeRate(void);
+		bool extractExchangeRate(const std::string &line, std::string &date, double &ammount);
+		bool validDate(const std::string &date);
+		double findNearestDate(const std::string &date);
+
 	public:
 		BitcoinExchange();
 		~BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &src);
 		BitcoinExchange &operator=(const BitcoinExchange &src);
+
+		void convert(const char *filename);
 };
