@@ -17,6 +17,9 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
+#include <cstring>
 
 //colour prints
 
@@ -39,6 +42,7 @@
 # define ERR_NEG "Error: not a positive number."
 # define ERR_TOO_BIG "Error: too large a number."
 # define ERR_FILE "Error: could not open file."
+# define ERR_ARGS "Error: missing file\nUsage: ./btc [filename]"
 
 class BitcoinExchange{
 	private:

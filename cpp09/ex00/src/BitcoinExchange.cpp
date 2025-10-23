@@ -92,7 +92,9 @@ bool BitcoinExchange::extractExchangeRate(const std::string &line, std::string &
 bool BitcoinExchange::validDate(const std::string &date){
 	char dash;
 	std::stringstream stream(date);
-	struct tm old = {}, normalized{};
+	struct tm old, normalized;
+	std::memset(&old, 0, sizeof(old));
+	std::memset(&normalized, 0, sizeof(old));
 
 	if (date.size() != 10)	
 		return false;
@@ -100,7 +102,7 @@ bool BitcoinExchange::validDate(const std::string &date){
 		return false;
 	old.tm_mon -= 1;
 	old.tm_year -= 1900;
-	mktime(&normalized);
+	std::mktime(&normalized);
 	return (normalized.tm_year == old.tm_year
 			&& normalized.tm_mon == old.tm_mon
 			&& normalized.tm_mday == old.tm_mday);
