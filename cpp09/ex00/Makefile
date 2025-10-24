@@ -84,7 +84,7 @@ fclean: clean
 re: fclean all
 
 leak: all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) input.txt
 
 run: re
 	./$(NAME)

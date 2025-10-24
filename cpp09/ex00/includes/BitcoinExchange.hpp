@@ -21,6 +21,8 @@
 #include <ctime>
 #include <cstring>
 
+# define VAL_IN "0123456789| .-"
+
 //colour prints
 
 # define RST "\e[0m"

@@ -61,7 +61,7 @@ void BitcoinExchange::getExchangeRate(){
 	std::string key, value;
 	data_in.open("data.csv", std::ios::in);
 	if (data_in.fail())
-		throw std::runtime_error(ERR_FILE);
+		throw std::runtime_error(RED ERR_FILE RST);
 	std::getline(data_in, key);
 	while (!data_in.eof()){
 		std::getline(data_in, key, ',');
@@ -75,10 +75,26 @@ void BitcoinExchange::printerr(const std::string &err, const std::string &line){
 std::cout << RED << err << " " YLW << line << CLR << std::endl;
 }
 
+bool validInput(const std::string &line){
+	if (line.find_first_not_of(VAL_IN) != line.npos)
+		return false;
+	if (line.find_first_of('|') != line.find_last_of('|') || line.find_first_of('|') == line.npos)
+		return false;
+	if (line.find_first_of('.') != line.find_last_of('.'))
+		return false;
+	int dash = 0;
+	for (int i  = 0; line[i] != '|'; i++){
+		if (line[i] == '-')
+			dash++;
+	}
+	if (dash == 2)
+		return true;
+	return false;
+}
 bool BitcoinExchange::extractExchangeRate(const std::string &line, std::string &date, double &ammount){
 	std::istringstream stream(line);
 	char delimiter;
-	if (!(stream >> date >> delimiter >> ammount))
+	if (!validInput(line) || !(stream >> date >> delimiter >> ammount))
 		return printerr(ERR_INPUT, line), false;
 	if (!validDate(date))
 		return printerr(ERR_DATE, line), false;
@@ -102,6 +118,7 @@ bool BitcoinExchange::validDate(const std::string &date){
 		return false;
 	old.tm_mon -= 1;
 	old.tm_year -= 1900;
+	normalized = old;
 	std::mktime(&normalized);
 	return (normalized.tm_year == old.tm_year
 			&& normalized.tm_mon == old.tm_mon
