@@ -32,7 +32,6 @@ void BitcoinExchange::convert(const char *filename){
 	std::ifstream infile;
 	std::string line, date;
 	double ammount, worth;
-
 	try{
 		this->getExchangeRate();
 	}catch(std::exception &e){
@@ -41,17 +40,17 @@ void BitcoinExchange::convert(const char *filename){
 	}
 	infile.open(filename, std::ios::in);
 	if (infile.fail())
-		throw std::runtime_error("Error: could not open pointed file!");
-	std::getline(infile, date);
+		throw std::runtime_error(RED ERR_FILE RST);
 	while (!infile.eof()){
 		std::getline(infile, line);
+		if (line.compare("date | value") == 0)
+			continue;
 		if (line == "" || !extractExchangeRate(line, date, ammount))
 			continue;
-		if (dataset.find(date) == dataset.end())
-			worth = findNearestDate(date);
-		else
-			worth = dataset[date];
-		std::cout << date << " => " << ammount << " = " << ammount * worth << std::endl;
+		dataset.find(date) == dataset.end() 
+			? worth = findNearestDate(date) : worth = dataset[date];
+		std::cout << date << " => " 
+			<< ammount << " = " << ammount * worth << std::endl;
 	}
 	infile.close();
 }
@@ -76,11 +75,10 @@ std::cout << RED << err << " " YLW << line << CLR << std::endl;
 }
 
 bool validInput(const std::string &line){
-	if (line.find_first_not_of(VAL_IN) != line.npos)
-		return false;
-	if (line.find_first_of('|') != line.find_last_of('|') || line.find_first_of('|') == line.npos)
-		return false;
-	if (line.find_first_of('.') != line.find_last_of('.'))
+	if (line.find_first_not_of(VAL_IN) != line.npos 
+		|| line.find_first_of('|') != line.find_last_of('|') 
+		|| line.find_first_of('|') == line.npos
+		|| line.find_first_of('.') != line.find_last_of('.'))
 		return false;
 	int dash = 0;
 	for (int i  = 0; line[i] != '|'; i++){
@@ -98,11 +96,8 @@ bool BitcoinExchange::extractExchangeRate(const std::string &line, std::string &
 		return printerr(ERR_INPUT, line), false;
 	if (!validDate(date))
 		return printerr(ERR_DATE, line), false;
-	if (ammount < 0)
-		return printerr(ERR_NEG, ""), false;
-	if (ammount > 1000)
-		return printerr(ERR_TOO_BIG, ""), false;
-	return true;
+	return ammount < 0 ? (printerr(ERR_NEG, ""), false) 
+		: (ammount > 1000 ? printerr(ERR_TOO_BIG, ""), false : true);
 }
 
 bool BitcoinExchange::validDate(const std::string &date){
@@ -110,8 +105,7 @@ bool BitcoinExchange::validDate(const std::string &date){
 	std::stringstream stream(date);
 	struct tm old, normalized;
 	std::memset(&old, 0, sizeof(old));
-	std::memset(&normalized, 0, sizeof(old));
-
+	std::memset(&normalized, 0, sizeof(normalized));
 	if (date.size() != 10)	
 		return false;
 	if (!(stream >> old.tm_year >> dash >> old.tm_mon >> dash >> old.tm_mday))
