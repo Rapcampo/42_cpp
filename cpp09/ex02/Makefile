@@ -6,14 +6,14 @@
 #    By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 13:52:55 by rapcampo          #+#    #+#              #
-#    Updated: 2025/05/02 22:56:50 by rapcampo         ###   ########.fr        #
+#    Updated: 2025/11/12 19:12:03 by rapcampo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ================================= Files ======================================
 
-NAME	= easyfind
-SOURCE	= main.cpp #test.cpp 
+NAME	= PmergeMe 
+SOURCE	= main.cpp PmergeMe.cpp 
 OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
