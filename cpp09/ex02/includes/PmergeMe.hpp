@@ -36,6 +36,7 @@ class PmergeMe{
 	private:
 		std::chrono::high_resolution_clock::time_point start;
 		std::chrono::high_resolution_clock::time_point end;
+		std::chrono::duration<double> elapsedTime;
 		const std::string type;
 	
 	public:
