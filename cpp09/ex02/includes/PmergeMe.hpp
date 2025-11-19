@@ -12,7 +12,8 @@
 
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
-#include <list>
+#include <deque>
+#include <deque>
 #include <vector>
 #include <iostream>
 #include <ctime>
@@ -22,7 +23,7 @@
 
 //NOTE: merge insertion sort works using divide and conquer, binary search trees
 //also uses sorted pairs, check if need std::utility pair(t n, t n);
-//using list and vector are useful containers to allow showing sequential and random
+//using deque and vector are useful containers to allow showing sequential and random
 //memory
 //
 //positive integer sequence "no negative allowed"
@@ -46,8 +47,8 @@ class PmergeMe{
 		PmergeMe &operator=(const PmergeMe &src);
 
 		double mergeInsertionSort(std::vector<int> &val);
-		double mergeInsertionSort(std::list<int> &val);
-		bool parse(char **argv, std::vector<int> &vec, std::list<int> &lst);
+		double mergeInsertionSort(std::deque<int> &val);
+		bool parse(char **argv, std::vector<int> &vec, std::deque<int> &lst);
 
 	private:
 		void	createPairs(const std::vector<int> &val, std::vector<std::vector<int>> &pairs);
@@ -57,14 +58,14 @@ class PmergeMe{
 		void	insertionSort(std::vector<int> &s, size_t n, const std::vector<std::vector<int>> &pairs);
 		void	binarySearch(std::vector<int> &sorted, int num);
 		
-		//list overload
+		//deque overload
 
-		void	createPairs(const std::list<int> &val, std::list<std::list<int>> &pairs);
-		void	mergeSort(std::list<std::list<int>> &pairs);
-		void	merge(std::list<std::list<int>> &left, std::list<std::list<int>> &right, std::list<std::list<int>> &result);
-		void	JacobsthalSequence(std::list<size_t> &vec);
-		void	insertionSort(std::list<int> &s, size_t n, const std::list<std::list<int>> &pairs);
-		void	binarySearch(std::list<int> &sorted, int num);
+		void	createPairs(const std::deque<int> &val, std::deque<std::deque<int>> &pairs);
+		void	mergeSort(std::deque<std::deque<int>> &pairs);
+		void	merge(std::deque<std::deque<int>> &left, std::deque<std::deque<int>> &right, std::deque<std::deque<int>> &result);
+		void	JacobsthalSequence(std::deque<size_t> &vec);
+		void	insertionSort(std::deque<int> &s, size_t n, const std::deque<std::deque<int>> &pairs);
+		void	binarySearch(std::deque<int> &sorted, int num);
 };
 
 #endif 
