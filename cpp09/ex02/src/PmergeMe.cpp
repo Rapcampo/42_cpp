@@ -61,7 +61,7 @@ bool PmergeMe::parse(char **argv, std::vector<int> &vec, std::deque<int> &deq){
 	return true;
 }
 
-void	PmergeMe::merge(std::vector<std::vector<int>> &left, std::vector<std::vector<int>> &right, std::vector<std::vector<int>> &result)
+void	PmergeMe::merge(std::vector<std::vector<int> > &left, std::vector<std::vector<int> > &right, std::vector<std::vector<int> > &result)
 {
 	result.clear();
 	while (!left.empty() && !right.empty()){
@@ -84,7 +84,7 @@ void	PmergeMe::merge(std::vector<std::vector<int>> &left, std::vector<std::vecto
 	}
 }
 
-void	PmergeMe::mergeSort(std::vector<std::vector<int>> &pairs){
+void	PmergeMe::mergeSort(std::vector<std::vector<int> > &pairs){
 	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
 	std::vector<std::vector<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
 	if (pairs.size() == 1)
@@ -94,7 +94,7 @@ void	PmergeMe::mergeSort(std::vector<std::vector<int>> &pairs){
 	merge(left, right, pairs);
 }
 
-void	PmergeMe::createPairs(const std::vector<int> &nums, std::vector<std::vector<int>> &pairs){
+void	PmergeMe::createPairs(const std::vector<int> &nums, std::vector<std::vector<int> > &pairs){
 	size_t npairs = std::ceil(nums.size() / 2.0);
 
 	pairs.resize(npairs);
@@ -131,7 +131,7 @@ void	PmergeMe::binarySearch(std::vector<int> &s, int number){
 	s.insert(s.begin() + start, number);
 }
 
-void	PmergeMe::insertionSort(std::vector<int> &s, size_t n, const std::vector<std::vector<int>> &pairs){
+void	PmergeMe::insertionSort(std::vector<int> &s, size_t n, const std::vector<std::vector<int> > &pairs){
 	std::vector<size_t> jacob(pairs.size());
 	JacobsthalSequence(jacob);
 	binarySearch(s, pairs[0][B]);
@@ -166,7 +166,7 @@ double PmergeMe::mergeInsertionSort(std::vector<int> &nums){
 //list part
 
 
-void	PmergeMe::merge(std::deque<std::deque<int>> &left, std::deque<std::deque<int>> &right, std::deque<std::deque<int>> &result)
+void	PmergeMe::merge(std::deque<std::deque<int> > &left, std::deque<std::deque<int> > &right, std::deque<std::deque<int> > &result)
 {
 	result.clear();
 	while (!left.empty() && !right.empty()){
@@ -189,7 +189,7 @@ void	PmergeMe::merge(std::deque<std::deque<int>> &left, std::deque<std::deque<in
 	}
 }
 
-void	PmergeMe::mergeSort(std::deque<std::deque<int>> &pairs){
+void	PmergeMe::mergeSort(std::deque<std::deque<int> > &pairs){
 	std::deque<std::deque<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
 	std::deque<std::deque<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
 	if (pairs.size() == 1)
@@ -199,7 +199,7 @@ void	PmergeMe::mergeSort(std::deque<std::deque<int>> &pairs){
 	merge(left, right, pairs);
 }
 
-void	PmergeMe::createPairs(const std::deque<int> &nums, std::deque<std::deque<int>> &pairs){
+void	PmergeMe::createPairs(const std::deque<int> &nums, std::deque<std::deque<int> > &pairs){
 	size_t npairs = std::ceil(nums.size() / 2.0);
 
 	pairs.resize(npairs);
@@ -236,7 +236,7 @@ void	PmergeMe::binarySearch(std::deque<int> &s, int number){
 	s.insert(s.begin() + start, number);
 }
 
-void	PmergeMe::insertionSort(std::deque<int> &s, size_t n, const std::deque<std::deque<int>> &pairs){
+void	PmergeMe::insertionSort(std::deque<int> &s, size_t n, const std::deque<std::deque<int> > &pairs){
 	std::deque<size_t> jacob(pairs.size());
 	JacobsthalSequence(jacob);
 	binarySearch(s, pairs[0][B]);
