@@ -85,8 +85,8 @@ void	PmergeMe::merge(std::vector<std::vector<int> > &left, std::vector<std::vect
 }
 
 void	PmergeMe::mergeSort(std::vector<std::vector<int> > &pairs){
-	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
-	std::vector<std::vector<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
+	std::vector<std::vector<int> > left(pairs.begin(), pairs.begin() + pairs.size() / 2);
+	std::vector<std::vector<int> > right(pairs.begin() + pairs.size() / 2, pairs.end());
 	if (pairs.size() == 1)
 		return ;
 	mergeSort(left);
@@ -190,8 +190,8 @@ void	PmergeMe::merge(std::deque<std::deque<int> > &left, std::deque<std::deque<i
 }
 
 void	PmergeMe::mergeSort(std::deque<std::deque<int> > &pairs){
-	std::deque<std::deque<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
-	std::deque<std::deque<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
+	std::deque<std::deque<int> > left(pairs.begin(), pairs.begin() + pairs.size() / 2);
+	std::deque<std::deque<int> > right(pairs.begin() + pairs.size() / 2, pairs.end());
 	if (pairs.size() == 1)
 		return ;
 	mergeSort(left);
@@ -252,7 +252,7 @@ void	PmergeMe::insertionSort(std::deque<int> &s, size_t n, const std::deque<std:
 }
 
 double PmergeMe::mergeInsertionSort(std::deque<int> &nums){
-	std::deque<std::deque<int>> pairs;
+	std::deque<std::deque<int> > pairs;
 	std::deque<int> s;
 
 	start = std::chrono::high_resolution_clock::now();

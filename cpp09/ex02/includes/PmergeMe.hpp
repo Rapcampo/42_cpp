@@ -53,7 +53,7 @@ class PmergeMe{
 	private:
 		void	createPairs(const std::vector<int> &val, std::vector<std::vector<int> > &pairs);
 		void	mergeSort(std::vector<std::vector<int> > &pairs);
-		void	merge(std::vector<std::vector<int> > &left, std::vector<std::vector<int> > &right, std::vector<std::vector<int>> &result);
+		void	merge(std::vector<std::vector<int> > &left, std::vector<std::vector<int> > &right, std::vector<std::vector<int> > &result);
 		void	JacobsthalSequence(std::vector<size_t> &vec);
 		void	insertionSort(std::vector<int> &s, size_t n, const std::vector<std::vector<int> > &pairs);
 		void	binarySearch(std::vector<int> &sorted, int num);
@@ -62,7 +62,7 @@ class PmergeMe{
 
 		void	createPairs(const std::deque<int> &val, std::deque<std::deque<int> > &pairs);
 		void	mergeSort(std::deque<std::deque<int> > &pairs);
-		void	merge(std::deque<std::deque<int>> &left, std::deque<std::deque<int> > &right, std::deque<std::deque<int> > &result);
+		void	merge(std::deque<std::deque<int> > &left, std::deque<std::deque<int> > &right, std::deque<std::deque<int> > &result);
 		void	JacobsthalSequence(std::deque<size_t> &vec);
 		void	insertionSort(std::deque<int> &s, size_t n, const std::deque<std::deque<int> > &pairs);
 		void	binarySearch(std::deque<int> &sorted, int num);
