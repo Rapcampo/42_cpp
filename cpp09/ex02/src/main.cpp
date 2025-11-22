@@ -40,13 +40,13 @@ int main(int ac, char **av){
 	print(vec);
 
 	std::cout << "Time to process a range of " << vec.size()
-		<< " elements with std::vector : "
-		<< vecDeltaT << " s /"
-		<< vecDeltaT * 1000 << " ms /"
-		<< vecDeltaT * 1000 * 1000 << " us \n";
+		<< " elements with std::vector: "
+		<< vecDeltaT / CLOCKS_PER_SEC << " sec: "
+		<< vecDeltaT * 1e3 / CLOCKS_PER_SEC << " ms: "
+		<< vecDeltaT * 1e6 / CLOCKS_PER_SEC  << " µs \n";
 	std::cout << "Time to process a range of " << dec.size()
-		<< " elements with std::deque : "
-		<< decDeltaT << " s /"
-		<< decDeltaT * 1000 << " ms /"
-		<< decDeltaT * 1000 * 1000 << " us \n";
+		<< " elements with std::deque: "
+		<< decDeltaT / CLOCKS_PER_SEC << " sec: "
+		<< decDeltaT * 1e3 / CLOCKS_PER_SEC << " ms: "
+		<< decDeltaT * 1e6 / CLOCKS_PER_SEC << " µs \n";
 }

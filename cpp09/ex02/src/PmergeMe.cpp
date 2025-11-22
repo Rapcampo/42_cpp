@@ -150,17 +150,17 @@ double PmergeMe::mergeInsertionSort(std::vector<int> &nums){
 	std::vector<std::vector<int>> pairs;
 	std::vector<int> s;
 
-	start = std::chrono::high_resolution_clock::now();
+	start = std::clock();
 	createPairs(nums, pairs);
 	mergeSort(pairs);
 	for (size_t i = 0; i < pairs.size() && pairs[i][A] != ODD; i++){
 		s.push_back(pairs[i][A]);
 	}
 	insertionSort(s, nums.size(), pairs);
-	end = std::chrono::high_resolution_clock::now();
-	elapsedTime = end - start;
+	end = std::clock();
+	elapsedTime = double(end - start);
 	nums = s;
-	return (elapsedTime.count());
+	return (elapsedTime);
 }
 
 //list part
@@ -255,15 +255,15 @@ double PmergeMe::mergeInsertionSort(std::deque<int> &nums){
 	std::deque<std::deque<int> > pairs;
 	std::deque<int> s;
 
-	start = std::chrono::high_resolution_clock::now();
+	start = std::clock();
 	createPairs(nums, pairs);
 	mergeSort(pairs);
 	for (size_t i = 0; i < pairs.size() && pairs[i][A] != ODD; i++){
 		s.push_back(pairs[i][A]);
 	}
 	insertionSort(s, nums.size(), pairs);
-	end = std::chrono::high_resolution_clock::now();
-	elapsedTime = end - start;
+	end = std::clock();
+	elapsedTime = double(end - start);
 	nums = s;
-	return (elapsedTime.count());
+	return (elapsedTime);
 }

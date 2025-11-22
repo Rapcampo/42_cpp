@@ -17,9 +17,9 @@
 #include <vector>
 #include <iostream>
 #include <ctime>
-#include <chrono>
 #include <algorithm>
 #include <iterator>
+#include <utility>
 
 //NOTE: merge insertion sort works using divide and conquer, binary search trees
 //also uses sorted pairs, check if need std::utility pair(t n, t n);
@@ -32,12 +32,13 @@
 //^ required format
 //error management for duplicates is of own discretion
 //error msgs always in stderr
+//clock_t needs to be divided by CLOCKS_PER_SEC
 
 class PmergeMe{
 	private:
-		std::chrono::high_resolution_clock::time_point start;
-		std::chrono::high_resolution_clock::time_point end;
-		std::chrono::duration<double> elapsedTime;
+		clock_t start;
+		clock_t end;
+		double elapsedTime;
 		const std::string type;
 	
 	public:
