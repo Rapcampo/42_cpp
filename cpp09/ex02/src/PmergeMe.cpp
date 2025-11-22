@@ -113,7 +113,7 @@ void	PmergeMe::createPairs(const std::vector<int> &nums, std::vector<std::vector
 
 void	PmergeMe::JacobsthalSequence(std::vector<size_t> &vec){
 	for (size_t i = 0; i < vec.size(); i++)
-		vec[i] = (pow(2, i + 2) - pow(-1, i + 2)) / 3;
+		vec[i] = (pow(2, i) - pow(-1, i)) / 3;
 }
 
 void	PmergeMe::binarySearch(std::vector<int> &s, int number){
@@ -216,9 +216,9 @@ void	PmergeMe::createPairs(const std::deque<int> &nums, std::deque<std::deque<in
 	}
 }
 
-void	PmergeMe::JacobsthalSequence(std::deque<size_t> &vec){
-	for (size_t i = 0; i < vec.size(); i++)
-		vec[i] = (pow(2, i + 2) - pow(-1, i + 2)) / 3;
+void	PmergeMe::JacobsthalSequence(std::deque<size_t> &dec){
+	for (size_t i = 0; i < dec.size(); i++)
+		dec[i] = (std::pow(2, i) - pow(-1, i)) / 3;
 }
 
 void	PmergeMe::binarySearch(std::deque<int> &s, int number){
