@@ -21,7 +21,7 @@ int main(int argc, char **argv){
 	int n = 0;
 	int prev = 0;
 	if (arg == "Error")
-		std::cout << arg << std::endl;
+		return	std::cout << arg << std::endl, 0;
 	else{
 		ss << arg;
 		std::cout << arg << std::endl;

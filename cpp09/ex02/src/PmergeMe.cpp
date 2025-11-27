@@ -14,6 +14,8 @@
 #include <sstream>
 #include <cmath>
 
+//NOTE: there is data loss in certain edge cases, need to revise the algorithm
+
 #define A 0
 #define B 1
 #define ODD -1
@@ -112,8 +114,14 @@ void	PmergeMe::createPairs(const std::vector<int> &nums, std::vector<std::vector
 }
 
 void	PmergeMe::JacobsthalSequence(std::vector<size_t> &vec){
-	for (size_t i = 0; i < vec.size(); i++)
-		vec[i] = (pow(2, i) - pow(-1, i)) / 3;
+	if (vec.empty())
+		return;
+	vec[0] = 0;
+	if (vec.size() == 1)
+		return;
+	vec[1] = 1;
+	for (size_t i = 2; i < vec.size(); i++)
+		vec[i] = vec[i - 1] + 2 * vec[i - 2];
 }
 
 void	PmergeMe::binarySearch(std::vector<int> &s, int number){
@@ -218,8 +226,14 @@ void	PmergeMe::createPairs(const std::deque<int> &nums, std::deque<std::deque<in
 }
 
 void	PmergeMe::JacobsthalSequence(std::deque<size_t> &dec){
-	for (size_t i = 0; i < dec.size(); i++)
-		dec[i] = (std::pow(2, i) - pow(-1, i)) / 3;
+	if (dec.empty())
+		return;
+	dec[0] = 0;
+	if (dec.size() == 1)
+		return;
+	dec[1] = 1;
+	for (size_t i = 2; i < dec.size(); i++)
+		dec[i] = dec[i - 1] + 2 * dec[i - 2];
 }
 
 void	PmergeMe::binarySearch(std::deque<int> &s, int number){

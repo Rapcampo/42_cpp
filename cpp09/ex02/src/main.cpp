@@ -21,6 +21,14 @@ void print(T &cont){
 	std::cout << std::endl;
 }
 
+template <typename C>
+void check(const C& c, const char* name) {
+    std::cout << name
+              << " size()=" << c.size()
+              << " distance=" << std::distance(c.begin(), c.end())
+              << "\n";
+}
+
 int main(int ac, char **av){
 	std::vector<int> vec;
 	std::deque<int> dec;
@@ -33,11 +41,15 @@ int main(int ac, char **av){
 		return std::cout << "Error\n", 1;
 #ifndef DEBUG
 	std::cout << "Before: ";
+	//check(vec, "vec before sort");
+	//check(dec, "vec before sort");
 	print(vec);
 	double vecDeltaT = sort.mergeInsertionSort(vec);
 	double decDeltaT = sort.mergeInsertionSort(dec);
 
 	std::cout << "After: ";
+	//check(vec, "vec after sort");
+	//check(dec, "vec after sort");
 	print(vec);
 
 	std::cout << "Time to process a range of " << vec.size()

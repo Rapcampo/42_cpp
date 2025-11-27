@@ -39,7 +39,7 @@ run (){
 			RES="$(./PmergeMe "$ARG")"
 			./checker "$RES"
 		else
-			./PmergeMe $case
+			./PmergeMe "$case"
 		fi
 		echo
 	done < "$file"
