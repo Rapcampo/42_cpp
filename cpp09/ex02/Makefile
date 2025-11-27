@@ -12,14 +12,17 @@
 
 # ================================= Files ======================================
 
-NAME	= PmergeMe 
-SOURCE	= main.cpp PmergeMe.cpp 
-OBJS	= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
+NAME		= PmergeMe 
+SOURCE		= main.cpp PmergeMe.cpp 
+DEBUG_SOURCE= checker.cpp
+OBJS		= $(addprefix $(OBJS_DIR), $(SOURCE:.cpp=.o))
+OBJS_DEBUG	= $(addprefix $(OBJS_DIR), $(DEBUG_SOURCE:.cpp=.o))
 
 # ============================ Folder Structures ===============================
 
 HEADERS		= ./includes/
 SOURCE_DIR	= $(addprefix ./src/, $(SOURCE))
+DSOURCE_DIR	= $(addprefix ./src/, $(DEBUG_SOURCE))
 OBJS_DIR	= ./objs/
 
 # ============================ Commands & Flags ===============================
@@ -27,8 +30,8 @@ OBJS_DIR	= ./objs/
 CC			= c++
 RM			= rm -rf
 #AR			= ar -rcs
-FLAGS		= -Wall -Wextra -Werror #-std=c++98
-LEAKS		= -g -fsanitize=address
+FLAGS		= -Wall -Wextra -Werror -std=c++98 -g
+LEAKS		= -fsanitize=address
 DEBUG		= -DDEBUG
 MAKE_FLAG	= --no-print-directory
 
@@ -50,11 +53,14 @@ RESET	= \e[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 ifdef debug
-	$(CC) $(FLAGS) $(LEAKS) -o $@ $^ 
+$(NAME): $(OBJS) $(OBJS_DEBUG)
+	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
+	$(CC) $(FLAGS) $(LEAKS) -o $@ $(OBJS) 
+	$(CC) -o checker $(OBJS_DEBUG)
 else
+$(NAME): $(OBJS) 
+	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 	$(CC) $(FLAGS) -o $@ $^
 endif
 	echo "\n*************************$(GREEN)$(BLINK)    "\
@@ -63,21 +69,38 @@ endif
 $(OBJS):
 	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
-ifdef debug
-	$(CC) $(FLAGS) $(LEAKS) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
-else
+ifndef debug
 	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
+else
+	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
 endif
 	mv $(SOURCE:.cpp=.o) $(OBJS_DIR)
 
+$(OBJS_DEBUG):
+	echo "[$(PURPLE)$(BLINK)Compiling debug...$(RESET)]" \
+		"$(YELLOW)sources$(RESET)"
+	mkdir -p objs
+	$(CC) -c $(DSOURCE_DIR)
+	mv $(DEBUG_SOURCE:.cpp=.o) $(OBJS_DIR)
+
 clean:
+ifndef debug
+	$(RM) $(OBJS)
+	$(RM) $(OBJS_DEBUG)
+	$(RM) $(OBJS_DIR)
+else
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
+endif
 	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
+ifndef debug
 	$(RM) $(NAME)
+else
+	$(RM) $(NAME) checker
+endif
 	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 

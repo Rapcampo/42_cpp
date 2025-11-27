@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
-#include <chrono>
 #include <sstream>
 #include <cmath>
 
@@ -22,7 +21,7 @@
 int	min(int a, int b) {return a < b ? a : b;}
 int	max(int a, int b) {return a > b ? a : b;}
 
-PmergeMe::PmergeMe() : type("null"){}
+PmergeMe::PmergeMe() : type("none"){}
 
 PmergeMe::~PmergeMe(){}
 
@@ -61,7 +60,8 @@ bool PmergeMe::parse(char **argv, std::vector<int> &vec, std::deque<int> &deq){
 	return true;
 }
 
-void	PmergeMe::merge(std::vector<std::vector<int> > &left, std::vector<std::vector<int> > &right, std::vector<std::vector<int> > &result)
+void	PmergeMe::merge(std::vector<std::vector<int> > &left,
+		std::vector<std::vector<int> > &right, std::vector<std::vector<int> > &result)
 {
 	result.clear();
 	while (!left.empty() && !right.empty()){
@@ -147,7 +147,7 @@ void	PmergeMe::insertionSort(std::vector<int> &s, size_t n, const std::vector<st
 }
 
 double PmergeMe::mergeInsertionSort(std::vector<int> &nums){
-	std::vector<std::vector<int>> pairs;
+	std::vector<std::vector<int> > pairs;
 	std::vector<int> s;
 
 	start = std::clock();
@@ -166,7 +166,8 @@ double PmergeMe::mergeInsertionSort(std::vector<int> &nums){
 //list part
 
 
-void	PmergeMe::merge(std::deque<std::deque<int> > &left, std::deque<std::deque<int> > &right, std::deque<std::deque<int> > &result)
+void	PmergeMe::merge(std::deque<std::deque<int> > &left,
+		std::deque<std::deque<int> > &right, std::deque<std::deque<int> > &result)
 {
 	result.clear();
 	while (!left.empty() && !right.empty()){
@@ -236,7 +237,8 @@ void	PmergeMe::binarySearch(std::deque<int> &s, int number){
 	s.insert(s.begin() + start, number);
 }
 
-void	PmergeMe::insertionSort(std::deque<int> &s, size_t n, const std::deque<std::deque<int> > &pairs){
+void	PmergeMe::insertionSort(std::deque<int> &s, size_t n,
+		const std::deque<std::deque<int> > &pairs){
 	std::deque<size_t> jacob(pairs.size());
 	JacobsthalSequence(jacob);
 	binarySearch(s, pairs[0][B]);

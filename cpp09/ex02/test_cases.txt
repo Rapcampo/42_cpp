@@ -1,0 +1,29 @@
+5 numbers
+shuf -i 0-10000 -n 5
+
+10 numbers
+shuf -i 0-10000 -n 10
+
+50 numbers
+shuf -i 0-10000 -n 50
+
+100 numbers
+shuf -i 0-10000 -n 100
+
+200 numbers
+shuf -i 0-10000 -n 200
+
+500 numbers
+shuf -i 0-10000 -n 500
+
+1000 numbers
+shuf -i 0-10000 -n 1000
+
+3000 numbers
+shuf -i 0-10000 -n 3000
+
+5000 numbers
+shuf -i 0-10000 -n 5000
+
+10000 numbers
+shuf -i 0-10000 -n 10000

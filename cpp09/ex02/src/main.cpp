@@ -31,6 +31,7 @@ int main(int ac, char **av){
 		return -1;
 	if (!sort.parse(av + 1, vec, dec))
 		return std::cout << "Error\n", 1;
+#ifndef DEBUG
 	std::cout << "Before: ";
 	print(vec);
 	double vecDeltaT = sort.mergeInsertionSort(vec);
@@ -49,4 +50,10 @@ int main(int ac, char **av){
 		<< decDeltaT / CLOCKS_PER_SEC << " sec | "
 		<< decDeltaT * 1e3 / CLOCKS_PER_SEC << " ms | "
 		<< decDeltaT * 1e6 / CLOCKS_PER_SEC << " µs \n";
+#elif DEBUG
+	sort.mergeInsertionSort(vec);
+	sort.mergeInsertionSort(dec);
+	print(vec);
+	//print(dec);
+#endif
 }
