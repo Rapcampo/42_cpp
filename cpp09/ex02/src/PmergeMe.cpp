@@ -120,10 +120,6 @@ double PmergeMe::mergeInsertionSort(std::deque<int> &nums){
 	for (size_t i = 0; i < pairs.size() && pairs[i][A] != ODD; i++){
 		s.push_back(pairs[i][A]);
 	}
-#ifdef DEBUG
-	check(pairs, "Before insertionsort: pairs");
-	check(s, "Before insertionsort: sequence");
-#endif
 	insertionSort(s, nums.size(), pairs);
 	end = std::clock();
 	elapsedTime = double(end - start);

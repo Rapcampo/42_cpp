@@ -6,7 +6,7 @@
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:50:00 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/11/12 19:11:34 by rapcampo         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:16:47 by rapcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,12 @@ class PmergeMe{
 					result.push_back(right.front());
 					right.erase(right.begin());
 				}
-#ifdef DEBUG
-				check(result, "MERGE");
-#endif
 			}
 
 		template <typename J>
 			void	JacobsthalSequence(J &jacob){
-				if (jacob.empty())
-					return;
-				jacob[0] = 0;
-				if (jacob.size() == 1)
-					return;
-				jacob[1] = 1;
-				for (size_t i = 2; i < jacob.size(); i++)
-					jacob[i] = jacob[i - 1] + 2 * jacob[i - 2];
+				for (size_t i = 0; i < jacob.size(); i++)
+					jacob[i] = (pow(2, i + 2) - pow(-1, i + 2)) / 3;
 			}
 
 		template <typename T>
@@ -128,7 +119,7 @@ class PmergeMe{
 				start = 0;
 				end = s.size() - 1;
 				while (start <= end){
-					middle = start + (end - start) / 2;
+					middle = start + ((end - start) >> 1);
 					if (number > s[middle])
 						start = middle + 1;
 					else if (number < s[middle])
@@ -142,6 +133,8 @@ class PmergeMe{
 				std::deque<size_t> jacob(pairs.size());
 				JacobsthalSequence(jacob);
 				binarySearch(s, pairs[0][B]);
+				if (pairs.size() > 1)
+					binarySearch(s, pairs[1][B]);
 				for (size_t i = 1; i < jacob.size(); i++){
 					for (size_t j = jacob[i]; j > jacob[i - 1]; j--){
 						if (j >= pairs.size())
@@ -151,9 +144,6 @@ class PmergeMe{
 							return ;
 					}
 				}
-#ifdef DEBUG
-				check(s, "INSERTION SORT");
-#endif
 			}
 
 };
