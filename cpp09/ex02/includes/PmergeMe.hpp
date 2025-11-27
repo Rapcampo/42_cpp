@@ -20,7 +20,12 @@
 #include <algorithm>
 #include <iterator>
 #include <utility>
+#include <sstream>
+#include <cmath>
 
+#define A 0
+#define B 1
+#define ODD -1
 //NOTE: merge insertion sort works using divide and conquer, binary search trees
 //also uses sorted pairs, check if need std::utility pair(t n, t n);
 //using deque and vector are useful containers to allow showing sequential and random
@@ -33,6 +38,17 @@
 //error management for duplicates is of own discretion
 //error msgs always in stderr
 //clock_t needs to be divided by CLOCKS_PER_SEC
+int	min(int a, int b);
+int	max(int a, int b);
+
+//debugging
+template <typename C>
+void check(const C& c, const char* name) {
+	std::cout << name
+		<< " size()=" << c.size()
+		<< " distance=" << std::distance(c.begin(), c.end())
+		<< "\n";
+}
 
 class PmergeMe{
 	private:
@@ -53,20 +69,93 @@ class PmergeMe{
 
 	private:
 		void	createPairs(const std::vector<int> &val, std::vector<std::vector<int> > &pairs);
-		void	mergeSort(std::vector<std::vector<int> > &pairs);
-		void	merge(std::vector<std::vector<int> > &left, std::vector<std::vector<int> > &right, std::vector<std::vector<int> > &result);
-		void	JacobsthalSequence(std::vector<size_t> &vec);
-		void	insertionSort(std::vector<int> &s, size_t n, const std::vector<std::vector<int> > &pairs);
-		void	binarySearch(std::vector<int> &sorted, int num);
-		
-		//deque overload
 
 		void	createPairs(const std::deque<int> &val, std::deque<std::deque<int> > &pairs);
-		void	mergeSort(std::deque<std::deque<int> > &pairs);
-		void	merge(std::deque<std::deque<int> > &left, std::deque<std::deque<int> > &right, std::deque<std::deque<int> > &result);
-		void	JacobsthalSequence(std::deque<size_t> &vec);
-		void	insertionSort(std::deque<int> &s, size_t n, const std::deque<std::deque<int> > &pairs);
-		void	binarySearch(std::deque<int> &sorted, int num);
+
+		template <typename C>
+			void	mergeSort(C &pairs){
+				C left(pairs.begin(), pairs.begin() + pairs.size() / 2);
+				C right(pairs.begin() + pairs.size() / 2, pairs.end());
+				if (pairs.size() == 1)
+					return ;
+				mergeSort(left);
+				mergeSort(right);
+				merge(left, right, pairs);
+			}
+
+		template <typename T>
+			void	merge(T &left, T &right, T &result){
+				result.clear();
+				while (!left.empty() && !right.empty()){
+					if (left[0][A] < right[0][A] || right[0][A] == ODD){
+						result.push_back(left.front());
+						left.erase(left.begin());
+					}
+					else{
+						result.push_back(right.front());
+						right.erase(right.begin());
+					}
+				}
+				while (!left.empty()){
+					result.push_back(left.front());
+					left.erase(left.begin());
+				}
+				while (!right.empty()){
+					result.push_back(right.front());
+					right.erase(right.begin());
+				}
+#ifdef DEBUG
+				check(result, "MERGE");
+#endif
+			}
+
+		template <typename J>
+			void	JacobsthalSequence(J &jacob){
+				if (jacob.empty())
+					return;
+				jacob[0] = 0;
+				if (jacob.size() == 1)
+					return;
+				jacob[1] = 1;
+				for (size_t i = 2; i < jacob.size(); i++)
+					jacob[i] = jacob[i - 1] + 2 * jacob[i - 2];
+			}
+
+		template <typename T>
+			void	binarySearch(T &s, int number){
+				int start, middle, end;
+
+				start = 0;
+				end = s.size() - 1;
+				while (start <= end){
+					middle = start + (end - start) / 2;
+					if (number > s[middle])
+						start = middle + 1;
+					else if (number < s[middle])
+						end = middle - 1;
+				}
+				s.insert(s.begin() + start, number);
+			}
+
+		template <typename C, typename P>
+			void	insertionSort(C &s, size_t n, const P &pairs){
+				std::deque<size_t> jacob(pairs.size());
+				JacobsthalSequence(jacob);
+				binarySearch(s, pairs[0][B]);
+				for (size_t i = 1; i < jacob.size(); i++){
+					for (size_t j = jacob[i]; j > jacob[i - 1]; j--){
+						if (j >= pairs.size())
+							continue;
+						binarySearch(s, pairs[j][B]);
+						if (s.size() == n)
+							return ;
+					}
+				}
+#ifdef DEBUG
+				check(s, "INSERTION SORT");
+#endif
+			}
+
 };
 
 #endif 

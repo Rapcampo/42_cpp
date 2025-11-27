@@ -21,14 +21,6 @@ void print(T &cont){
 	std::cout << std::endl;
 }
 
-template <typename C>
-void check(const C& c, const char* name) {
-    std::cout << name
-              << " size()=" << c.size()
-              << " distance=" << std::distance(c.begin(), c.end())
-              << "\n";
-}
-
 int main(int ac, char **av){
 	std::vector<int> vec;
 	std::deque<int> dec;
