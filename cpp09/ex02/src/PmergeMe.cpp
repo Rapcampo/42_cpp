@@ -12,9 +12,6 @@
 
 #include "../includes/PmergeMe.hpp"
 
-//NOTE: there is data loss in certain edge cases, need to revise the algorithm
-//edge cases: 5, 6, 105
-
 int	min(int a, int b) {return a < b ? a : b;}
 int	max(int a, int b) {return a > b ? a : b;}
 
@@ -60,7 +57,6 @@ bool PmergeMe::parse(char **argv, std::vector<int> &vec, std::deque<int> &deq){
 void	PmergeMe::createPairs(const std::vector<int> &nums, std::vector<std::vector<int> > &pairs){
 	size_t npairs = std::ceil(nums.size() / 2.0);
 
-	pairs.resize(npairs);
 	pairs.assign(npairs, std::vector<int>(2));
 	for (size_t i = 0; i < pairs.size(); i++){
 		if ((2 * i + 1) == nums.size()){
@@ -68,8 +64,8 @@ void	PmergeMe::createPairs(const std::vector<int> &nums, std::vector<std::vector
 			pairs[i][B] = nums[2 * i];
 		}
 		else{
-			pairs[i][A] = min(nums[2 * i], nums[2 * i + 1]);
-			pairs[i][B] = max(nums[2 * i], nums[2 * i + 1]);
+			pairs[i][A] = max(nums[2 * i], nums[2 * i + 1]);
+			pairs[i][B] = min(nums[2 * i], nums[2 * i + 1]);
 		}
 	}
 }
@@ -96,7 +92,6 @@ double PmergeMe::mergeInsertionSort(std::vector<int> &nums){
 void	PmergeMe::createPairs(const std::deque<int> &nums, std::deque<std::deque<int> > &pairs){
 	size_t npairs = std::ceil(nums.size() / 2.0);
 
-	pairs.resize(npairs);
 	pairs.assign(npairs, std::deque<int>(2));
 	for (size_t i = 0; i < pairs.size(); i++){
 		if ((2 * i + 1) == nums.size()){
@@ -104,8 +99,8 @@ void	PmergeMe::createPairs(const std::deque<int> &nums, std::deque<std::deque<in
 			pairs[i][B] = nums[2 * i];
 		}
 		else{
-			pairs[i][A] = min(nums[2 * i], nums[2 * i + 1]);
-			pairs[i][B] = max(nums[2 * i], nums[2 * i + 1]);
+			pairs[i][A] = max(nums[2 * i], nums[2 * i + 1]);
+			pairs[i][B] = min(nums[2 * i], nums[2 * i + 1]);
 		}
 	}
 }

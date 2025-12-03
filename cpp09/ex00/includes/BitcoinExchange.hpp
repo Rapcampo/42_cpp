@@ -20,6 +20,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
+#include <stdexcept>
 
 # define VAL_IN "0123456789| .-"
 

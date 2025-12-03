@@ -34,15 +34,11 @@ int main(int ac, char **av){
 		return std::cout << "Error\n", 1;
 #ifndef DEBUG
 	std::cout << "Before: ";
-	//check(vec, "vec before sort");
-	//check(dec, "vec before sort");
 	print(vec);
 	double vecDeltaT = sort.mergeInsertionSort(vec);
 	double decDeltaT = sort.mergeInsertionSort(dec);
 
 	std::cout << "After: ";
-	//check(vec, "vec after sort");
-	//check(dec, "vec after sort");
 	print(vec);
 
 	std::cout << "Time to process a range of " << vec.size()

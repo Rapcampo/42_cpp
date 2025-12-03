@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/BitcoinExchange.hpp"
-#include <stdexcept>
 
 BitcoinExchange::BitcoinExchange(){}
 

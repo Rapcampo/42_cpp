@@ -26,6 +26,7 @@ RPN::~RPN(){}
 RPN::RPN(const RPN &src){*this = src;}
 
 RPN &RPN::operator=(const RPN &src){
+	(void)src;
 	return *this;
 }
 
@@ -37,6 +38,9 @@ long RPN::doOperation(std::stack<long> &stack, char op){
 	stack.pop();
 	b = stack.top();
 	stack.pop();
+#ifdef DEBUG
+	std::cout << a <<" " << op << " " << b <<std::endl;
+#endif
 	if (op == '*')
 		return b * a;
 	else if (op == '-')
@@ -69,6 +73,9 @@ long RPN::calculate(const std::string &input){
 			if (stack.size() < 2)
 				throw std::runtime_error(ERR_OP_TWO);
 			result = RPN::doOperation(stack, ope);
+#ifdef DEBUG
+			std::cout << "result: " << result << std::endl;
+#endif
 			stack.push(result);
 		}
 	}
