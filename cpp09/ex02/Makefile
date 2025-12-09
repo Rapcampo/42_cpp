@@ -55,19 +55,19 @@ all: $(NAME)
 
 ifdef debug
 $(NAME): $(OBJS) $(OBJS_DEBUG)
-	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
+	echo -e  "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 	$(CC) $(FLAGS) $(LEAKS) -o $@ $(OBJS) 
 	$(CC) -o checker $(OBJS_DEBUG)
 else
 $(NAME): $(OBJS) 
-	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
+	echo -e  "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 	$(CC) $(FLAGS) -o $@ $^
 endif
-	echo "\n*************************$(GREEN)$(BLINK)    "\
+	echo -e  "\n*************************$(GREEN)$(BLINK)    "\
 		"[Compilation Sucessfull!]    $(RESET)*************************\n"
 
 $(OBJS):
-	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
+	echo -e  "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
 ifndef debug
 	$(CC) $(FLAGS) -c $(SOURCE_DIR) -I $(HEADERS)
@@ -77,7 +77,7 @@ endif
 	mv $(SOURCE:.cpp=.o) $(OBJS_DIR)
 
 $(OBJS_DEBUG):
-	echo "[$(PURPLE)$(BLINK)Compiling debug...$(RESET)]" \
+	echo -e  "[$(PURPLE)$(BLINK)Compiling debug...$(RESET)]" \
 		"$(YELLOW)sources$(RESET)"
 	mkdir -p objs
 	$(CC) -c $(DSOURCE_DIR)
@@ -92,8 +92,8 @@ else
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
 endif
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Objects have been" \
-		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
+	echo -e  "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Objects have"\
+		"been removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 ifndef debug
@@ -101,8 +101,8 @@ ifndef debug
 else
 	$(RM) $(NAME) checker
 endif
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Static library and "\
-		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
+	echo -e  "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Static library "\
+	"and programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
 

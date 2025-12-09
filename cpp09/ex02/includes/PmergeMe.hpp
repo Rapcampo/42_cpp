@@ -6,7 +6,7 @@
 /*   By: rapcampo <rapcampo@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:50:00 by rapcampo          #+#    #+#             */
-/*   Updated: 2025/11/27 19:16:47 by rapcampo         ###   ########.fr       */
+/*   Updated: 2025/12/09 19:31:05 by harbinger        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,14 @@ class PmergeMe{
 
 		template <typename J>
 			void	JacobsthalSequence(J &jacob){
-				for (size_t i = 0; i < jacob.size(); i++)
-					jacob[i] = (pow(2, i + 2) - pow(-1, i + 2)) / 3;
+				if (jacob.empty())
+					return;
+				jacob[0] = 1;
+				if (jacob.size() == 1)
+					return;
+				jacob[1] = 1;
+				for (size_t i = 2; i < jacob.size(); i++)
+					jacob[i] = jacob[i - 1] + 2 * jacob[i - 2];
 			}
 
 		template <typename T>

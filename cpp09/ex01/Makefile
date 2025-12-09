@@ -51,17 +51,17 @@ RESET	= \e[0m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	echo "[$(CYAN)$(BLINK)Linking...$(RESET)]"
+	echo -e "[$(CYAN)$(BLINK)Linking...$(RESET)]"
 ifdef debug
 	$(CC) $(FLAGS) $(LEAKS) -o $@ $^ 
 else
 	$(CC) $(FLAGS) -o $@ $^
 endif
-	echo "\n*************************$(GREEN)$(BLINK)    "\
+	echo -e "\n*************************$(GREEN)$(BLINK)    "\
 		"[Compilation Sucessfull!]    $(RESET)*************************\n"
 
 $(OBJS):
-	echo "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
+	echo -e "[$(PURPLE)$(BLINK)Compiling...$(RESET)] $(YELLOW)sources$(RESET)"
 	mkdir -p objs
 ifdef debug
 	$(CC) $(FLAGS) $(LEAKS) -c $(SOURCE_DIR) -I $(HEADERS) $(DEBUG)
@@ -73,12 +73,12 @@ endif
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(OBJS_DIR)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Objects have been" \
+	echo -e "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Objects have been" \
 		"removed sucessfully$(RESET)    +++++++++++++++\n\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	echo "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Static library and "\
+	echo -e "\n\n++++++++++++++    $(ULINE)$(GREEN)$(NAME)'s Static library and "\
 		"programs removed successfully$(RESET)    +++++++++++++++\n\n"
 
 re: fclean all
