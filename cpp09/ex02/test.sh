@@ -41,6 +41,7 @@ run (){
 		else
 			./PmergeMe "$case"
 		fi
+#		sleep 1
 		echo
 	done < "$file"
 }

@@ -21,6 +21,7 @@ while IFS= read -r expr || [[ -n "$expr" ]]; do
   echo -e "\033[1;32m>>> ./RPN \"$expr\"\033[0m"
   ./RPN "$expr"
   echo -e "\e[1;35m$expected\e[0m"
+  sleep 1
   echo
 
 done < "$INPUT_FILE"
